@@ -40,15 +40,13 @@ class MedicalTextBase:
         self.tokenizer = AutoTokenizer.from_pretrained(self.model_name)
         self.model = AutoModel.from_pretrained(self.model_name)
         self.model.to(self.device)
+        
 
     def initialize_optimizer_scheduler(self):
         self.optimizer = torch.optim.AdamW(self.model.parameters(), lr=self.lr)
         self.scheduler = StepLR(self.optimizer, step_size=2, gamma=0.5)
 
     def fit_data(self, data_train, data_test):
-        for ll in data_train:
-            print(type(ll))
-        print('========')
         train_inputs = self.tokenizer([item[0] for item in data_train],
                                       return_tensors='pt',
                                       padding=self.padding,
