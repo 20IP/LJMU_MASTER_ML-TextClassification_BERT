@@ -1,77 +1,84 @@
 import argparse
-
-
-parser = argparse.ArgumentParser(
-                    prog='Bert for Medical Text classify',
-                    description='Improve based o n Fine-tuning Model',
-                    epilog='Text at the bottom of help')
-
-parser.add_argument('--epochs', dest='accumulate', action='store_const',
-                    const=sum, default=max,
-                    help='sum the integers (default: find the max)')
-
-parser.add_argument('--smoothing', dest='accumulate', action='store_const',
-                    const=sum, default=max,
-                    help='sum the integers (default: find the max)')
-
-parser.add_argument('--pretrain-dir', dest='accumulate', action='store_const',
-                    const=sum, default=max,
-                    help='sum the integers (default: find the max)')
-
-parser.add_argument('--batch-size', dest='accumulate', action='store_const',
-                    const=sum, default=max,
-                    help='sum the integers (default: find the max)')
-
-parser.add_argument('--learing-rate', dest='accumulate', action='store_const',
-                    const=sum, default=max,
-                    help='sum the integers (default: find the max)')
-
-parser.add_argument('--datdaset-train', dest='accumulate', action='store_const',
-                    const=sum, default=max,
-                    help='sum the integers (default: find the max)')
-
-parser.add_argument('--datdaset-test', dest='accumulate', action='store_const',
-                    const=sum, default=max,
-                    help='sum the integers (default: find the max)')
-
-parser.add_argument('--output', dest='accumulate', action='store_const',
-                    const=sum, default=max,
-                    help='sum the integers (default: find the max)')
-
-parser.add_argument('--re-processing', dest='accumulate', action='store_const',
-                    const=sum, default=max,
-                    help='sum the integers (default: find the max)')
-
-parser.add_argument('--average-type', dest='accumulate', action='store_const',
-                    const=sum, default=max,
-                    help='sum the integers (default: find the max)')
-
-parser.add_argument('--max_length', dest='accumulate', action='store_const',
-                    const=sum, default=max,
-                    help='sum the integers (default: find the max)')
-
-parser.add_argument('--step-size', dest='accumulate', action='store_const',
-                    const=sum, default=max,
-                    help='sum the integers (default: find the max)')
-
-parser.add_argument('--gamma', dest='accumulate', action='store_const',
-                    const=sum, default=max,
-                    help='sum the integers (default: find the max)')
-
-parser.add_argument('--weight_decay', dest='accumulate', action='store_const',
-                    const=sum, default=max,
-                    help='sum the integers (default: find the max)')
+from modeling import MedicalTextBase, MedicalTextDataLoader
 
 
 def main():
-    pass
-if __name__ == '__main__':
-    parser = argparse.ArgumentParser()
-    parser.add_argument('config_file', help='JSON file with config parameters')
-    parser.add_argument('model_name', help='name under which model will be stored')
-    parser.add_argument('-dual', default=False, action='store_true', help='True if dual scoring is used, False otherwise')
-    parser.add_argument('-global_info', default=False, action='store_true', help='True if global information is used for context representation, False otherwise')
-    parser.add_argument('-weighted_sum', default=False, action='store_true', help='True if sum of scores is weighted, False otherwise')
-    args = parser.parse_args()
+    parser = argparse.ArgumentParser(description="Initlizing coding")
+    parser.add_argument("--data_path",
+                        type=str,
+                        help="data path include train+test file",
+                        default='/home/dev/Xavier/LJMU/Medical-Abstracts-TC-Corpus')
+    parser.add_argument("--data_preprocess",
+                        type=bool,
+                        help="requirement do or dont pre-processing data",
+                        default=False)
+    
+    parser.add_argument("--model_pretrain",
+                        type=str,
+                        help="chose the model to fine-tuning",
+                        default='bert-base-uncased',
+                        required=False
+                        )
+    parser.add_argument("--loss_function",
+                        type=str,
+                        help="chose the loss function to fine-tuning",
+                        required=False
+                        )
+    parser.add_argument("--learning_rate",
+                        type=float,
+                        default=5e-5
+                        )
+    parser.add_argument("--batch_size",
+                        type=int,
+                        default=8
+                        )
+    parser.add_argument("--epochs",
+                        type=int,
+                        default=5
+                        )
+    parser.add_argument("--step_per_epoch",
+                        type=int,
+                        default=100
+                        )
+    parser.add_argument("--max_length",
+                        type=int,
+                        default=512
+                        )
+    parser.add_argument("--reduce_learing_rate",
+                        type=bool,
+                        default=False
+                        )
+    parser.add_argument("--average_report",
+                        type=str,
+                        default='micro'
+                        )
+    parser.add_argument("--reduce_step_size",
+                        type=int,
+                        default=2
+                        )
+    parser.add_argument("--reduce_gamma",
+                        type=float,
+                        default=0.5
+                        )
 
-    main(args)
+    args = parser.parse_args()
+    
+
+    data_loader = MedicalTextDataLoader(args)
+    data_train, data_test = data_loader.load_data()
+
+    
+    classifier = MedicalTextBase(model_name=args.model_pretrain,
+                                 lr = args.learning_rate,
+                                 batch_size=args.batch_size,
+                                 step_per_epoch=args.step_per_epoch
+                                 )
+    classifier.load_model()
+    classifier.fit_data(data_train, data_test)
+    classifier.initialize_optimizer_scheduler()
+    classifier.train_and_evaluate()
+
+    
+    
+if __name__ == "__main__":
+    main()
