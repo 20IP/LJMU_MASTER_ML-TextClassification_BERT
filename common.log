@@ -1,49 +1,26 @@
-2024-01-26 13:29:27,766 - INFO - 
+2024-01-26 15:38:51,418 - INFO - 
  ************ Model Name: albert_base_v2 **************
 
-2024-01-26 13:29:27,766 - INFO - *** MedicalTextDataLoader: Data path: /home/dev/Xavier/LJMU/Medical-Abstracts-TC-Corpus
-2024-01-26 13:29:27,766 - INFO - *** MedicalTextDataLoader: Data preprocess: False
-2024-01-26 13:29:27,883 - INFO - *** MedicalTextBase: MedicalText Base Creating...
-2024-01-26 13:29:28,040 - INFO - *** MedicalTextBase: MedicalText Base Model was loaded.
-2024-01-26 13:29:52,190 - INFO - *** MedicalTextBase: Successed create data train-test
-2024-01-26 13:29:52,191 - INFO - *** MedicalTextBase: Successed create scheduler.
-2024-01-26 13:29:52,191 - INFO - *** MedicalTextBase: Training and Evaluating...
-2024-01-26 14:54:21,408 - INFO - 
+2024-01-26 15:38:51,418 - INFO - *** MedicalTextDataLoader: Data path: /home/dev/Xavier/LJMU/Medical-Abstracts-TC-Corpus
+2024-01-26 15:38:51,418 - INFO - *** MedicalTextDataLoader: Data preprocess: False
+2024-01-26 15:38:51,550 - INFO - *** MedicalTextBase: MedicalText Base Creating...
+2024-01-26 15:38:51,760 - INFO - *** MedicalTextBase: MedicalText Base Model was loaded.
+2024-01-26 15:38:51,761 - INFO - *** MedicalTextBase: Successed create initialize_optimizer with scheduler: False
+2024-01-26 15:39:17,242 - INFO - *** MedicalTextClassifier: Successed create data train-test
+2024-01-26 15:39:17,242 - INFO - *** MedicalTextClassifier: Training and Evaluating...
+2024-01-26 17:15:07,857 - INFO - 
  ************ Model Name: albert_base_v2 **************
 
-2024-01-26 14:55:30,608 - INFO - 
- ************ Model Name: albert_base_v2 **************
+2024-01-26 17:15:07,857 - INFO - *** MedicalTextDataLoader: Data path: /home/dev/Xavier/LJMU/Medical-Abstracts-TC-Corpus
+2024-01-26 17:15:07,857 - INFO - *** MedicalTextDataLoader: Data preprocess: False
+2024-01-26 17:15:07,976 - INFO - *** MedicalTextBase: MedicalText Base Creating...
+2024-01-26 17:15:08,126 - INFO - *** MedicalTextBase: MedicalText Base Model was loaded.
+2024-01-26 17:15:08,126 - INFO - *** MedicalTextBase: Successed create initialize_optimizer with scheduler: False
+2024-01-26 17:21:11,884 - INFO - 
+ ************ Model Name: albert_base_v2 - Loss type:  **************
 
-2024-01-26 14:55:45,050 - INFO - 
- ************ Model Name: albert_base_v2 **************
-
-2024-01-26 14:56:11,238 - INFO - 
- ************ Model Name: albert_base_v2 **************
-
-2024-01-26 14:58:19,674 - INFO - 
- ************ Model Name: albert_base_v2 **************
-
-2024-01-26 14:58:47,882 - INFO - 
- ************ Model Name: albert_base_v2 **************
-
-2024-01-26 14:59:04,446 - INFO - 
- ************ Model Name: albert_base_v2 **************
-
-2024-01-26 14:59:18,407 - INFO - 
- ************ Model Name: albert_base_v2 **************
-
-2024-01-26 14:59:33,003 - INFO - 
- ************ Model Name: albert_base_v2 **************
-
-2024-01-26 14:59:47,977 - INFO - 
- ************ Model Name: albert_base_v2 **************
-
-2024-01-26 15:00:51,938 - INFO - 
- ************ Model Name: albert_base_v2 **************
-
-2024-01-26 15:01:16,372 - INFO - 
- ************ Model Name: albert_base_v2 **************
-
-2024-01-26 15:01:44,964 - INFO - 
- ************ Model Name: albert_base_v2 **************
-
+2024-01-26 17:21:11,884 - INFO - *** MedicalTextDataLoader: Data path: /home/dev/Xavier/LJMU/Medical-Abstracts-TC-Corpus
+2024-01-26 17:21:11,884 - INFO - *** MedicalTextDataLoader: Data preprocess: False
+2024-01-26 17:21:12,002 - INFO - *** MedicalTextBase: MedicalText Base Creating...
+2024-01-26 17:21:12,148 - INFO - *** MedicalTextBase: MedicalText Base Model was loaded.
+2024-01-26 17:21:12,149 - INFO - *** MedicalTextBase: Successed create initialize_optimizer with scheduler: False

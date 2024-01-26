@@ -70,7 +70,7 @@ def main():
                         type=bool,
                         default=True
                         )
-    parser.add_argument("--average_report",
+    parser.add_argument("--report_method",
                         type=str,
                         default='micro'
                         )
@@ -83,46 +83,14 @@ def main():
                         default=0.5
                         )
     args = parser.parse_args()
-    logger.info(f"\n ************ Model Name: {args.model_pretrain} **************\n")
+    logger.info(f"\n ************ Model Name: {args.model_pretrain} - Loss type: {args.loss_type} **************\n")
     
-    rs = MedicalTextClassifier(args)
-    # data_loader = MedicalTextDataLoader(args)
-    # data_train, data_test, num_labels = data_loader.load_data()
+    data_loader = MedicalTextDataLoader(args)
+    data_train, data_test, num_labels = data_loader.load_data()
     
-    # if args.loss_type == '':
-    #     classifier = MedicalTextBase(model_name=args.model_pretrain,
-    #                                 model_dir=args.model_dir,
-    #                                 lr = args.learning_rate,
-    #                                 batch_size=args.batch_size,
-    #                                 step_per_epoch=args.step_per_epoch,
-    #                                 padding=args.padding,
-    #                                 max_length=args.max_length,
-    #                                 reduce_lr = args.reduce_learing_rate,
-    #                                 average_report=args.average_report,
-    #                                 reduce_step_size=args.reduce_step_size,
-    #                                 gamma = args.reduce_gamma
-    #                                 )
-    # else:
-    #     classifier = MedicalTextOptimizeloss(
-    #                                 lossOptimz=args.loss_function,
-    #                                 model_name=args.model_pretrain,
-    #                                 model_dir=args.model_dir,
-    #                                 lr = args.learning_rate,
-    #                                 batch_size=args.batch_size,
-    #                                 step_per_epoch=args.step_per_epoch,
-    #                                 padding=args.padding,
-    #                                 max_length=args.max_length,
-    #                                 reduce_lr = args.reduce_learing_rate,
-    #                                 average_report=args.average_report,
-    #                                 reduce_step_size=args.reduce_step_size,
-    #                                 gamma = args.reduce_gamma
-    #                                 )
-        
-    
-    # classifier.load_model(num_labels)
-    # classifier.fit_data(data_train, data_test)
-    # classifier.initialize_optimizer_scheduler()
-    # classifier.train_and_evaluate()
+    classifier = MedicalTextClassifier(args, num_labels)
+    classifier.fit_data(data_train, data_test)
+    classifier.train_and_evaluate()
 
 
 if __name__ == "__main__":
