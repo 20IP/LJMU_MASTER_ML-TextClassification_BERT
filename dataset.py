@@ -10,9 +10,9 @@ class MedicalTextDataLoader:
         logger.info(f"*** MedicalTextDataLoader: Data path: {self.data_path}")
         logger.info(f"*** MedicalTextDataLoader: Data preprocess: {self.process_state}")
 
-        train_df = pd.read_csv(f'{self.data_path}/medical_tc_train.csv')
-        test_df = pd.read_csv(f'{self.data_path}/medical_tc_test.csv')
-
+        train_df = pd.read_csv(f'{self.data_path}/medical_tc_train.csv').iloc[:300]
+        test_df = pd.read_csv(f'{self.data_path}/medical_tc_test.csv').iloc[:300]
+        print(train_df.shape)
         # Correctly shift labels by 1 (assuming they start from 1, not 0)
         train_df['condition_label'] = train_df['condition_label'] - 1
         test_df['condition_label'] = test_df['condition_label'] - 1

@@ -4,6 +4,15 @@ import torch.nn.functional as F
 from torch.autograd import Variable
 
 
+class CrossEntropyLoss(nn.Module):
+    def __init__(self):
+        super(CrossEntropyLoss, self).__init__()
+        self.loss_fn = nn.CrossEntropyLoss()
+
+    def forward(self, logits, labels):
+        return self.loss_fn(logits, labels)
+    
+
 class FocalLoss(nn.Module):
     def __init__(self, gamma=2.0):
         super(FocalLoss, self).__init__()

@@ -1,26 +1,327 @@
-2024-01-26 15:38:51,418 - INFO - 
- ************ Model Name: albert_base_v2 **************
+2024-01-28 11:17:41,239 - INFO - 
+ ************ Model Name: bert-base-uncased - Loss type: cross-entropy **************
 
-2024-01-26 15:38:51,418 - INFO - *** MedicalTextDataLoader: Data path: /home/dev/Xavier/LJMU/Medical-Abstracts-TC-Corpus
-2024-01-26 15:38:51,418 - INFO - *** MedicalTextDataLoader: Data preprocess: False
-2024-01-26 15:38:51,550 - INFO - *** MedicalTextBase: MedicalText Base Creating...
-2024-01-26 15:38:51,760 - INFO - *** MedicalTextBase: MedicalText Base Model was loaded.
-2024-01-26 15:38:51,761 - INFO - *** MedicalTextBase: Successed create initialize_optimizer with scheduler: False
-2024-01-26 15:39:17,242 - INFO - *** MedicalTextClassifier: Successed create data train-test
-2024-01-26 15:39:17,242 - INFO - *** MedicalTextClassifier: Training and Evaluating...
-2024-01-26 17:15:07,857 - INFO - 
- ************ Model Name: albert_base_v2 **************
+2024-01-28 11:17:41,240 - INFO - *** MedicalTextDataLoader: Data path: ../Medical-Abstracts-TC-Corpus
+2024-01-28 11:17:41,240 - INFO - *** MedicalTextDataLoader: Data preprocess: False
+2024-01-28 11:17:41,333 - INFO - *** MedicalTextOptimizeLoss: MedicalText Optimization loss creating...
+2024-01-28 11:17:42,661 - INFO - *** MedicalTextOptimizeLoss: MedicalText Optimization loss was loaded.
+2024-01-28 11:17:42,662 - INFO - *** MedicalTextOptimizeLoss: Successed create initialize_optimizer with scheduler: False
+2024-01-28 11:17:44,181 - INFO - *** MedicalTextClassifier: Successed create data train-test
+2024-01-28 11:17:44,181 - INFO - *** MedicalTextClassifier: Training and Evaluating...
+2024-01-28 11:18:11,983 - INFO - 
+ ************ Model Name: bert-base-uncased - Loss type: cross-entropy **************
 
-2024-01-26 17:15:07,857 - INFO - *** MedicalTextDataLoader: Data path: /home/dev/Xavier/LJMU/Medical-Abstracts-TC-Corpus
-2024-01-26 17:15:07,857 - INFO - *** MedicalTextDataLoader: Data preprocess: False
-2024-01-26 17:15:07,976 - INFO - *** MedicalTextBase: MedicalText Base Creating...
-2024-01-26 17:15:08,126 - INFO - *** MedicalTextBase: MedicalText Base Model was loaded.
-2024-01-26 17:15:08,126 - INFO - *** MedicalTextBase: Successed create initialize_optimizer with scheduler: False
-2024-01-26 17:21:11,884 - INFO - 
- ************ Model Name: albert_base_v2 - Loss type:  **************
+2024-01-28 11:18:11,983 - INFO - *** MedicalTextDataLoader: Data path: ../Medical-Abstracts-TC-Corpus
+2024-01-28 11:18:11,983 - INFO - *** MedicalTextDataLoader: Data preprocess: False
+2024-01-28 11:18:12,072 - INFO - *** MedicalTextOptimizeLoss: MedicalText Optimization loss creating...
+2024-01-28 11:18:13,392 - INFO - *** MedicalTextOptimizeLoss: MedicalText Optimization loss was loaded.
+2024-01-28 11:18:13,393 - INFO - *** MedicalTextOptimizeLoss: Successed create initialize_optimizer with scheduler: False
+2024-01-28 11:18:14,895 - INFO - *** MedicalTextClassifier: Successed create data train-test
+2024-01-28 11:18:14,895 - INFO - *** MedicalTextClassifier: Training and Evaluating...
+2024-01-28 11:18:32,891 - INFO - 	 Accuracy training at Epochs 6 = 0.2967
+2024-01-28 11:19:52,892 - INFO - 
+ ************ Model Name: bert-base-uncased - Loss type: cross-entropy **************
 
-2024-01-26 17:21:11,884 - INFO - *** MedicalTextDataLoader: Data path: /home/dev/Xavier/LJMU/Medical-Abstracts-TC-Corpus
-2024-01-26 17:21:11,884 - INFO - *** MedicalTextDataLoader: Data preprocess: False
-2024-01-26 17:21:12,002 - INFO - *** MedicalTextBase: MedicalText Base Creating...
-2024-01-26 17:21:12,148 - INFO - *** MedicalTextBase: MedicalText Base Model was loaded.
-2024-01-26 17:21:12,149 - INFO - *** MedicalTextBase: Successed create initialize_optimizer with scheduler: False
+2024-01-28 11:19:52,892 - INFO - *** MedicalTextDataLoader: Data path: ../Medical-Abstracts-TC-Corpus
+2024-01-28 11:19:52,892 - INFO - *** MedicalTextDataLoader: Data preprocess: False
+2024-01-28 11:19:52,984 - INFO - *** MedicalTextOptimizeLoss: MedicalText Optimization loss creating...
+2024-01-28 11:19:54,302 - INFO - *** MedicalTextOptimizeLoss: MedicalText Optimization loss was loaded.
+2024-01-28 11:19:54,303 - INFO - *** MedicalTextOptimizeLoss: Successed create initialize_optimizer with scheduler: False
+2024-01-28 11:19:55,804 - INFO - *** MedicalTextClassifier: Successed create data train-test
+2024-01-28 11:19:55,804 - INFO - *** MedicalTextClassifier: Training and Evaluating...
+2024-01-28 11:20:13,754 - INFO - 	 Accuracy training at Epochs 6 = 0.3233
+2024-01-28 11:20:19,262 - INFO - 	 Epoch(s) 5 - Classification statistic:
+2024-01-28 11:20:19,262 - INFO - 0.33666666666666667
+2024-01-28 11:20:36,773 - INFO - 	 Accuracy training at Epochs 6 = 0.2933
+2024-01-28 11:20:42,600 - INFO - 	 Epoch(s) 5 - Classification statistic:
+2024-01-28 11:20:42,600 - INFO - 0.36666666666666664
+2024-01-28 11:21:00,360 - INFO - 	 Accuracy training at Epochs 6 = 0.4533
+2024-01-28 11:21:05,975 - INFO - 	 Epoch(s) 5 - Classification statistic:
+2024-01-28 11:21:05,975 - INFO - 0.5066666666666667
+2024-01-28 11:21:23,711 - INFO - 	 Accuracy training at Epochs 6 = 0.5767
+2024-01-28 11:21:29,280 - INFO - 	 Epoch(s) 5 - Classification statistic:
+2024-01-28 11:21:29,280 - INFO - 0.53
+2024-01-28 11:21:46,971 - INFO - 	 Accuracy training at Epochs 6 = 0.7433
+2024-01-28 11:21:52,539 - INFO - 	 Epoch(s) 5 - Classification statistic:
+2024-01-28 11:21:52,539 - INFO - 0.5466666666666666
+2024-01-28 11:21:52,539 - INFO - Best accuracy for testing with micro is: 0.5466666666666666
+2024-01-28 11:23:13,735 - INFO - 
+ ************ Model Name: bert-base-uncased - Loss type: focalloss **************
+
+2024-01-28 11:23:13,735 - INFO - *** MedicalTextDataLoader: Data path: ../Medical-Abstracts-TC-Corpus
+2024-01-28 11:23:13,735 - INFO - *** MedicalTextDataLoader: Data preprocess: False
+2024-01-28 11:23:13,823 - INFO - *** MedicalTextOptimizeLoss: MedicalText Optimization loss creating...
+2024-01-28 11:23:15,156 - INFO - *** MedicalTextOptimizeLoss: MedicalText Optimization loss was loaded.
+2024-01-28 11:23:15,157 - INFO - *** MedicalTextOptimizeLoss: Successed create initialize_optimizer with scheduler: False
+2024-01-28 11:23:16,696 - INFO - *** MedicalTextClassifier: Successed create data train-test
+2024-01-28 11:23:16,696 - INFO - *** MedicalTextClassifier: Training and Evaluating...
+2024-01-28 11:23:34,717 - INFO - 	 Accuracy training at Epochs 6 = 0.3000
+2024-01-28 11:23:40,240 - INFO - 	 Epoch(s) 5 - Classification statistic:
+2024-01-28 11:23:40,240 - INFO - 0.3433333333333333
+2024-01-28 11:23:58,035 - INFO - 	 Accuracy training at Epochs 6 = 0.4500
+2024-01-28 11:24:09,924 - INFO - 
+ ************ Model Name: bert-base-uncased - Loss type: focallossbnl2 **************
+
+2024-01-28 11:24:09,924 - INFO - *** MedicalTextDataLoader: Data path: ../Medical-Abstracts-TC-Corpus
+2024-01-28 11:24:09,924 - INFO - *** MedicalTextDataLoader: Data preprocess: False
+2024-01-28 11:24:10,012 - INFO - *** MedicalTextOptimizeLoss: MedicalText Optimization loss creating...
+2024-01-28 11:24:11,341 - INFO - *** MedicalTextOptimizeLoss: MedicalText Optimization loss was loaded.
+2024-01-28 11:24:11,341 - INFO - *** MedicalTextOptimizeLoss: Successed create initialize_optimizer with scheduler: False
+2024-01-28 11:24:12,829 - INFO - *** MedicalTextClassifier: Successed create data train-test
+2024-01-28 11:24:12,829 - INFO - *** MedicalTextClassifier: Training and Evaluating...
+2024-01-28 11:24:30,949 - INFO - 	 Accuracy training at Epochs 6 = 0.2833
+2024-01-28 11:24:36,497 - INFO - 	 Epoch(s) 5 - Classification statistic:
+2024-01-28 11:24:36,497 - INFO - 0.33666666666666667
+2024-01-28 11:24:54,068 - INFO - 	 Accuracy training at Epochs 6 = 0.3333
+2024-01-28 11:24:59,628 - INFO - 	 Epoch(s) 5 - Classification statistic:
+2024-01-28 11:24:59,628 - INFO - 0.49666666666666665
+2024-01-28 11:25:19,854 - INFO - 
+ ************ Model Name: bert-base-uncased - Loss type: labelsmoothingloss **************
+
+2024-01-28 11:25:19,854 - INFO - *** MedicalTextDataLoader: Data path: ../Medical-Abstracts-TC-Corpus
+2024-01-28 11:25:19,855 - INFO - *** MedicalTextDataLoader: Data preprocess: False
+2024-01-28 11:25:19,943 - INFO - *** MedicalTextOptimizeLoss: MedicalText Optimization loss creating...
+2024-01-28 11:25:21,271 - INFO - *** MedicalTextOptimizeLoss: MedicalText Optimization loss was loaded.
+2024-01-28 11:25:21,272 - INFO - *** MedicalTextOptimizeLoss: Successed create initialize_optimizer with scheduler: False
+2024-01-28 11:25:22,759 - INFO - *** MedicalTextClassifier: Successed create data train-test
+2024-01-28 11:25:22,759 - INFO - *** MedicalTextClassifier: Training and Evaluating...
+2024-01-28 11:25:40,859 - INFO - 	 Accuracy training at Epochs 6 = 0.3000
+2024-01-28 11:25:46,409 - INFO - 	 Epoch(s) 5 - Classification statistic:
+2024-01-28 11:25:46,409 - INFO - 0.33
+2024-01-28 11:26:03,980 - INFO - 	 Accuracy training at Epochs 6 = 0.5133
+2024-01-28 11:26:09,542 - INFO - 	 Epoch(s) 5 - Classification statistic:
+2024-01-28 11:26:09,542 - INFO - 0.56
+2024-01-28 11:26:37,454 - INFO - 
+ ************ Model Name: bert-base-uncased - Loss type: labelsmoothing_cross-entropoy **************
+
+2024-01-28 11:26:37,454 - INFO - *** MedicalTextDataLoader: Data path: ../Medical-Abstracts-TC-Corpus
+2024-01-28 11:26:37,454 - INFO - *** MedicalTextDataLoader: Data preprocess: False
+2024-01-28 11:26:37,544 - INFO - *** MedicalTextOptimizeLoss: MedicalText Optimization loss creating...
+2024-01-28 11:26:38,880 - INFO - *** MedicalTextOptimizeLoss: MedicalText Optimization loss was loaded.
+2024-01-28 11:26:38,880 - INFO - *** MedicalTextOptimizeLoss: Successed create initialize_optimizer with scheduler: False
+2024-01-28 11:26:40,383 - INFO - *** MedicalTextClassifier: Successed create data train-test
+2024-01-28 11:26:40,383 - INFO - *** MedicalTextClassifier: Training and Evaluating...
+2024-01-28 11:26:58,479 - INFO - 	 Accuracy training at Epochs 6 = 0.3167
+2024-01-28 11:27:04,027 - INFO - 	 Epoch(s) 5 - Classification statistic:
+2024-01-28 11:27:04,027 - INFO - 0.33666666666666667
+2024-01-28 11:27:21,598 - INFO - 	 Accuracy training at Epochs 6 = 0.4800
+2024-01-28 11:27:27,159 - INFO - 	 Epoch(s) 5 - Classification statistic:
+2024-01-28 11:27:27,159 - INFO - 0.5233333333333333
+2024-01-28 11:27:44,752 - INFO - 	 Accuracy training at Epochs 6 = 0.6167
+2024-01-28 11:27:50,318 - INFO - 	 Epoch(s) 5 - Classification statistic:
+2024-01-28 11:27:50,318 - INFO - 0.5766666666666667
+2024-01-28 11:28:07,970 - INFO - 	 Accuracy training at Epochs 6 = 0.7367
+2024-01-28 11:28:13,545 - INFO - 	 Epoch(s) 5 - Classification statistic:
+2024-01-28 11:28:13,545 - INFO - 0.58
+2024-01-28 11:28:31,197 - INFO - 	 Accuracy training at Epochs 6 = 0.8667
+2024-01-28 11:28:36,783 - INFO - 	 Epoch(s) 5 - Classification statistic:
+2024-01-28 11:28:36,783 - INFO - 0.5766666666666667
+2024-01-28 11:28:36,783 - INFO - Best accuracy for testing with micro is: 0.58
+2024-01-28 11:40:29,912 - INFO - 
+ ************ Model Name: albert_base_v2 - Loss type: labelsmoothing_cross-entropoy **************
+
+2024-01-28 11:40:29,912 - INFO - *** MedicalTextDataLoader: Data path: ../Medical-Abstracts-TC-Corpus
+2024-01-28 11:40:29,912 - INFO - *** MedicalTextDataLoader: Data preprocess: False
+2024-01-28 11:40:30,000 - INFO - *** MedicalTextOptimizeLoss: MedicalText Optimization loss creating...
+2024-01-28 11:42:00,527 - INFO - 
+ ************ Model Name: albert_base_v2 - Loss type: labelsmoothing_cross-entropoy **************
+
+2024-01-28 11:42:00,527 - INFO - *** MedicalTextDataLoader: Data path: ../Medical-Abstracts-TC-Corpus
+2024-01-28 11:42:00,527 - INFO - *** MedicalTextDataLoader: Data preprocess: False
+2024-01-28 11:42:00,617 - INFO - *** MedicalTextOptimizeLoss: MedicalText Optimization loss creating...
+2024-01-28 11:42:01,485 - INFO - *** MedicalTextOptimizeLoss: MedicalText Optimization loss was loaded.
+2024-01-28 11:42:01,486 - INFO - *** MedicalTextOptimizeLoss: Successed create initialize_optimizer with scheduler: False
+2024-01-28 11:42:02,184 - INFO - *** MedicalTextClassifier: Successed create data train-test
+2024-01-28 11:42:02,184 - INFO - *** MedicalTextClassifier: Training and Evaluating...
+2024-01-28 11:42:21,059 - INFO - 	 Accuracy training at Epochs 6 = 0.3000
+2024-01-28 11:42:27,559 - INFO - 	 Epoch(s) 5 - Classification statistic:
+2024-01-28 11:42:27,559 - INFO - 0.21333333333333337
+2024-01-28 11:42:45,951 - INFO - 	 Accuracy training at Epochs 6 = 0.3233
+2024-01-28 11:42:52,462 - INFO - 	 Epoch(s) 5 - Classification statistic:
+2024-01-28 11:42:52,463 - INFO - 0.33666666666666667
+2024-01-28 11:43:10,882 - INFO - 	 Accuracy training at Epochs 6 = 0.2800
+2024-01-28 11:43:17,386 - INFO - 	 Epoch(s) 5 - Classification statistic:
+2024-01-28 11:43:17,386 - INFO - 0.21333333333333337
+2024-01-28 11:43:35,812 - INFO - 	 Accuracy training at Epochs 6 = 0.2867
+2024-01-28 11:43:42,320 - INFO - 	 Epoch(s) 5 - Classification statistic:
+2024-01-28 11:43:42,320 - INFO - 0.21333333333333337
+2024-01-28 11:44:00,759 - INFO - 	 Accuracy training at Epochs 6 = 0.3233
+2024-01-28 11:44:07,272 - INFO - 	 Epoch(s) 5 - Classification statistic:
+2024-01-28 11:44:07,272 - INFO - 0.33666666666666667
+2024-01-28 11:44:07,272 - INFO - Best accuracy for testing with micro is: 0.33666666666666667
+2024-01-28 11:45:23,871 - INFO - 
+ ************ Model Name: bioBERT_v1.1 - Loss type: labelsmoothing_cross-entropoy **************
+
+2024-01-28 11:45:23,871 - INFO - *** MedicalTextDataLoader: Data path: ../Medical-Abstracts-TC-Corpus
+2024-01-28 11:45:23,871 - INFO - *** MedicalTextDataLoader: Data preprocess: False
+2024-01-28 11:45:23,959 - INFO - *** MedicalTextOptimizeLoss: MedicalText Optimization loss creating...
+2024-01-28 11:45:25,275 - INFO - *** MedicalTextOptimizeLoss: MedicalText Optimization loss was loaded.
+2024-01-28 11:45:25,276 - INFO - *** MedicalTextOptimizeLoss: Successed create initialize_optimizer with scheduler: False
+2024-01-28 11:45:26,492 - INFO - *** MedicalTextClassifier: Successed create data train-test
+2024-01-28 11:45:26,493 - INFO - *** MedicalTextClassifier: Training and Evaluating...
+2024-01-28 11:45:44,658 - INFO - 	 Accuracy training at Epochs 6 = 0.2800
+2024-01-28 11:45:50,189 - INFO - 	 Epoch(s) 5 - Classification statistic:
+2024-01-28 11:45:50,189 - INFO - 0.3433333333333333
+2024-01-28 11:46:07,718 - INFO - 	 Accuracy training at Epochs 6 = 0.5600
+2024-01-28 11:46:13,273 - INFO - 	 Epoch(s) 5 - Classification statistic:
+2024-01-28 11:46:13,273 - INFO - 0.6466666666666666
+2024-01-28 11:46:30,856 - INFO - 	 Accuracy training at Epochs 6 = 0.7433
+2024-01-28 11:46:36,418 - INFO - 	 Epoch(s) 5 - Classification statistic:
+2024-01-28 11:46:36,418 - INFO - 0.6233333333333333
+2024-01-28 11:46:54,022 - INFO - 	 Accuracy training at Epochs 6 = 0.8500
+2024-01-28 11:46:59,591 - INFO - 	 Epoch(s) 5 - Classification statistic:
+2024-01-28 11:46:59,591 - INFO - 0.61
+2024-01-28 11:47:17,204 - INFO - 	 Accuracy training at Epochs 6 = 0.9167
+2024-01-28 11:47:22,772 - INFO - 	 Epoch(s) 5 - Classification statistic:
+2024-01-28 11:47:22,773 - INFO - 0.6133333333333333
+2024-01-28 11:47:22,773 - INFO - Best accuracy for testing with micro is: 0.6466666666666666
+2024-01-28 11:48:54,359 - INFO - 
+ ************ Model Name: bluebert_pubmed_uncased - Loss type: labelsmoothing_cross-entropoy **************
+
+2024-01-28 11:48:54,359 - INFO - *** MedicalTextDataLoader: Data path: ../Medical-Abstracts-TC-Corpus
+2024-01-28 11:48:54,359 - INFO - *** MedicalTextDataLoader: Data preprocess: False
+2024-01-28 11:48:54,452 - INFO - *** MedicalTextOptimizeLoss: MedicalText Optimization loss creating...
+2024-01-28 11:48:55,861 - INFO - *** MedicalTextOptimizeLoss: MedicalText Optimization loss was loaded.
+2024-01-28 11:48:55,862 - INFO - *** MedicalTextOptimizeLoss: Successed create initialize_optimizer with scheduler: False
+2024-01-28 11:48:57,371 - INFO - *** MedicalTextClassifier: Successed create data train-test
+2024-01-28 11:48:57,371 - INFO - *** MedicalTextClassifier: Training and Evaluating...
+2024-01-28 11:49:15,405 - INFO - 	 Accuracy training at Epochs 6 = 0.3533
+2024-01-28 11:49:20,908 - INFO - 	 Epoch(s) 5 - Classification statistic:
+2024-01-28 11:49:20,908 - INFO - 0.5266666666666666
+2024-01-28 11:49:38,368 - INFO - 	 Accuracy training at Epochs 6 = 0.6100
+2024-01-28 11:49:43,896 - INFO - 	 Epoch(s) 5 - Classification statistic:
+2024-01-28 11:49:43,896 - INFO - 0.61
+2024-01-28 11:50:01,396 - INFO - 	 Accuracy training at Epochs 6 = 0.7367
+2024-01-28 11:50:06,936 - INFO - 	 Epoch(s) 5 - Classification statistic:
+2024-01-28 11:50:06,936 - INFO - 0.5466666666666666
+2024-01-28 11:50:24,497 - INFO - 	 Accuracy training at Epochs 6 = 0.8533
+2024-01-28 11:50:30,049 - INFO - 	 Epoch(s) 5 - Classification statistic:
+2024-01-28 11:50:30,049 - INFO - 0.5833333333333334
+2024-01-28 11:50:47,611 - INFO - 	 Accuracy training at Epochs 6 = 0.9267
+2024-01-28 11:50:53,164 - INFO - 	 Epoch(s) 5 - Classification statistic:
+2024-01-28 11:50:53,164 - INFO - 0.6166666666666667
+2024-01-28 11:50:53,171 - INFO - Best accuracy for testing with micro is: 0.6166666666666667
+2024-01-28 12:00:38,151 - INFO - 
+ ************ Model Name: roberta-base - Loss type: labelsmoothing_cross-entropoy **************
+
+2024-01-28 12:00:38,151 - INFO - *** MedicalTextDataLoader: Data path: ../Medical-Abstracts-TC-Corpus
+2024-01-28 12:00:38,151 - INFO - *** MedicalTextDataLoader: Data preprocess: False
+2024-01-28 12:00:38,240 - INFO - *** MedicalTextOptimizeLoss: MedicalText Optimization loss creating...
+2024-01-28 12:04:13,287 - INFO - 
+ ************ Model Name: roberta-base - Loss type: labelsmoothing_cross-entropoy **************
+
+2024-01-28 12:04:13,287 - INFO - *** MedicalTextDataLoader: Data path: ../Medical-Abstracts-TC-Corpus
+2024-01-28 12:04:13,287 - INFO - *** MedicalTextDataLoader: Data preprocess: False
+2024-01-28 12:04:13,378 - INFO - *** MedicalTextOptimizeLoss: MedicalText Optimization loss creating...
+2024-01-28 12:04:14,875 - INFO - *** MedicalTextOptimizeLoss: MedicalText Optimization loss was loaded.
+2024-01-28 12:04:14,875 - INFO - *** MedicalTextOptimizeLoss: Successed create initialize_optimizer with scheduler: False
+2024-01-28 12:11:10,658 - INFO - 
+ ************ Model Name: roberta-base - Loss type: labelsmoothing_cross-entropoy **************
+
+2024-01-28 12:11:10,658 - INFO - *** MedicalTextDataLoader: Data path: ../Medical-Abstracts-TC-Corpus
+2024-01-28 12:11:10,658 - INFO - *** MedicalTextDataLoader: Data preprocess: False
+2024-01-28 12:11:10,747 - INFO - *** MedicalTextOptimizeLoss: MedicalText Optimization loss creating...
+2024-01-28 12:11:12,269 - INFO - *** MedicalTextOptimizeLoss: MedicalText Optimization loss was loaded.
+2024-01-28 12:11:12,270 - INFO - *** MedicalTextOptimizeLoss: Successed create initialize_optimizer with scheduler: False
+2024-01-28 12:14:38,042 - INFO - 
+ ************ Model Name: roberta-base - Loss type: labelsmoothing_cross-entropoy **************
+
+2024-01-28 12:14:38,042 - INFO - *** MedicalTextDataLoader: Data path: ../Medical-Abstracts-TC-Corpus
+2024-01-28 12:14:38,042 - INFO - *** MedicalTextDataLoader: Data preprocess: False
+2024-01-28 12:14:38,131 - INFO - *** MedicalTextOptimizeLoss: MedicalText Optimization loss creating...
+2024-01-28 12:14:39,634 - INFO - *** MedicalTextOptimizeLoss: MedicalText Optimization loss was loaded.
+2024-01-28 12:14:39,635 - INFO - *** MedicalTextOptimizeLoss: Successed create initialize_optimizer with scheduler: False
+2024-01-28 12:21:08,018 - INFO - 
+ ************ Model Name: roberta-base - Loss type: labelsmoothing_cross-entropoy **************
+
+2024-01-28 12:21:08,018 - INFO - *** MedicalTextDataLoader: Data path: ../Medical-Abstracts-TC-Corpus
+2024-01-28 12:21:08,018 - INFO - *** MedicalTextDataLoader: Data preprocess: False
+2024-01-28 12:21:08,115 - INFO - *** MedicalTextOptimizeLoss: MedicalText Optimization loss creating...
+2024-01-28 12:21:09,610 - INFO - *** MedicalTextOptimizeLoss: MedicalText Optimization loss was loaded.
+2024-01-28 12:21:09,611 - INFO - *** MedicalTextOptimizeLoss: Successed create initialize_optimizer with scheduler: False
+2024-01-28 12:21:10,366 - INFO - *** MedicalTextClassifier: Successed create data train-test
+2024-01-28 12:21:10,366 - INFO - *** MedicalTextClassifier: Training and Evaluating...
+2024-01-28 12:31:43,047 - INFO - 
+ ************ Model Name: roberta-base - Loss type: labelsmoothing_cross-entropoy **************
+
+2024-01-28 12:31:43,047 - INFO - *** MedicalTextDataLoader: Data path: ../Medical-Abstracts-TC-Corpus
+2024-01-28 12:31:43,047 - INFO - *** MedicalTextDataLoader: Data preprocess: False
+2024-01-28 12:31:43,136 - INFO - *** MedicalTextOptimizeLoss: MedicalText Optimization loss creating...
+2024-01-28 12:31:44,638 - INFO - *** MedicalTextOptimizeLoss: MedicalText Optimization loss was loaded.
+2024-01-28 12:31:44,639 - INFO - *** MedicalTextOptimizeLoss: Successed create initialize_optimizer with scheduler: False
+2024-01-28 12:31:45,395 - INFO - *** MedicalTextClassifier: Successed create data train-test Dataloader
+2024-01-28 12:31:45,396 - INFO - *** MedicalTextClassifier: Training and Evaluating...
+2024-01-28 12:34:42,731 - INFO - 
+ ************ Model Name: roberta-base - Loss type: labelsmoothing_cross-entropoy **************
+
+2024-01-28 12:34:42,732 - INFO - *** MedicalTextDataLoader: Data path: ../Medical-Abstracts-TC-Corpus
+2024-01-28 12:34:42,732 - INFO - *** MedicalTextDataLoader: Data preprocess: False
+2024-01-28 12:34:42,820 - INFO - *** MedicalTextOptimizeLoss: MedicalText Optimization loss creating...
+2024-01-28 12:34:44,323 - INFO - *** MedicalTextOptimizeLoss: MedicalText Optimization loss was loaded.
+2024-01-28 12:34:44,324 - INFO - *** MedicalTextOptimizeLoss: Successed create initialize_optimizer with scheduler: False
+2024-01-28 12:34:45,076 - INFO - *** MedicalTextClassifier: Successed create data train-test Dataloader
+2024-01-28 12:34:45,076 - INFO - *** MedicalTextClassifier: Training and Evaluating...
+2024-01-28 12:35:03,152 - INFO - 	 Accuracy training at Epochs 6 : 0.2900
+2024-01-28 12:37:43,499 - INFO - 
+ ************ Model Name: roberta-base - Loss type: labelsmoothing_cross-entropoy **************
+
+2024-01-28 12:37:43,499 - INFO - *** MedicalTextDataLoader: Data path: ../Medical-Abstracts-TC-Corpus
+2024-01-28 12:37:43,499 - INFO - *** MedicalTextDataLoader: Data preprocess: False
+2024-01-28 12:37:43,588 - INFO - *** MedicalTextOptimizeLoss: MedicalText Optimization loss creating...
+2024-01-28 12:37:45,083 - INFO - *** MedicalTextOptimizeLoss: MedicalText Optimization loss was loaded.
+2024-01-28 12:37:45,084 - INFO - *** MedicalTextOptimizeLoss: Successed create initialize_optimizer with scheduler: False
+2024-01-28 12:37:45,831 - INFO - *** MedicalTextClassifier: Successed create data train-test Dataloader
+2024-01-28 12:37:45,831 - INFO - *** MedicalTextClassifier: Training and Evaluating...
+2024-01-28 12:38:03,898 - INFO - 	 Accuracy training at Epochs 6 : 0.3167
+2024-01-28 12:38:09,341 - INFO - 	 Epoch(s) 6 - Classification statistic:
+2024-01-28 12:38:09,341 - INFO - 0.2633
+2024-01-28 12:38:26,951 - INFO - 	 Accuracy training at Epochs 6 : 0.4567
+2024-01-28 12:38:32,415 - INFO - 	 Epoch(s) 6 - Classification statistic:
+2024-01-28 12:38:32,415 - INFO - 0.4733
+2024-01-28 12:38:50,745 - INFO - 	 Accuracy training at Epochs 6 : 0.6267
+2024-01-28 12:38:56,308 - INFO - 	 Epoch(s) 6 - Classification statistic:
+2024-01-28 12:38:56,309 - INFO - 0.5767
+2024-01-28 12:39:14,638 - INFO - 	 Accuracy training at Epochs 6 : 0.6967
+2024-01-28 12:39:18,610 - INFO - 
+ ************ Model Name: bluebert_pubmed_uncased - Loss type: labelsmoothing_cross-entropoy **************
+
+2024-01-28 12:39:18,610 - INFO - *** MedicalTextDataLoader: Data path: ../Medical-Abstracts-TC-Corpus
+2024-01-28 12:39:18,610 - INFO - *** MedicalTextDataLoader: Data preprocess: False
+2024-01-28 12:39:18,698 - INFO - *** MedicalTextOptimizeLoss: MedicalText Optimization loss creating...
+2024-01-28 12:39:20,094 - INFO - *** MedicalTextOptimizeLoss: MedicalText Optimization loss was loaded.
+2024-01-28 12:39:20,094 - INFO - *** MedicalTextOptimizeLoss: Successed create initialize_optimizer with scheduler: False
+2024-01-28 12:40:42,330 - INFO - 
+ ************ Model Name: bluebert_pubmed_uncased - Loss type: labelsmoothing_cross-entropoy **************
+
+2024-01-28 12:40:42,330 - INFO - *** MedicalTextDataLoader: Data path: ../Medical-Abstracts-TC-Corpus
+2024-01-28 12:40:42,330 - INFO - *** MedicalTextDataLoader: Data preprocess: False
+2024-01-28 12:40:42,422 - INFO - *** MedicalTextOptimizeLoss: MedicalText Optimization loss creating...
+2024-01-28 12:40:43,749 - INFO - *** MedicalTextOptimizeLoss: MedicalText Optimization loss was loaded.
+2024-01-28 12:40:43,750 - INFO - *** MedicalTextOptimizeLoss: Successed create initialize_optimizer with scheduler: False
+2024-01-28 12:40:45,288 - INFO - *** MedicalTextClassifier: Successed create data train-test Dataloader
+2024-01-28 12:40:45,288 - INFO - *** MedicalTextClassifier: Training and Evaluating...
+2024-01-28 12:41:03,552 - INFO - 	 Accuracy training at Epochs 6 : 0.2967
+2024-01-28 12:41:09,255 - INFO - 	 Epoch(s) 6 - Classification statistic:
+2024-01-28 12:41:09,255 - INFO - 40.0
+2024-01-28 12:41:26,839 - INFO - 	 Accuracy training at Epochs 6 : 0.5233
+2024-01-28 12:41:32,368 - INFO - 	 Epoch(s) 6 - Classification statistic:
+2024-01-28 12:41:32,369 - INFO - 58.330000000000005
+2024-01-28 12:41:50,227 - INFO - 	 Accuracy training at Epochs 6 : 0.7033
+2024-01-28 12:41:55,822 - INFO - 	 Epoch(s) 6 - Classification statistic:
+2024-01-28 12:41:55,822 - INFO - 59.0
+2024-01-28 12:42:07,211 - INFO - 
+ ************ Model Name: bluebert_pubmed_uncased - Loss type: labelsmoothing_cross-entropoy **************
+
+2024-01-28 12:42:07,211 - INFO - *** MedicalTextDataLoader: Data path: ../Medical-Abstracts-TC-Corpus
+2024-01-28 12:42:07,212 - INFO - *** MedicalTextDataLoader: Data preprocess: False
+2024-01-28 12:42:07,299 - INFO - *** MedicalTextOptimizeLoss: MedicalText Optimization loss creating...
+2024-01-28 12:42:08,629 - INFO - *** MedicalTextOptimizeLoss: MedicalText Optimization loss was loaded.
+2024-01-28 12:42:08,630 - INFO - *** MedicalTextOptimizeLoss: Successed create initialize_optimizer with scheduler: False
+2024-01-28 12:42:10,197 - INFO - *** MedicalTextClassifier: Successed create data train-test Dataloader
+2024-01-28 12:42:10,197 - INFO - *** MedicalTextClassifier: Training and Evaluating...
+2024-01-28 12:42:28,621 - INFO - 	 Accuracy training at Epochs 6 : 0.3100
+2024-01-28 12:42:34,179 - INFO - 	 Epoch(s) 6 - Classification statistic:
+2024-01-28 12:42:34,179 - INFO - 53.3333
+2024-01-28 12:42:51,808 - INFO - 	 Accuracy training at Epochs 6 : 0.5867
+2024-01-28 12:42:57,385 - INFO - 	 Epoch(s) 6 - Classification statistic:
+2024-01-28 12:42:57,385 - INFO - 62.6667

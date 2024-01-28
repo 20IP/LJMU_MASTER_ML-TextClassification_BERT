@@ -11,7 +11,7 @@ def main():
     parser.add_argument("--data_path",
                         type=str,
                         help="data path include train+test file",
-                        default='/home/dev/Xavier/LJMU/Medical-Abstracts-TC-Corpus')
+                        default='../Medical-Abstracts-TC-Corpus')
     parser.add_argument("--data_preprocess",
                         type=bool,
                         help="requirement do or dont pre-processing data",
@@ -19,19 +19,19 @@ def main():
     parser.add_argument("--model_pretrain",
                         type=str,
                         help="chose the model to fine-tuning",
-                        default='albert_base_v2',
+                        default='bluebert_pubmed_uncased',
                         required=False
                         )
     parser.add_argument("--model_dir",
                         type=str,
                         help="Directory load local pre-train",
-                        default='/home/dev/Xavier/LJMU/pre-train',
+                        default='../pre-train',
                         required=False
                         )
     parser.add_argument("--loss_type",
                         type=str,
                         help="chose the loss function to fine-tuning",
-                        default='',
+                        default='labelsmoothing_cross-entropoy',
                         required=False
                         )
     parser.add_argument("--learning_rate",
