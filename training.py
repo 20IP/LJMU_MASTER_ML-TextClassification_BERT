@@ -18,8 +18,11 @@ def main():
                         default=False)
     parser.add_argument("--model_pretrain",
                         type=str,
-                        help="chose the model to fine-tuning",
                         default='bluebert_pubmed_uncased',
+                        choices=['bert-base-uncased','roberta-base',
+                                 'bluebert_pubmed_uncased','bioBERT_v1.1',
+                                 'clinicalBERT','albert_base_v2'],
+                        help="chose the model to fine-tuning",
                         required=False
                         )
     parser.add_argument("--model_dir",
@@ -28,10 +31,19 @@ def main():
                         default='../pre-train',
                         required=False
                         )
+    parser.add_argument("--output_dir",
+                        type=str,
+                        help="Directory for save fine-tuning model",
+                        default='../output-fine-tuning',
+                        required=False
+                        )
     parser.add_argument("--loss_type",
                         type=str,
                         help="chose the loss function to fine-tuning",
-                        default='labelsmoothing_cross-entropoy',
+                        default='cross-entropy',
+                        choices=['cross-entropy', 'focalloss',
+                                 'focallossbnl2', 'labelsmoothingloss',
+                                 'labelsmoothing_cross-entropoy'],
                         required=False
                         )
     parser.add_argument("--learning_rate",
@@ -54,10 +66,6 @@ def main():
                         type=int,
                         default=512
                         )
-    parser.add_argument("--reduce_learing_rate",
-                        type=bool,
-                        default=False
-                        )
     parser.add_argument("--scheduler",
                         type=bool,
                         default=False
@@ -72,7 +80,8 @@ def main():
                         )
     parser.add_argument("--report_method",
                         type=str,
-                        default='micro'
+                        default='micro',
+                        choices=['micro']
                         )
     parser.add_argument("--reduce_step_size",
                         type=int,
