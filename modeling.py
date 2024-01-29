@@ -1,6 +1,7 @@
 # Import necessary libraries and modules
 import pandas as pd
 import os
+from tqdm import tqdm
 import torch
 from sklearn.metrics import classification_report, f1_score
 from transformers import BertTokenizer, BertForSequenceClassification
@@ -55,7 +56,9 @@ class MedicalTextOptimizeLoss:
 
         # Initialize optimizer and scheduler
         self.initialize_optimizer_scheduler()
-
+        
+        # Create output direction to save model
+        self.output_dir += f'/{self.model_name}-{args.data_preprocess}-{self.loss_type}-{self.scheduler}.pth'
 
     def load_model(self):
         """
@@ -87,18 +90,18 @@ class MedicalTextOptimizeLoss:
         Select the loss function based on the specified loss type.
         """
         # Choose the appropriate loss function based on the specified loss type
-        if self.loss_type == 'cross-entropy':
+        if self.loss_type == 'ce':
             self.loss_instance = CrossEntropyLoss()
-        elif self.loss_type == 'focalloss':
+        elif self.loss_type == 'fcl':
             self.loss_instance = FocalLoss()
-        elif self.loss_type == 'focallossbnl2':
+        elif self.loss_type == 'fclbnl2':
             self.loss_instance = FocalLossWithBatchNormL2()
-        elif self.loss_type == 'labelsmoothingloss':
+        elif self.loss_type == 'lbsmoothingloss':
             self.loss_instance = LabelSmoothingLoss()
-        elif self.loss_type == 'labelsmoothing_cross-entropoy':
+        elif self.loss_type == 'lbsmoothing_ce':
             self.loss_instance = LabelSmoothingCrossEntropyLoss()
         else:
-            raise ValueError('Loss functions must be in [cross-entropy, focalloss, focallossbnl2, labelsmoothingloss, labelsmoothing_cross-entropoy]')
+            raise ValueError('Loss functions must be in [ce, fcl, fclbnl2, lbsmoothingloss, lbsmoothing_ce]')
         
     def initialize_optimizer_scheduler(self):
         """
@@ -184,7 +187,7 @@ class MedicalTextClassifier(MedicalTextOptimizeLoss):
             total_samples_train = 0
 
             # Iterate through batches in training data
-            for batch_idx, batch in enumerate(self.train_dataloader):
+            for batch_idx, batch in tqdm(enumerate(self.train_dataloader), total=total_batches, desc=f"Epoch(s) {epoch + 1}"):
                 batch = tuple(t.to(self.device) for t in batch)
                 
                 # Extract inputs based on model type
@@ -207,26 +210,26 @@ class MedicalTextClassifier(MedicalTextOptimizeLoss):
                 loss.backward()
                 self.optimizer.step()
 
-            # Evaluate training accuracy
-            with torch.no_grad():
-                logits = outputs.logits
-                _, predicted_labels = torch.max(logits, 1)
+                # Evaluate training accuracy
+                with torch.no_grad():
+                    logits = outputs.logits
+                    _, predicted_labels = torch.max(logits, 1)
 
-            total_correct_train += (predicted_labels == labels).sum().item()
-            total_samples_train += labels.size(0)
+                total_correct_train += (predicted_labels == labels).sum().item()
+                total_samples_train += labels.size(0)
 
             # Log batch loss
             if batch_idx % self.step_per_epochs == 0:
-                logger.info(f"\t epoch: {epoch + 1}/{self.num_epochs}, \t batch {batch_idx + 1}/{total_batches}, \t loss: {loss.item():.4f}")
+                logger.info(f"\t Batch {batch_idx + 1}/{total_batches}, \t loss: {loss.item():.4f}")
 
+            # Calculate and log training accuracy
+            accuracy_train = total_correct_train / total_samples_train
+            logger.info(f"\t Accuracy training at Epoch(s) {epoch + 1}: {accuracy_train:.4f}")
+            
             # Update learning rate with scheduler
             if self.scheduler:
                 self.scheduler_prc.step()
                 logger.info(f"\t Scheduler learning rate: {self.scheduler_prc.get_last_lr()}")
-
-            # Calculate and log training accuracy
-            accuracy_train = total_correct_train / total_samples_train
-            logger.info(f"\t Accuracy training at Epochs {epoch + 1}: {accuracy_train:.4f}")
 
             # Evaluate on testing data
             # self.model.eval()
@@ -261,11 +264,10 @@ class MedicalTextClassifier(MedicalTextOptimizeLoss):
             if self.report_method == 'micro':
                 if best_statistic < statistic:
                     best_statistic = statistic
-                    torch.save(self.model.state_dict(), self.output_dir + f'/{self.model_name}_{self.loss_type}.pth')
-
+                    torch.save(self.model.state_dict(), self.output_dir)
+                    logger.info(f"\t Save the Best model at Epoch(s) {epoch + 1} - saved output: {self.output_dir}")
             # Log classification statistic
-            logger.info(f"\t Epoch(s) {epoch + 1} - Classification statistic:")
-            logger.info(statistic)
+            logger.info(f"\t Epoch(s) {epoch + 1} - Classification statistic: {statistic}")
 
         # Log the best testing accuracy
-        logger.info(f'Best accuracy for testing with {self.report_method} is: {best_statistic}')
+        logger.info(f'Best statistic for testing with [{self.report_method}] is: {best_statistic}')
