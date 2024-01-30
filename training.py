@@ -21,12 +21,12 @@ def main():
     
     parser.add_argument("--model_pretrain",
                         type=str,
-                        default='bluebert_pubmed_uncased',
+                        default='clinicalBERT',
                         choices=['bert-base-uncased','roberta-base',
                                  'bluebert_pubmed_uncased','bioBERT_v1.1',
-                                 'clinicalBERT','albert_base_v2'],
+                                 'clinicalBERT','alBERT_base_v2'],
                         help="chose the model to fine-tuning",
-                        required=False
+                        required=True
                         )
     
     parser.add_argument("--model_dir",
@@ -46,8 +46,8 @@ def main():
     parser.add_argument("--loss_type",
                         type=str,
                         help="chose the loss function to fine-tuning",
-                        default='ce',
-                        choices=['ce', 'fcl', 'fclbnl2', 'lbsmoothingloss', 'lbsmoothing_ce'],
+                        default='lbsmoothingloss',
+                        choices=['ce', 'fcl', 'fclbnl2', 'lbsmoothingloss'],
                         required=False
                         )
     
@@ -109,7 +109,7 @@ def main():
     logger.info('\t ########################################################## \n')
     logger.info('\t'*3 + 'INFOMATION OF CONFIGURATION:')
     logger.info(args)
-    logger.info('\t ########################################################## \n')
+    logger.info('\n')
     
     data_loader = MedicalTextDataLoader(args)
     data_train, data_test, num_labels = data_loader.load_data()

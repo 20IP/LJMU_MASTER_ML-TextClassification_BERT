@@ -7,13 +7,15 @@ from sklearn.metrics import classification_report, f1_score
 from transformers import BertTokenizer, BertForSequenceClassification
 from transformers import AlbertForSequenceClassification, AlbertTokenizer
 from transformers import RobertaTokenizer, RobertaForSequenceClassification
+from transformers import DistilBertTokenizer, DistilBertForSequenceClassification
+
 
 from torch.utils.data import DataLoader, TensorDataset
 from torch.optim.lr_scheduler import StepLR
 
 # Import custom modules
 from optimizer_loss import CrossEntropyLoss, FocalLoss, FocalLossWithBatchNormL2
-from optimizer_loss import LabelSmoothingLoss, LabelSmoothingCrossEntropyLoss
+from optimizer_loss import LabelSmoothingLoss
 from logger_config import logger
 
 # Define a class for handling Medical Text Optimization and Loss
@@ -74,6 +76,9 @@ class MedicalTextOptimizeLoss:
         elif self.model_name.lower() == 'roberta-base':
             self.tokenizer = RobertaTokenizer.from_pretrained(direction_model)
             self.model = RobertaForSequenceClassification.from_pretrained(direction_model, num_labels=self.num_labels)
+        elif self.model_name.lower() == 'clinicalbert':
+            self.tokenizer = DistilBertTokenizer.from_pretrained(direction_model)
+            self.model = DistilBertForSequenceClassification.from_pretrained(direction_model, num_labels=self.num_labels)
         elif os.path.exists(self.model_dir):
             self.tokenizer = BertTokenizer.from_pretrained(direction_model)
             self.model = BertForSequenceClassification.from_pretrained(direction_model, num_labels=self.num_labels)
@@ -98,10 +103,8 @@ class MedicalTextOptimizeLoss:
             self.loss_instance = FocalLossWithBatchNormL2()
         elif self.loss_type == 'lbsmoothingloss':
             self.loss_instance = LabelSmoothingLoss()
-        elif self.loss_type == 'lbsmoothing_ce':
-            self.loss_instance = LabelSmoothingCrossEntropyLoss()
         else:
-            raise ValueError('Loss functions must be in [ce, fcl, fclbnl2, lbsmoothingloss, lbsmoothing_ce]')
+            raise ValueError('Loss functions must be in [ce, fcl, fclbnl2, lbsmoothingloss]')
         
     def initialize_optimizer_scheduler(self):
         """
@@ -146,7 +149,7 @@ class MedicalTextClassifier(MedicalTextOptimizeLoss):
         test_labels = torch.tensor([item[1] for item in data_test], dtype=torch.long)
 
         # Create TensorDatasets based on the model type
-        if self.model_name.lower() != 'roberta-base':
+        if self.model_name.lower() not in ['roberta-base', 'clinicalbert']:
             train_dataset = TensorDataset(train_inputs['input_ids'],
                                           train_inputs['attention_mask'],
                                           train_inputs['token_type_ids'],
@@ -191,7 +194,7 @@ class MedicalTextClassifier(MedicalTextOptimizeLoss):
                 batch = tuple(t.to(self.device) for t in batch)
                 
                 # Extract inputs based on model type
-                if self.model_name.lower() == 'roberta-base':
+                if self.model_name.lower() in ['roberta-base', 'clinicalbert']:
                     (input_ids, attention_mask, labels) = batch
                     self.optimizer.zero_grad()
                     outputs = self.model(input_ids=input_ids,
@@ -240,7 +243,7 @@ class MedicalTextClassifier(MedicalTextOptimizeLoss):
             with torch.no_grad():
                 for batch_idx, batch in enumerate(self.test_dataloader):
                     batch = tuple(t.to(self.device) for t in batch)
-                    if self.model_name.lower() == 'roberta-base':
+                    if self.model_name.lower() in ['roberta-base', 'clinicalbert']:
                         (input_ids, attention_mask, labels) = batch
                         outputs = self.model(input_ids=input_ids,
                                              attention_mask=attention_mask)
