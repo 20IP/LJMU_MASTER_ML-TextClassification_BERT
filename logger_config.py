@@ -1,12 +1,12 @@
 import logging
 
-def configure_logger():
+def configure_logger(logname = 'common.log'):
     # Configure the logger
     logger = logging.getLogger(__name__)
     logger.setLevel(logging.INFO)
 
     # Create a file handler and set its level
-    file_handler = logging.FileHandler('common.log')
+    file_handler = logging.FileHandler(logname)
     file_handler.setLevel(logging.INFO)
 
     # Create a console handler and set its level

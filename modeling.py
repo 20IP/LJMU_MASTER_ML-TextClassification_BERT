@@ -9,28 +9,29 @@ from transformers import AlbertForSequenceClassification, AlbertTokenizer
 from transformers import RobertaTokenizer, RobertaForSequenceClassification
 from transformers import DistilBertTokenizer, DistilBertForSequenceClassification
 
-
 from torch.utils.data import DataLoader, TensorDataset
 from torch.optim.lr_scheduler import StepLR
 
-# Import custom modules
 from optimizer_loss import CrossEntropyLoss, FocalLoss, FocalLossWithBatchNormL2
 from optimizer_loss import LabelSmoothingLoss
+
+from enum import Enum
 from logger_config import logger
+
+class LossType(Enum):
+    CE = 'ce'
+    FCL = 'fcl'
+    FCLBNL2 = 'fclbnl2'
+    LBSMOOTHINGLOSS = 'lbsmoothingloss'
 
 # Define a class for handling Medical Text Optimization and Loss
 class MedicalTextOptimizeLoss:
-    def __init__(self,
-                 args,
-                 num_labels):
-        # Check and set the device (CPU or GPU)
+    def __init__(self, args, num_labels):
         self.device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-        
-        # Set various configuration parameters
+        self.args = args
         self.model_name = args.model_pretrain
         self.loss_type = args.loss_type
         self.model_dir = args.model_dir
-        self.output_dir = args.output_dir
         self.lr = args.learning_rate
         self.batch_size = args.batch_size
         self.num_epochs = args.epochs
@@ -41,7 +42,7 @@ class MedicalTextOptimizeLoss:
         self.scheduler = args.scheduler
         self.truncate = args.truncate
         self.padding = args.padding
-        self.optimize_loss = args.loss_type
+        self.data_preprocess = args.data_preprocess
         self.report_method = args.report_method
         self.num_labels = num_labels
         self.model = None
@@ -49,19 +50,15 @@ class MedicalTextOptimizeLoss:
         self.optimizer = None
         self.train_dataloader = None
         self.test_dataloader = None
+        self.output_dir = self.create_output_dir()
 
-        # Load the pre-trained model and tokenizer
         self.load_model()
-
-        # Select the appropriate loss function based on the specified type
         self.select_loss_type()
-
-        # Initialize optimizer and scheduler
         self.initialize_optimizer_scheduler()
-        
-        # Create output direction to save model
-        self.output_dir += f'/{self.model_name}-{args.data_preprocess}-{self.loss_type}-{self.scheduler}.pth'
 
+    def create_output_dir(self):
+        return f'{self.output_dir}/{self.model_name}-{self.data_preprocess}-{self.loss_type}-{self.scheduler}.pth'
+    
     def load_model(self):
         """
         Load the pre-trained model and tokenizer based on the specified model name.
@@ -107,19 +104,10 @@ class MedicalTextOptimizeLoss:
             raise ValueError('Loss functions must be in [ce, fcl, fclbnl2, lbsmoothingloss]')
         
     def initialize_optimizer_scheduler(self):
-        """
-        Initialize the optimizer and scheduler if specified.
-        """
-        # Initialize the AdamW optimizer for the model parameters
         self.optimizer = torch.optim.AdamW(self.model.parameters(), lr=self.lr)
-        
-        # Initialize the StepLR scheduler if specified
         if self.scheduler:
-            self.scheduler_prc = StepLR(self.optimizer,
-                                    step_size=self.reduce_step_size,
-                                    gamma=self.gamma)
+            self.scheduler_prc = StepLR(self.optimizer, step_size=self.reduce_step_size, gamma=self.gamma)
         logger.info(f"*** MedicalTextOptimizeLoss: Successfully created initialize_optimizer with scheduler: {self.scheduler}")
-
 
 class MedicalTextClassifier(MedicalTextOptimizeLoss):
     def __init__(self, args, num_labels):
