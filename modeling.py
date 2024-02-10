@@ -14,9 +14,10 @@ from torch.optim.lr_scheduler import StepLR
 
 from optimizer_loss import CrossEntropyLoss, FocalLossWithBatchNormL2
 from optimizer_loss import LabelSmoothingLoss, FocalLoss
+from logger_config import logger
 
 from enum import Enum
-from logger_config import logger
+
 
 class LossType(Enum):
     CE = 'ce'
@@ -30,6 +31,7 @@ class MedicalTextOptimizeLoss:
         self.model_name = args.model_pretrain
         self.loss_type = args.loss_type
         self.model_dir = args.model_dir
+        self.data_preprocess = args.data_preprocess
         self.lr = args.learning_rate
         self.batch_size = args.batch_size
         self.num_epochs = args.epochs
@@ -47,14 +49,14 @@ class MedicalTextOptimizeLoss:
         self.optimizer = None
         self.train_dataloader = None
         self.test_dataloader = None
-        self.output_dir = self.create_output_dir()
+        self.output_dir = self.create_output_dir(args.output_dir)
 
         self.load_model()
         self.select_loss_type()
         self.initialize_optimizer_scheduler()
 
-    def create_output_dir(self):
-        return f'{self.output_dir}/{self.model_name}-{args.data_preprocess}-{self.loss_type}-{self.scheduler}.pth'
+    def create_output_dir(self, out_dir):
+        return f'{out_dir}/{self.model_name}-{self.data_preprocess}-{self.loss_type}-{self.scheduler}.pth'
 
     def load_model(self):
         logger.info("*** MedicalTextOptimizeLoss: MedicalText Optimization loss creating...")
@@ -164,7 +166,7 @@ class MedicalTextClassifier(MedicalTextOptimizeLoss):
                 total_samples_train += labels.size(0)
 
                 if batch_idx % self.step_per_epochs == 0:
-                    logger.info(f"\t Batch {batch_idx + 1}/{total_batches}, \t loss: {loss.item():.4f}")
+                    logger.info(f"\t Batch {batch_idx }/{total_batches}, \t loss: {loss.item():.4f}")
 
             accuracy_train = total_correct_train / total_samples_train
             logger.info(f"\t Accuracy training at Epoch(s) {epoch + 1}: {accuracy_train:.4f}")

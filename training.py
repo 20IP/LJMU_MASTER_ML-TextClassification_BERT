@@ -3,6 +3,7 @@ import warnings
 from modeling import MedicalTextClassifier
 from dataset import MedicalTextDataLoader
 from logger_config import logger
+
 warnings.filterwarnings('ignore') 
 
 def main():
@@ -17,7 +18,8 @@ def main():
     parser.add_argument("--data_preprocess",
                         type=bool,
                         help="requirement do or dont pre-processing data",
-                        default=False)
+                        default=False,
+                        required=True)
     
     parser.add_argument("--model_pretrain",
                         type=str,
@@ -46,9 +48,9 @@ def main():
     parser.add_argument("--loss_type",
                         type=str,
                         help="chose the loss function to fine-tuning",
-                        default='lbsmoothingloss',
+                        default='ce',
                         choices=['ce', 'fcl', 'fclbnl2', 'lbsmoothingloss'],
-                        required=False
+                        required=True
                         )
     
     parser.add_argument("--learning_rate",
@@ -71,7 +73,7 @@ def main():
                         )
     parser.add_argument("--max_length",
                         type=int,
-                        default=512
+                        default=384
                         )
     
     parser.add_argument("--scheduler",
@@ -112,7 +114,11 @@ def main():
     logger.info('\n')
     
     data_loader = MedicalTextDataLoader(args)
-    data_train, data_test, num_labels = data_loader.load_data()
+    
+    logger.info('\t Loading and Processing training data. \n')
+    data_train, num_labels = data_loader.load_data(data_type='train')
+    logger.info('\t Loading and Processing testing data. \n')
+    data_test, _ = data_loader.load_data(data_type='test')
     
     classifier = MedicalTextClassifier(args, num_labels)
     classifier.fit_data(data_train, data_test)

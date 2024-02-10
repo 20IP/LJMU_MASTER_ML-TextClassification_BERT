@@ -5,7 +5,7 @@ import pandas as pd
 import logging
 
 class MedicalTextDataLoader:
-    def __init__(self, data_path, data_preprocess):
+    def __init__(self, args):
         """
         Initialize the MedicalTextDataLoader.
 
@@ -13,8 +13,8 @@ class MedicalTextDataLoader:
         - data_path: Path to the data directory.
         - data_preprocess: Flag indicating whether data has been preprocessed.
         """
-        self.data_path = data_path
-        self.process_state = data_preprocess
+        self.data_path = args.data_path
+        self.process_state = args.data_preprocess
     
     def load_data(self, data_type='train'):
         """
@@ -28,7 +28,7 @@ class MedicalTextDataLoader:
         - num_labels: Number of unique condition labels.
         """
         logger.info(f"*** MedicalTextDataLoader: Data path: {self.data_path}")
-        logger.info(f"*** MedicalTextDataLoader: Data preprocess: {'preprocessed-' if self.process_state else ''}medical_tc_{data_type}")
+        logger.info(f"*** MedicalTextDataLoader: Data preprocess: {'preprocessed-' if self.process_state else ''}medical_tc_{data_type}.csv")
 
         data_df = pd.read_csv(f'{self.data_path}/{"preprocessed-" if self.process_state else ""}medical_tc_{data_type}.csv')
         
