@@ -15,6 +15,7 @@ class MedicalTextDataLoader:
         """
         self.data_path = args.data_path
         self.process_state = args.data_preprocess
+        self.lemma = args.data_lemma
     
     def load_data(self, data_type='train'):
         """
@@ -37,7 +38,12 @@ class MedicalTextDataLoader:
 
         num_labels = len(data_df['condition_label'].unique())
         
-        data = list(zip(data_df['medical_abstract'].tolist(), data_df['condition_label'].tolist()))
+        if self.lemma is False:
+            data = list(zip(data_df['lemma_normalize_medical_abstract'].tolist(), data_df['condition_label'].tolist()))
+            logger.info("*** MedicalTextDataLoader: Lemmatization: True")
+        else:
+            data = list(zip(data_df['medical_abstract'].tolist(), data_df['condition_label'].tolist()))
+            logger.info("*** MedicalTextDataLoader: Lemmatization: False")
 
         return data, num_labels
 

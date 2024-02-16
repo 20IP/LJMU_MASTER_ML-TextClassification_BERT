@@ -21,7 +21,9 @@ for loss_function in "${loss_function_list[@]}"; do
         pkill -f "python training.py --model_pretrain $model_name"
         
         # Run the Python script with different combinations of parameters
-        python training.py --model_pretrain "$model_name" --data_preprocess=$false --learning_rate 5e-5 --scheduler=$false --loss_type "$loss_function" --max_length 512
+        python training.py --model_pretrain "$model_name" --data_preprocess=$false --learning_rate 5e-5 --scheduler=$false --loss_type "$loss_function" --max_length 512 --data_lemma=$false
+        python training.py --model_pretrain "$model_name" --data_preprocess=true --learning_rate 5e-5 --scheduler=$false --loss_type "$loss_function" --max_length 512 --data_lemma=$false
+        python training.py --model_pretrain "$model_name" --data_preprocess=true --learning_rate 5e-5 --scheduler=$false --loss_type "$loss_function" --max_length 512 --data_lemma=true
 
         echo "Finished running script with model_pretrain: $model_name, loss function: $loss_function"
         

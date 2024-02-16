@@ -21,6 +21,11 @@ def main():
                         default=False,
                         required=True)
     
+    parser.add_argument("--data_lemma",
+                        type=bool,
+                        default=False,
+                        required=True)
+    
     parser.add_argument("--model_pretrain",
                         type=str,
                         default='clinicalBERT',
@@ -69,11 +74,11 @@ def main():
     
     parser.add_argument("--step_per_epoch",
                         type=int,
-                        default=100
+                        default=200
                         )
     parser.add_argument("--max_length",
                         type=int,
-                        default=384
+                        default=512
                         )
     
     parser.add_argument("--scheduler",
@@ -103,7 +108,7 @@ def main():
     
     parser.add_argument("--reduce_gamma",
                         type=float,
-                        default=0.5
+                        default=0.2
                         )
     
     args = parser.parse_args()
@@ -111,7 +116,6 @@ def main():
     logger.info('\t ########################################################## \n')
     logger.info('\t'*3 + 'INFOMATION OF CONFIGURATION:')
     logger.info(args)
-    logger.info('\n')
     
     data_loader = MedicalTextDataLoader(args)
     

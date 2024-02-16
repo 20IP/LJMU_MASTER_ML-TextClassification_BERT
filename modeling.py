@@ -3,6 +3,7 @@ import pandas as pd
 import os
 from tqdm import tqdm
 import torch
+import torch.nn as nn
 from sklearn.metrics import classification_report, f1_score
 from transformers import BertTokenizer, BertForSequenceClassification
 from transformers import AlbertForSequenceClassification, AlbertTokenizer
@@ -44,6 +45,7 @@ class MedicalTextOptimizeLoss:
         self.padding = args.padding
         self.report_method = args.report_method
         self.num_labels = num_labels
+        self.lemma = args.data_lemma
         self.model = None
         self.tokenizer = None
         self.optimizer = None
@@ -56,7 +58,7 @@ class MedicalTextOptimizeLoss:
         self.initialize_optimizer_scheduler()
 
     def create_output_dir(self, out_dir):
-        return f'{out_dir}/{self.model_name}-{self.data_preprocess}-{self.loss_type}-{self.scheduler}.pth'
+        return f'{out_dir}/{self.model_name}-{self.data_preprocess}-{self.loss_type}-{self.scheduler}-{self.lemma}.pth'
 
     def load_model(self):
         logger.info("*** MedicalTextOptimizeLoss: MedicalText Optimization loss creating...")
@@ -117,7 +119,9 @@ class MedicalTextClassifier(MedicalTextOptimizeLoss):
                                 return_tensors='pt',
                                 padding=self.padding,
                                 truncation=self.truncate,
-                                max_length=self.max_length)
+                                max_length=self.max_length,
+                                return_token_type_ids=True)
+        
         labels = torch.tensor([item[1] for item in data], dtype=torch.long).to(self.device)
         return inputs, labels
 
