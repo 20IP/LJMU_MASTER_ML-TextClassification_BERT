@@ -44,8 +44,8 @@ class MedicalTextOptimizeLoss:
         self.truncate = args.truncate
         self.padding = args.padding
         self.report_method = args.report_method
-        self.num_labels = num_labels
         self.lemma = args.data_lemma
+        self.num_labels = num_labels
         self.model = None
         self.tokenizer = None
         self.optimizer = None
@@ -65,16 +65,19 @@ class MedicalTextOptimizeLoss:
         direction_model = f'{self.model_dir}/{self.model_name}'
 
         if self.model_name.lower() == 'albert_base_v2':
-            self.tokenizer = AlbertTokenizer.from_pretrained(direction_model)
+            self.tokenizer = AlbertTokenizer.from_pretrained(direction_model, do_lower_case=True)
             self.model = AlbertForSequenceClassification.from_pretrained(direction_model, num_labels=self.num_labels)
         elif self.model_name.lower() == 'roberta-base':
-            self.tokenizer = RobertaTokenizer.from_pretrained(direction_model)
+            self.tokenizer = RobertaTokenizer.from_pretrained(direction_model, do_lower_case=False)
             self.model = RobertaForSequenceClassification.from_pretrained(direction_model, num_labels=self.num_labels)
         elif self.model_name.lower() == 'clinicalbert':
-            self.tokenizer = DistilBertTokenizer.from_pretrained(direction_model)
+            self.tokenizer = DistilBertTokenizer.from_pretrained(direction_model, do_lower_case=True)
             self.model = DistilBertForSequenceClassification.from_pretrained(direction_model, num_labels=self.num_labels)
+        elif self.model_name.lower() == 'biobert_v1.1':
+            self.tokenizer = BertTokenizer.from_pretrained(direction_model, do_lower_case=False)
+            self.model = BertForSequenceClassification.from_pretrained(direction_model, num_labels=self.num_labels)
         elif os.path.exists(self.model_dir):
-            self.tokenizer = BertTokenizer.from_pretrained(direction_model)
+            self.tokenizer = BertTokenizer.from_pretrained(direction_model, do_lower_case=True)
             self.model = BertForSequenceClassification.from_pretrained(direction_model, num_labels=self.num_labels)
         else:
             raise ValueError(f"Unsupported or Path not correct: Name: {self.model_name}, Path: {self.model_dir}")
