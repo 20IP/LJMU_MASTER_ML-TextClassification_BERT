@@ -38,7 +38,7 @@ class MedicalTextDataLoader:
 
         num_labels = len(data_df['condition_label'].unique())
         
-        if self.lemma is False:
+        if self.lemma is True:
             data = list(zip(data_df['lemma_normalize_medical_abstract'].tolist(), data_df['condition_label'].tolist()))
             logger.info("*** MedicalTextDataLoader: Lemmatization: True")
         else:

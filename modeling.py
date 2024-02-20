@@ -110,6 +110,8 @@ class MedicalTextClassifier(MedicalTextOptimizeLoss):
 
     def fit_data(self, data_train, data_test):
         train_inputs, train_labels = self.tokenize_and_format(data_train)
+        print(train_labels)
+        while True: pass
         test_inputs, test_labels = self.tokenize_and_format(data_test)
 
         train_dataset = self.create_dataset(train_inputs, train_labels)
