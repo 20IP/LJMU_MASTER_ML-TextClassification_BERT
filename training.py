@@ -15,7 +15,7 @@ def main():
                         help="data path include train+test file",
                         default='../Medical-Abstracts-TC-Corpus')
     
-    parser.add_argument("--data_preprocess",
+    parser.add_argument("--based_process",
                         type=bool,
                         help="requirement do or dont pre-processing data",
                         default=False,

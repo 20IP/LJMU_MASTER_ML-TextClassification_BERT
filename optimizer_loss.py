@@ -3,20 +3,23 @@ import torch.nn as nn
 import torch.nn.functional as F
 from torch.autograd import Variable
 
-class CrossEntropyLoss(nn.Module):
+import torch
+import torch.nn as nn
+import torch.nn.functional as F
+
+class CrossEntropyLossMultiLabel(nn.Module):
     ''' 
-    Cross Entropy Loss
+    Cross Entropy Loss for Multi-Label Classification
     
-    This class defines the Cross Entropy Loss for classification tasks.
-    It uses PyTorch's built-in CrossEntropyLoss.
+    This class defines the Cross Entropy Loss for addressing multi-label classification tasks.
+    It uses PyTorch's built-in CrossEntropyLoss, adjusted for multi-label.
 
     Attributes:
         loss_fn (torch.nn.CrossEntropyLoss): PyTorch Cross Entropy Loss instance.
     '''
 
     def __init__(self):
-        super(CrossEntropyLoss, self).__init__()
-        self.loss_fn = nn.CrossEntropyLoss()
+        super(CrossEntropyLossMultiLabel, self).__init__()
 
     def forward(self, logits, labels):
         ''' 
@@ -29,13 +32,23 @@ class CrossEntropyLoss(nn.Module):
         Returns:
             torch.Tensor: Computed Cross Entropy Loss.
         '''
-        return self.loss_fn(logits, labels)
+        # Apply sigmoid activation to logits for multi-label classification
+        logits_sigmoid = torch.sigmoid(logits)
 
-class FocalLoss(nn.Module):
-    ''' 
-    Focal Loss
+        # Flatten the logits and labels for multi-label loss calculation
+        logits_flat = logits_sigmoid.view(-1)
+        labels_flat = labels.view(-1)
+
+        # Binary cross entropy loss
+        loss = F.binary_cross_entropy(logits_flat, labels_flat)
+
+        return loss
     
-    This class defines the Focal Loss for addressing class imbalance in classification tasks.
+class FocalLossMultiLabel(nn.Module):
+    ''' 
+    Focal Loss for Multi-Label Classification
+    
+    This class defines the Focal Loss for addressing class imbalance in multi-label classification tasks.
     It introduces a modulating factor (gamma) to down-weight easy samples.
 
     Attributes:
@@ -43,7 +56,7 @@ class FocalLoss(nn.Module):
     '''
 
     def __init__(self, gamma=2.0):
-        super(FocalLoss, self).__init__()
+        super(FocalLossMultiLabel, self).__init__()
         self.gamma = gamma
 
     def forward(self, outputs, labels):
@@ -57,16 +70,16 @@ class FocalLoss(nn.Module):
         Returns:
             torch.Tensor: Computed Focal Loss.
         '''
-        ce_loss = F.cross_entropy(outputs, labels, reduction='none')
+        ce_loss = F.binary_cross_entropy_with_logits(outputs, labels, reduction='none')
         pt = torch.exp(-ce_loss)
         loss = (1 - pt) ** self.gamma * ce_loss
         return loss.mean()
-
-class FocalLossWithBatchNormL2(nn.Module):
-    ''' 
-    Focal Loss with BatchNorm L2 Penalty
     
-    This class defines Focal Loss with an additional BatchNorm L2 penalty.
+class FocalLossWithBatchNormL2MultiLabel(nn.Module):
+    ''' 
+    Focal Loss with BatchNorm L2 Penalty for Multi-Label Classification
+    
+    This class defines Focal Loss with an additional BatchNorm L2 penalty for multi-label classification.
     It helps prevent overfitting by penalizing large weights in BatchNorm layers.
 
     Attributes:
@@ -75,7 +88,7 @@ class FocalLossWithBatchNormL2(nn.Module):
     '''
 
     def __init__(self, gamma=2.0, beta=1e-4):
-        super(FocalLossWithBatchNormL2, self).__init__()
+        super(FocalLossWithBatchNormL2MultiLabel, self).__init__()
         self.gamma = gamma
         self.beta = beta
 
@@ -90,7 +103,7 @@ class FocalLossWithBatchNormL2(nn.Module):
         Returns:
             torch.Tensor: Computed Focal Loss with BatchNorm L2 Penalty.
         '''
-        ce_loss = F.cross_entropy(outputs, labels, reduction='none')
+        ce_loss = F.binary_cross_entropy_with_logits(outputs, labels, reduction='none')
         pt = torch.exp(-ce_loss)
         loss = (1 - pt) ** self.gamma * ce_loss
         return loss.mean() + self.beta * self.batch_norm_l2_penalty()
@@ -107,12 +120,12 @@ class FocalLossWithBatchNormL2(nn.Module):
             if isinstance(module, nn.BatchNorm2d):
                 l2_penalty += (module.weight ** 2).sum()
         return l2_penalty
-
-class LabelSmoothingLoss(nn.Module):
-    ''' 
-    Label Smoothing Loss
     
-    This class defines the Label Smoothing Loss for classification tasks.
+class LabelSmoothingLossMultiLabel(nn.Module):
+    ''' 
+    Label Smoothing Loss for Multi-Label Classification
+    
+    This class defines the Label Smoothing Loss for addressing multi-label classification tasks.
     It mitigates overconfidence in the model predictions by introducing label smoothing.
 
     Attributes:
@@ -120,7 +133,7 @@ class LabelSmoothingLoss(nn.Module):
     '''
 
     def __init__(self, smoothing=0.1):
-        super(LabelSmoothingLoss, self).__init__()
+        super(LabelSmoothingLossMultiLabel, self).__init__()
         self.smoothing = smoothing
 
     def forward(self, outputs, labels):
@@ -134,9 +147,10 @@ class LabelSmoothingLoss(nn.Module):
         Returns:
             torch.Tensor: Computed Label Smoothing Loss.
         '''
-        log_probs = F.log_softmax(outputs, dim=-1)
-        nll_loss = -log_probs.gather(dim=-1, index=labels.unsqueeze(-1))
-        nll_loss = nll_loss.squeeze(-1)
-        smooth_loss = -log_probs.mean(dim=-1)
-        loss = (1.0 - self.smoothing) * nll_loss + self.smoothing * smooth_loss
-        return loss.mean()
+        sigmoid_outputs = torch.sigmoid(outputs)
+
+        smooth_labels = (1.0 - self.smoothing) * labels + self.smoothing / 2.0
+        log_probs = torch.log(sigmoid_outputs)
+
+        loss = -torch.sum(smooth_labels * log_probs + (1.0 - smooth_labels) * torch.log(1.0 - sigmoid_outputs))
+        return loss / outputs.size(0)  # Normalize by batch size

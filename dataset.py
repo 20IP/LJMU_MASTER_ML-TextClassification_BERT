@@ -14,7 +14,7 @@ class MedicalTextDataLoader:
         - data_preprocess: Flag indicating whether data has been preprocessed.
         """
         self.data_path = args.data_path
-        self.process_state = args.data_preprocess
+        self.based_process = args.based_process
         self.lemma = args.data_lemma
     
     def load_data(self, data_type='train'):
@@ -29,21 +29,26 @@ class MedicalTextDataLoader:
         - num_labels: Number of unique condition labels.
         """
         logger.info(f"*** MedicalTextDataLoader: Data path: {self.data_path}")
-        logger.info(f"*** MedicalTextDataLoader: Data preprocess: {'preprocessed-' if self.process_state else ''}medical_tc_{data_type}.csv")
+        logger.info(f"*** MedicalTextDataLoader: Data preprocess: preprocessed-medical_tc_{data_type}.csv")
 
-        data_df = pd.read_csv(f'{self.data_path}/{"preprocessed-" if self.process_state else ""}medical_tc_{data_type}.csv')
+        data_df = pd.read_csv(f'{self.data_path}/"preprocessed-medical_tc_{data_type}.csv')
+    
+        num_labels = len(data_df['condition_label'].iloc[0])
         
-        # Correctly shift labels by 1 (assuming they start from 1, not 0)
-        data_df['condition_label'] = data_df['condition_label'] - 1
-
-        num_labels = len(data_df['condition_label'].unique())
-        
-        if self.lemma is True:
-            data = list(zip(data_df['lemma_normalize_medical_abstract'].tolist(), data_df['condition_label'].tolist()))
-            logger.info("*** MedicalTextDataLoader: Lemmatization: True")
-        else:
+        if self.based_process is False and self.lemma is False:
             data = list(zip(data_df['medical_abstract'].tolist(), data_df['condition_label'].tolist()))
-            logger.info("*** MedicalTextDataLoader: Lemmatization: False")
+            logger.info("*** MedicalTextDataLoader: Loaded and process with 'medical_abstract' column")
+            
+        elif self.based_process is True and self.lemma is False:
+            data = list(zip(data_df['normalize_medical_abstract'].tolist(), data_df['condition_label'].tolist()))
+            logger.info("*** MedicalTextDataLoader: Loaded and process with 'normalize_medical_abstract' column")
+            
+        elif self.based_process is False and self.lemma is True:
+            data = list(zip(data_df['lemma_normalize_medical_abstract'].tolist(), data_df['condition_label'].tolist()))
+            logger.info("*** MedicalTextDataLoader: Loaded and process with 'lemma_normalize_medical_abstract' column")
+        
+        else:
+            raise ValueError('The values of "based_process" and "lemma" must not be True simultaneously.')
 
         return data, num_labels
 
