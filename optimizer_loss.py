@@ -3,10 +3,6 @@ import torch.nn as nn
 import torch.nn.functional as F
 from torch.autograd import Variable
 
-import torch
-import torch.nn as nn
-import torch.nn.functional as F
-
 class CrossEntropyLossMultiLabel(nn.Module):
     ''' 
     Cross Entropy Loss for Multi-Label Classification
@@ -34,6 +30,7 @@ class CrossEntropyLossMultiLabel(nn.Module):
         '''
         # Apply sigmoid activation to logits for multi-label classification
         logits_sigmoid = torch.sigmoid(logits)
+        # logits_sigmoid = (logits_sigmoid >= 0.5).float()
 
         # Flatten the logits and labels for multi-label loss calculation
         logits_flat = logits_sigmoid.view(-1)
@@ -43,6 +40,7 @@ class CrossEntropyLossMultiLabel(nn.Module):
         loss = F.binary_cross_entropy(logits_flat, labels_flat)
 
         return loss
+
     
 class FocalLossMultiLabel(nn.Module):
     ''' 
@@ -59,7 +57,7 @@ class FocalLossMultiLabel(nn.Module):
         super(FocalLossMultiLabel, self).__init__()
         self.gamma = gamma
 
-    def forward(self, outputs, labels):
+    def forward(self, logits, labels):
         ''' 
         Forward pass for Focal Loss.
 
@@ -70,7 +68,7 @@ class FocalLossMultiLabel(nn.Module):
         Returns:
             torch.Tensor: Computed Focal Loss.
         '''
-        ce_loss = F.binary_cross_entropy_with_logits(outputs, labels, reduction='none')
+        ce_loss = F.binary_cross_entropy_with_logits(logits, labels, reduction='none')
         pt = torch.exp(-ce_loss)
         loss = (1 - pt) ** self.gamma * ce_loss
         return loss.mean()
@@ -92,7 +90,7 @@ class FocalLossWithBatchNormL2MultiLabel(nn.Module):
         self.gamma = gamma
         self.beta = beta
 
-    def forward(self, outputs, labels):
+    def forward(self, logits, labels):
         ''' 
         Forward pass for Focal Loss with BatchNorm L2 Penalty.
 
@@ -103,7 +101,7 @@ class FocalLossWithBatchNormL2MultiLabel(nn.Module):
         Returns:
             torch.Tensor: Computed Focal Loss with BatchNorm L2 Penalty.
         '''
-        ce_loss = F.binary_cross_entropy_with_logits(outputs, labels, reduction='none')
+        ce_loss = F.binary_cross_entropy_with_logits(logits, labels, reduction='none')
         pt = torch.exp(-ce_loss)
         loss = (1 - pt) ** self.gamma * ce_loss
         return loss.mean() + self.beta * self.batch_norm_l2_penalty()
@@ -136,7 +134,7 @@ class LabelSmoothingLossMultiLabel(nn.Module):
         super(LabelSmoothingLossMultiLabel, self).__init__()
         self.smoothing = smoothing
 
-    def forward(self, outputs, labels):
+    def forward(self, logits, labels):
         ''' 
         Forward pass for Label Smoothing Loss.
 
@@ -147,10 +145,10 @@ class LabelSmoothingLossMultiLabel(nn.Module):
         Returns:
             torch.Tensor: Computed Label Smoothing Loss.
         '''
-        sigmoid_outputs = torch.sigmoid(outputs)
+        sigmoid_logits = torch.sigmoid(logits)
 
         smooth_labels = (1.0 - self.smoothing) * labels + self.smoothing / 2.0
-        log_probs = torch.log(sigmoid_outputs)
+        log_probs = torch.log(sigmoid_logits)
 
-        loss = -torch.sum(smooth_labels * log_probs + (1.0 - smooth_labels) * torch.log(1.0 - sigmoid_outputs))
-        return loss / outputs.size(0)  # Normalize by batch size
+        loss = -torch.sum(smooth_labels * log_probs + (1.0 - smooth_labels) * torch.log(1.0 - sigmoid_logits))
+        return loss / logits.size(0)  # Normalize by batch size

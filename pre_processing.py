@@ -117,13 +117,25 @@ def process():
         values_lbl.append(selected_df)
 
     # Create a new column named: category_condition_label.
-    df['category_condition_label'] = values_lbl 
+    df['category_condition_label'] = values_lbl
     
     ### Convert condition_label to binary with multi-label
     
     logging.info(f">>>>>>>>> Converting multi-labelling:")
-    df['binary_condition_label'] = df.category_condition_label.apply(lambda x: binary_cvt(x))
+    
+    mult_lbl = []
+    for i in df.category_condition_label:
+        mult_lbl.append(binary_cvt(i))
+        
+    df_bn = pd.DataFrame(mult_lbl, columns=['neoplasms', 'digestive', 'nervous', 'cardiovascular', 'general'])
 
+    df = pd.concat([df_bn, df], axis=1)
+    df.drop('category_condition_label', axis=1, inplace=True)
+    
+    df.drop_duplicates(subset='medical_abstract', inplace=True, keep='first')
+    df.reset_index(drop=True, inplace=True)
+    logging.info(f">>>>>>>>> After removed Duplicate values: {df.shape}")
+    
     # Clear text by using stop words and top word cloud
     df = normalize_special_text(df, 'medical_abstract', 'normalize_medical_abstract')
     df = remove_stopwords(df, 'normalize_medical_abstract')
@@ -155,9 +167,7 @@ def process():
     df.lemma_normalize_medical_abstract = df.lemma_normalize_medical_abstract.apply(lambda x: replace_words(x, com_words_lemma))
 
     # Remove unnecessary columns.
-    df.drop('condition_label', axis=1, inplace=True)
-    df.drop('category_condition_label', axis=1, inplace=True)
-    
+    df.drop('condition_label', axis=1, inplace=True)    
     # Store the newly created data.
     df.rename(columns={"binary_condition_label": "condition_label"}, inplace=True)
     df.to_csv(output_dir, index=False, index_label=False)

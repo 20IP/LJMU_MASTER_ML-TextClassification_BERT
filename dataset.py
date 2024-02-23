@@ -2,7 +2,9 @@ import pandas as pd
 import numpy as np
 from logger_config import logger
 import pandas as pd
+import ast
 import logging
+
 
 class MedicalTextDataLoader:
     def __init__(self, args):
@@ -31,20 +33,20 @@ class MedicalTextDataLoader:
         logger.info(f"*** MedicalTextDataLoader: Data path: {self.data_path}")
         logger.info(f"*** MedicalTextDataLoader: Data preprocess: preprocessed-medical_tc_{data_type}.csv")
 
-        data_df = pd.read_csv(f'{self.data_path}/"preprocessed-medical_tc_{data_type}.csv')
-    
-        num_labels = len(data_df['condition_label'].iloc[0])
-        
+        data_df = pd.read_csv(f'{self.data_path}/preprocessed-medical_tc_{data_type}.csv', engine='python')
+        data_df[['neoplasms', 'digestive', 'nervous', 'cardiovascular', 'general']] = data_df[['neoplasms', 'digestive', 'nervous', 'cardiovascular', 'general']].astype(int)
+        num_labels = 5
+
         if self.based_process is False and self.lemma is False:
-            data = list(zip(data_df['medical_abstract'].tolist(), data_df['condition_label'].tolist()))
+            data = [data_df['medical_abstract'].tolist(), data_df[['neoplasms', 'digestive', 'nervous', 'cardiovascular', 'general']].values]
             logger.info("*** MedicalTextDataLoader: Loaded and process with 'medical_abstract' column")
             
         elif self.based_process is True and self.lemma is False:
-            data = list(zip(data_df['normalize_medical_abstract'].tolist(), data_df['condition_label'].tolist()))
+            data = [data_df['normalize_medical_abstract'].tolist(), data_df[['neoplasms', 'digestive', 'nervous', 'cardiovascular', 'general']].values]
             logger.info("*** MedicalTextDataLoader: Loaded and process with 'normalize_medical_abstract' column")
             
         elif self.based_process is False and self.lemma is True:
-            data = list(zip(data_df['lemma_normalize_medical_abstract'].tolist(), data_df['condition_label'].tolist()))
+            data = [data_df['lemma_normalize_medical_abstract'].tolist(), data_df[['neoplasms', 'digestive', 'nervous', 'cardiovascular', 'general']].values]
             logger.info("*** MedicalTextDataLoader: Loaded and process with 'lemma_normalize_medical_abstract' column")
         
         else:

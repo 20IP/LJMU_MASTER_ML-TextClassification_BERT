@@ -81,6 +81,11 @@ def main():
                         default=512
                         )
     
+    parser.add_argument("--threshold",
+                        type=float,
+                        default=0.5
+                        )
+    
     parser.add_argument("--scheduler",
                         type=bool,
                         default=False
@@ -94,11 +99,10 @@ def main():
                         type=bool,
                         default=True
                         )
-    
-    parser.add_argument("--report_method",
+
+    parser.add_argument("--average",
                         type=str,
-                        default='micro',
-                        choices=['micro']
+                        default='micro'
                         )
     
     parser.add_argument("--reduce_step_size",
