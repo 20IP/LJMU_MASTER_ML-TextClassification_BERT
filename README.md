@@ -8,7 +8,7 @@ python generate_process.py --file_name medical_tc_train.csv --output_dir ../Medi
 
 ## Structure of Project
 
-├── ../
+├── User Folder
     ├── Medical-Abstracts-TC-Corpus
         └── medical_tc_train.csv
         └── medical_tc_test.csv
