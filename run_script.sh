@@ -3,7 +3,7 @@
 model_names=("bert-base-uncased" "roberta-base" "bioBERT_v1.1" "alBERT_base_v2" "bluebert_pubmed_uncased" "clinicalBERT")
 
 # List of loss functions
-loss_function_list=("ce" "fcl" "fclbnl2" "lbsmoothingloss")
+loss_function_list=("ce" "fcl" "lbsmoothingloss")
 
 # Loop over each loss function
 for loss_function in "${loss_function_list[@]}"; do

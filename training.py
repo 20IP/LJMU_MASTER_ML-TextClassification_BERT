@@ -54,7 +54,7 @@ def main():
                         type=str,
                         help="chose the loss function to fine-tuning",
                         default='ce',
-                        choices=['ce', 'fcl', 'fclbnl2', 'lbsmoothingloss'],
+                        choices=['ce', 'fcl', 'lbsmoothingloss'],
                         required=True
                         )
     

@@ -14,7 +14,7 @@ from torch.utils.data import DataLoader, TensorDataset, Dataset
 from torch.optim.lr_scheduler import StepLR
 
 from optimizer_loss import CrossEntropyLossMultiLabel, FocalLossMultiLabel
-from optimizer_loss import FocalLossWithBatchNormL2MultiLabel, LabelSmoothingLossMultiLabel
+from optimizer_loss import LabelSmoothingLossMultiLabel
 from logger_config import logger
 
 from utils import calculate_metrics
@@ -23,7 +23,6 @@ from enum import Enum
 class LossType(Enum):
     CE = 'ce'
     FCL = 'fcl'
-    FCLBNL2 = 'fclbnl2'
     LBSMOOTHINGLOSS = 'lbsmoothingloss'
 
 class MedicalTextOptimizeLoss:
@@ -114,13 +113,10 @@ class MedicalTextOptimizeLoss:
             self.loss_instance = CrossEntropyLossMultiLabel()
         elif self.loss_type == LossType.FCL.value:
             self.loss_instance = FocalLossMultiLabel()
-        elif self.loss_type == LossType.FCLBNL2.value:
-            self.loss_instance = FocalLossWithBatchNormL2MultiLabel()
         elif self.loss_type == LossType.LBSMOOTHINGLOSS.value:
             self.loss_instance = LabelSmoothingLossMultiLabel()
         else:
-            raise ValueError('Loss functions must be in [ce, fcl, fclbnl2, lbsmoothingloss]')
-        # self.loss_instance = nn.BCEWithLogitsLoss()
+            raise ValueError('Loss functions must be in [ce, fcl, lbsmoothingloss]')
 
     def initialize_optimizer_scheduler(self):
         """

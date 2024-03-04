@@ -73,5 +73,5 @@ class MedicalTextDataEvalLoader(MedicalTextDataLoader):
         Returns:
         - eval_data: A list of tuples containing preprocessed medical abstracts and condition labels for evaluation.
         """
-        eval_data, num_labels = super().load_data(data_type='test')
-        return eval_data, num_labels
+        eval_data, _ = super().load_data(data_type='test')
+        return eval_data
