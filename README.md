@@ -70,16 +70,80 @@ python generate_process.py --file_name medical_tc_train.csv --output_dir ../Medi
 ```
 
 ## Quick start
-
+Ensure file structure as above.
+__I. Build the project step by step.__
+_Creating an environment with the following steps below:_
 1. Clone this repository.
-1. Start adding contents of your thesis into [`thesis.tex`](./thesis.tex).
-1. Build the `PDF` by running the following in the command line:
 
-    ```
-    make
-    ```
+Using Anaconda:
+2. Create a virtual environment:
+```
+>> conda create --name your_env_name python=3.8
+```
+3. Activate the environment:
+```
+>> conda activate your_env_name
+```
+4. Install the required libraries:
+```
+>> pip install -r requirements.txt
 
-1. Open `thesis.pdf`.
+```
+5. Go to folder `LJMU_MASTER_ML-TextClassification_BERT`
+6. Run the file `generate_process.py` to create two new files named `preprocessed-medical_tc_test.csv` and `preprocessed-medical_tc_train.csv`, stored in the `Medical-Abstracts-TC-Corpus` folder.
+
+```
+>> python generate_process.py --file_name medical_tc_train.csv --output_dir ../Medical-Abstracts-TC-Corpus
+```
+
+__II. Introduce the `run_script.sh` file.__
+_This file is used to execute multiple models in a specific sequence. The parameters are configured, and the execution is performed as a regular script in the terminal._
+
+**Contents of run_script.sh file** 
+```
+#!/bin/bash
+model_names=("bert-base-uncased" "roberta-base" "bioBERT_v1.1" "alBERT_base_v2" "bluebert_pubmed_uncased" "clinicalBERT")
+# List of loss functions
+loss_function_list=("ce" "fcl" "lbsmoothingloss")
+echo ""
+# Loop over each loss function
+for loss_function in "${loss_function_list[@]}"; do
+    echo "Running scripts with loss function: $loss_function"
+
+    # Loop over each model name
+    for model_name in "${model_names[@]}"; do
+        echo "Running script with model_pretrain: $model_name, loss function: $loss_function"
+
+        # Clear cache memory
+        sudo sh -c 'sync; echo 1 > /proc/sys/vm/drop_caches'
+        sudo sh -c 'sync; echo 2 > /proc/sys/vm/drop_caches'
+
+        # Kill existing Python processes
+        pkill -f "python training.py --model_pretrain $model_name"
+    
+        # Run the Python script with different combinations of parameters
+        python training.py --model_pretrain "$model_name" --loss_type "$loss_function" --learning_rate 5e-5 --based_process=$false --scheduler=$false --data_lemma=$false --threshold 5e-1 --epochs 3
+        echo "Finished running script with model_pretrain: $model_name, loss function: $loss_function"
+        echo ""
+    done
+done
+```
+**How to configure the parameters (args) in the command: `python training.py --args`**
+
+|---|---|---|---|---|
+|ID|based_process|data_lemma|scheduler|Training type|
+|0|$false|$false|$false|Using column `medical_abstract` data, Reduce LR: false|
+|1|$false|$false|true|Using column `medical_abstract` data, Reduce LR: true|
+|2|true|$false|$false|Using column `normalize_medical_abstract` data, Reduce LR: False|
+|3|true|$false|true|Using column `normalize_medical_abstract` data, Reduce LR: False|
+|4|$fasle|true|$false|Using column `lemma_normalize_medical_abstract` data, Reduce LR: False|
+|5|$fasle|true|true|Using column `lemma_normalize_medical_abstract` data, Reduce LR: False|
+
+
+7. 
+```
+>> chmod +x run_scripts.sh
+```
 
 Pro tip: you can use one of the samples in the [`Samples`](./Samples) directory.
 
