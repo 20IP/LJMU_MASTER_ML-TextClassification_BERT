@@ -27,7 +27,7 @@ python generate_process.py --file_name medical_tc_train.csv --output_dir ../Medi
         └── evaluation.py
         └── requirement.txt
         └── README.md
-        └── ...
+            ...
     ├── output-fine-tuning
         └── ...(save model during fine-tuning models)
     ├── pre-train
@@ -36,31 +36,31 @@ python generate_process.py --file_name medical_tc_train.csv --output_dir ../Medi
             └── tokenizer.json
             └── special_tokens_map.json
             └── pytorch_model.bin
-            └── ...
+                ...
         ├── clinicalBERT
             └── tokenizer_config.json
             └── tokenizer.json
             └── special_tokens_map.json
             └── pytorch_model.bin
-            └── ...
+                ...
         ├── roberta-base
             └── tokenizer_config.json
             └── tokenizer.json
             └── special_tokens_map.json
             └── pytorch_model.bin
-            └── ...
+                ...
         ├── bluebert_pubmed_uncased
             └── tokenizer_config.json
             └── tokenizer.json
             └── special_tokens_map.json
             └── pytorch_model.bin
-            └── ...
+                ...
         ├── bert-base-uncased
             └── tokenizer_config.json
             └── tokenizer.json
             └── special_tokens_map.json
             └── pytorch_model.bin
-            └── ...
+                ...
         └── bioBERT_v1.1
             └── tokenizer_config.json
             └── tokenizer.json
