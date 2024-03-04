@@ -467,6 +467,9 @@ def calculate_metrics(true_labels, predicted_labels, threshold=0.5, report_metho
     binary_predictions = (predicted_labels > threshold).astype(int)
 
     metrics = {}
+    f1_score_mic = 0
+    accuracy = 0
+
 
     if 'micro' in report_methods:
         # Micro-Averaging: Calculate metrics globally across all classes
@@ -477,13 +480,13 @@ def calculate_metrics(true_labels, predicted_labels, threshold=0.5, report_metho
 
         precision = tp / (tp + fp) if (tp + fp) > 0 else 0
         recall = tp / (tp + fn) if (tp + fn) > 0 else 0
-        f1_score = 2 * (precision * recall) / (precision + recall) if (precision + recall) > 0 else 0
+        f1_score_mic = 2 * (precision * recall) / (precision + recall) if (precision + recall) > 0 else 0
         accuracy = (tp + tn) / (tp + tn + fp + fn) if (tp + tn + fp + fn) > 0 else 0
 
     if 'macro' in report_methods:
         # Macro-Averaging: Calculate metrics independently for each class and then average
         num_classes = true_labels.shape[1]
-        precision = recall = f1_score = accuracy = 0
+        precision_mac = recall_mac = f1_score_mac = 0
 
         for class_idx in range(num_classes):
             tp = np.sum((true_labels[:, class_idx] == 1) & (binary_predictions[:, class_idx] == 1))
@@ -491,22 +494,20 @@ def calculate_metrics(true_labels, predicted_labels, threshold=0.5, report_metho
             fn = np.sum((true_labels[:, class_idx] == 1) & (binary_predictions[:, class_idx] == 0))
             tn = np.sum((true_labels[:, class_idx] == 0) & (binary_predictions[:, class_idx] == 0))
 
-            precision_mac = tp / (tp + fp) if (tp + fp) > 0 else 0
-            recall_mac = tp / (tp + fn) if (tp + fn) > 0 else 0
-            f1_score_mac = 2 * (precision_mac * recall_mac) / (precision_mac + recall_mac) if (precision_mac + recall_mac) > 0 else 0
-            accuracy_mac = (tp + tn) / (tp + tn + fp + fn) if (tp + tn + fp + fn) > 0 else 0
+            precision = tp / (tp + fp) if (tp + fp) > 0 else 0
+            recall = tp / (tp + fn) if (tp + fn) > 0 else 0
+            f1_score = 2 * (precision * recall) / (precision + recall) if (precision + recall) > 0 else 0
 
-            precision += precision_mac
-            recall += recall_mac
-            f1_score += f1_score_mac
-            accuracy += accuracy_mac
+            precision_mac += precision
+            recall_mac += recall
+            f1_score_mac += f1_score
 
-        precision /= num_classes
-        recall /= num_classes
-        f1_score /= num_classes
-        accuracy /= num_classes
+        precision_mac /= num_classes
+        recall_mac /= num_classes
+        f1_score_mac /= num_classes
 
-    metrics['f1_score'] = f1_score
-    metrics['accuracy'] = accuracy
+    metrics['f1_score_micro'] = round(f1_score_mic, 4)
+    metrics['f1_score_macro'] = round(f1_score_mac, 4)
+    metrics['accuracy'] = round(accuracy, 4)
 
     return metrics

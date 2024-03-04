@@ -52,13 +52,6 @@ parser.add_argument("--model_name",
                     required=False
                     )
 
-parser.add_argument("--average",
-                        type=str,
-                        default='micro',
-                        choices=['micro', 'macro'],
-                        required=False
-                        )
-
 args = parser.parse_args()
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
@@ -68,7 +61,6 @@ def evaluate():
     model_name = args.model_name
     model_dir = args.model_dir
     data_path = args.data_path
-    average = args.average
     data_preprocess, loss_type, _ = model_name.replace('.pth', '').split('-')[::-1][-3:]
     
         
@@ -131,7 +123,7 @@ def evaluate():
 
             predicted_labels = (torch.sigmoid(outputs.logits) >= 0.5).float().cpu().numpy()
             true_lbl = labels.cpu().numpy()
-            metric = calculate_metrics(predicted_labels, true_lbl, average=average)
+            metric = calculate_metrics(predicted_labels, true_lbl)
             accuracy_test += metric['accuracy']
             f1_score_test += metric['f1_score']
             

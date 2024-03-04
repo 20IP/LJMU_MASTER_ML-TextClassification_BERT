@@ -66,9 +66,15 @@ class FocalLossMultiLabel(nn.Module):
         Returns:
             torch.Tensor: Computed Focal Loss.
         '''
-        ce_loss = F.binary_cross_entropy_with_logits(logits, labels, reduction='none')
-        pt = torch.exp(-ce_loss)
-        loss = (1 - pt) ** self.gamma * ce_loss
+        logits_sigmoid = torch.sigmoid(logits)
+        logits_flat = logits_sigmoid.view(-1)
+        labels_flat = labels.view(-1)
+        
+        # loss = -((1 - logits_flat) ** self.gamma) * labels_flat * torch.log(logits_flat) - (1 - labels_flat) * (logits_flat ** self.gamma) * torch.log(1 - logits_flat)
+        pos_loss = -((1 - logits_flat) ** self.gamma) * labels_flat * torch.log(logits_flat)
+        neg_loss = -((logits_flat) ** self.gamma) * (1 - labels_flat) * torch.log(1 - logits_flat)
+        loss = pos_loss + neg_loss
+    
         return loss.mean()
     
 class LabelSmoothingLossMultiLabel(nn.Module):
@@ -82,25 +88,37 @@ class LabelSmoothingLossMultiLabel(nn.Module):
         smoothing (float): Smoothing factor for label smoothing.
     '''
 
-    def __init__(self, smoothing=0.1):
+    def __init__(self, epsilon=0.3, gamma=2):
         super(LabelSmoothingLossMultiLabel, self).__init__()
-        self.smoothing = smoothing
+        self.epsilon = epsilon
+        self.gamma = gamma
 
     def forward(self, logits, labels):
         ''' 
-        Forward pass for Label Smoothing Loss.
+        Forward pass for Label Smoothing + Focal Loss.
 
         Args:
-            outputs (torch.Tensor): Logits predicted by the model.
+            logits (torch.Tensor): Logits predicted by the model.
             labels (torch.Tensor): True labels.
 
         Returns:
-            torch.Tensor: Computed Label Smoothing Loss.
+            torch.Tensor: Computed Label Smoothing + Focal Loss.
         '''
-        sigmoid_logits = torch.sigmoid(logits)
 
-        smooth_labels = (1.0 - self.smoothing) * labels + self.smoothing / 2.0
-        log_probs = torch.log(sigmoid_logits)
 
-        loss = -torch.sum(smooth_labels * log_probs + (1.0 - smooth_labels) * torch.log(1.0 - sigmoid_logits))
-        return loss / logits.size(0)  # Normalize by batch size
+        sm_labels = (1 - self.epsilon) * labels + (self.epsilon / 5)
+        print('sm_labels: ', sm_labels)
+
+        logits_sigmoid = torch.sigmoid(logits)
+        log_probs = torch.log(logits_sigmoid)
+        logits_flat = logits_sigmoid.view(-1)
+        labels_flat = sm_labels.view(-1)
+
+        # Focal Loss components
+        pos_loss = -((1 - logits_flat) ** self.gamma) * labels_flat * torch.log(logits_flat)
+        neg_loss = -((logits_flat) ** self.gamma) * (1 - labels_flat) * torch.log(1 - logits_flat)
+
+        # Combine Focal Loss components
+        loss = pos_loss + neg_loss
+
+        return loss.mean()

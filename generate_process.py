@@ -33,6 +33,7 @@ def process():
     
     parser.add_argument("--output_dir",
                         type=str,
+                        default='../Medical-Abstracts-TC-Corpus',
                         required=True
                         )
     

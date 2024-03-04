@@ -4,7 +4,7 @@
 
 >   _Thesis of Master Machine Learning - Liverpool John Moores University_
 
-
+python generate_process.py --file_name medical_tc_train.csv --output_dir ../Medical-Abstracts-TC-Corpus
 
 ## Quick start
 

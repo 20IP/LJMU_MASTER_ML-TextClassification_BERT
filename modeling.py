@@ -49,7 +49,6 @@ class MedicalTextOptimizeLoss:
         self.scheduler = args.scheduler
         self.truncate = args.truncate
         self.padding = args.padding
-        self.average = args.average
         self.lemma = args.data_lemma
         self.num_labels = num_labels
         self.threshold = args.threshold
@@ -254,14 +253,14 @@ class MedicalTextClassifier(MedicalTextOptimizeLoss):
         
         logger.info("*** MedicalTextClassifier: Training and Evaluating...")
         best_f1_score_test = 0
-
+        total_batches_train = len(self.train_dataloader)
+        total_batches_test = len(self.test_dataloader)
         for epoch in range(self.num_epochs):
             self.model.train()
-            total_batches = len(self.train_dataloader)
-            accuracy_train = 0
-            f1_score_train = 0
+            accuracy_train = f1_score_train_micro = f1_score_train_macro = 0
+            accuracy_test = f1_score_test_micro = f1_score_test_macro = 0
 
-            for batch_idx, batch in tqdm(enumerate(self.train_dataloader), total=total_batches, desc=f"Epoch(s) {epoch + 1}"):
+            for batch_idx, batch in tqdm(enumerate(self.train_dataloader), total=total_batches_train, desc=f"Epoch(s) {epoch + 1}"):
                 input_ids = batch['input_ids']
                 attention_mask = batch['attention_mask']
                 labels = batch['labels']
@@ -275,24 +274,28 @@ class MedicalTextClassifier(MedicalTextOptimizeLoss):
 
                 predicted_labels = (torch.sigmoid(outputs.logits) >= self.threshold).float().cpu().numpy()
                 true_lbl = labels.cpu().numpy()
-                metric = calculate_metrics(predicted_labels, true_lbl, average=self.average)
+                metric = calculate_metrics(predicted_labels, true_lbl)
+                
                 accuracy_train += metric['accuracy']
-                f1_score_train += metric['f1_score']
+                f1_score_train_micro += metric['f1_score_micro']
+                f1_score_train_macro += metric['f1_score_macro']
+                
     
                 if batch_idx % self.step_per_epochs == 0:
-                    logger.info(f"\t Batch {batch_idx }/{total_batches}, \t loss: {loss.item():.4f}")
+                    logger.info(f"\t Batch {batch_idx }/{total_batches_train}, \t loss: {loss.item():.4f}")
                     
-            accuracy_train /= total_batches
-            f1_score_train /= total_batches
-            logger.info(f"\t Epoch {epoch + 1} - Training {self.average.capitalize()}: Accuracy = {accuracy_train:.4f}, F1-Score = {f1_score_train:.4f}")
+            accuracy_train /= total_batches_train
+            f1_score_train_micro /= total_batches_train
+            f1_score_train_macro /= total_batches_train
+            
+            logger.info(f"\t Epoch {epoch + 1} - Training : Accuracy  = {accuracy_train:.4f}, F1-Score Micro = {f1_score_train_micro:.4f}, F1-Score Macro = {f1_score_train_macro:.4f}")
+            
 
             if self.scheduler:
                 self.scheduler_prc.step()
                 logger.info(f"\t Scheduler learning rate: {self.scheduler_prc.get_last_lr()}")
 
             # Evaluation with test Data
-            accuracy_test = 0
-            f1_score_test = 0
 
             with torch.no_grad():
                 for batch_idx, batch in enumerate(self.test_dataloader):
@@ -305,17 +308,21 @@ class MedicalTextClassifier(MedicalTextOptimizeLoss):
 
                     predicted_labels = (torch.sigmoid(outputs.logits) >= self.threshold).float().cpu().numpy()
                     true_lbl = labels.cpu().numpy()
-                    metric = calculate_metrics(predicted_labels, true_lbl, average=self.average)
+                    metric = calculate_metrics(predicted_labels, true_lbl)
                     accuracy_test += metric['accuracy']
-                    f1_score_test += metric['f1_score']
+                    f1_score_test_micro += metric['f1_score_micro']
+                    f1_score_test_macro += metric['f1_score_macro']
                     
-            accuracy_test /= len(self.test_dataloader)
-            f1_score_test /= len(self.test_dataloader)
+            accuracy_test /= total_batches_test
+            f1_score_test_micro /= total_batches_test
+            f1_score_test_macro /= total_batches_test
+            
+            logger.info(f"\t Epoch {epoch + 1} - Testing : Accuracy Micro  = {accuracy_test:.4f}, F1-Score Micro = {f1_score_test_micro:.4f}, F1-Score Macro = {f1_score_test_macro:.4f}")
+            
 
-            logger.info(f"\t Epoch {epoch + 1} - Testing {self.average.capitalize()}: Accuracy = {accuracy_test:.4f}, F1-Score = {f1_score_test:.4f}")
-            if best_f1_score_test < f1_score_test:
-                best_f1_score_test = f1_score_test
+            if best_f1_score_test < f1_score_test_micro:
+                best_f1_score_test = f1_score_test_micro
                 torch.save(self.model.state_dict(), self.output_dir)
                 logger.info(f"\t Save the best model at epoch(s) {epoch + 1} - saved output: {self.output_dir}")
 
-        logger.info(f"Best {self.average.capitalize()} statistic for testing: {best_f1_score_test}")
+        logger.info(f"Best statistic for testing: {best_f1_score_test}")

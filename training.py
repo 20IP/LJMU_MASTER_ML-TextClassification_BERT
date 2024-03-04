@@ -99,11 +99,6 @@ def main():
                         type=bool,
                         default=True
                         )
-
-    parser.add_argument("--average",
-                        type=str,
-                        default='micro'
-                        )
     
     parser.add_argument("--reduce_step_size",
                         type=int,
