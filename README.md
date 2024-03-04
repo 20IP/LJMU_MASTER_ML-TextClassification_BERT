@@ -6,6 +6,69 @@
 
 python generate_process.py --file_name medical_tc_train.csv --output_dir ../Medical-Abstracts-TC-Corpus
 
+## Structure of Project
+
+├── ../
+    ├── Medical-Abstracts-TC-Corpus
+        └── medical_tc_train.csv
+        └── medical_tc_test.csv
+        └── medical_tc_labels.csv
+        └── README.md
+    ├── LJMU_MASTER_ML-TextClassification_BERT
+        └── modeling.py
+        └── generate_process.py
+        └── EDA_data.ipynb
+        └── utils.ipynb
+        └── Visualizer.ipynb
+        └── training.py
+        └── dataset.py
+        └── optimizer_loss.py
+        └── logger_config.py
+        └── evaluation.py
+        └── requirement.txt
+        └── README.md
+        └── ...
+    ├── output-fine-tuning
+        └── ...(save model during fine-tuning models)
+    ├── pre-train
+        ├── albert_base_v2
+            └── tokenizer_config.json
+            └── tokenizer.json
+            └── special_tokens_map.json
+            └── pytorch_model.bin
+            └── ...
+        ├── clinicalBERT
+            └── tokenizer_config.json
+            └── tokenizer.json
+            └── special_tokens_map.json
+            └── pytorch_model.bin
+            └── ...
+        ├── roberta-base
+            └── tokenizer_config.json
+            └── tokenizer.json
+            └── special_tokens_map.json
+            └── pytorch_model.bin
+            └── ...
+        ├── bluebert_pubmed_uncased
+            └── tokenizer_config.json
+            └── tokenizer.json
+            └── special_tokens_map.json
+            └── pytorch_model.bin
+            └── ...
+        ├── bert-base-uncased
+            └── tokenizer_config.json
+            └── tokenizer.json
+            └── special_tokens_map.json
+            └── pytorch_model.bin
+            └── ...
+        └── bioBERT_v1.1
+            └── tokenizer_config.json
+            └── tokenizer.json
+            └── special_tokens_map.json
+            └── pytorch_model.bin
+            └── ...
+    
+
 ## Quick start
 
 1. Clone this repository.
