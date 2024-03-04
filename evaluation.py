@@ -65,7 +65,7 @@ def evaluate():
     
         
     data_loader = MedicalTextDataEvalLoader(data_path, data_preprocess)
-    test_data, num_labels = data_loader.load_data(data_type='train')
+    test_data, num_labels = data_loader.load_data(data_type='test')
 
     direction_model = f'{model_dir}/{model_name}'
 

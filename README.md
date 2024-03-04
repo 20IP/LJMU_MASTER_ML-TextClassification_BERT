@@ -4,8 +4,6 @@
 
 >   _Thesis of Master Machine Learning - Liverpool John Moores University_
 
-python generate_process.py --file_name medical_tc_train.csv --output_dir ../Medical-Abstracts-TC-Corpus
-
 ## Structure of Project
 ```
 ├── User Folder
@@ -68,15 +66,18 @@ python generate_process.py --file_name medical_tc_train.csv --output_dir ../Medi
             └── pytorch_model.bin
             └── ...
 ```
-
+# Usage details
 ## Quick start
-Ensure file structure as above.
+* >Ensure file structure as above.
+
 __I. Build the project step by step.__
 _Creating an environment with the following steps below:_
 1. Clone this repository.
 
-Using Anaconda:
+***Using Anaconda:***
+
 2. Create a virtual environment:
+
 ```
 >> conda create --name your_env_name python=3.8
 ```
@@ -90,7 +91,8 @@ Using Anaconda:
 
 ```
 5. Go to folder `LJMU_MASTER_ML-TextClassification_BERT`
-6. Run the file `generate_process.py` to create two new files named `preprocessed-medical_tc_test.csv` and `preprocessed-medical_tc_train.csv`, stored in the `Medical-Abstracts-TC-Corpus` folder.
+6. Run the file `generate_process.py` to create two new files named `preprocessed-medical_tc_test.csv` and `preprocessed-medical_tc_train.csv`.
+Stored in the `Medical-Abstracts-TC-Corpus` folder.
 
 ```
 >> python generate_process.py --file_name medical_tc_train.csv --output_dir ../Medical-Abstracts-TC-Corpus
@@ -142,243 +144,65 @@ done
 > * Note:
 __This study uses ID = [0, 2, 4] to train the models.__
 
+
 **The default hyperparameters in model training.`--args`**
-7. 
+
+|Args|Values|
+|:---:|:---:|
+|learning_rate|5e-5|
+|batch_size|8|
+|epochs|3|
+|step_per_epoch|200|
+|max_length|512|
+|threshold|5e-1|
+|reduce_step_size|2|
+|reduce_gamma|2e-1|
+
+> _Additionally, other hyperparameters such as the number of attention layers and the dropout coefficient, etc, remain consistent with the pre-trained model._
+
+
+***Fine-Tuned Model Naming Convention***
+
+> _models = {model_name}-{loss_type}-{based_process}-{scheduler}-{lemma}.pth_
+
+
+7. Set permissions for the file 'run_script.sh'.
 ```
 >> chmod +x run_scripts.sh
 ```
+8. Execute the file 'run_script.sh'.
+```
+>> ./run_script.sh
+```
 
-## How will the thesis look like?
+## Intermediate storage of data, models.
 
-Your thesis document will look something like this:
+* Store pre-trained models:
+> link 1
+* Store data.
+> link 2
+* Store the best model.
+> link 3
+* Store the repository.
+> link 4
 
->   [Plain (PDF)](https://cam-thesis.s3-eu-west-1.amazonaws.com/pdf/thesis.pdf)
+## Re-run the model evaluation with the previous model
+Assuming you have a previously fine-tuned model such as `alBERT_base_v2-fcl-False-False-False.pth`, to perform model evaluation and obtain statistical metrics, please run the following command:
 
-If you use the _clean_ sample, which can be found in [`./Samples/clean`](Samples/clean), it will look like this:
+```
+>> python evaluation.py --model_name alBERT_base_v2-fcl-False-False-False.pth
+```
 
->   [Sample Clean (PDF)](https://cam-thesis.s3-eu-west-1.amazonaws.com/pdf/clean.pdf)
+**Please ensure that the model truly exists and make sure it is stored in the correct location following the structure above.**
 
-The template also supports DVI and PS formats. All three formats can be generated
-with the provided `Makefile`.
-
-
-
-## Producing `PDF`, `DVI` and `PS` documents
-
-
-### Build your thesis
-
-To build the `PDF` version of your thesis, run:
-
-    make
-
-This build procedure uses `pdflatex` and will produce `thesis.pdf`.
-
-To produce `DVI` and `PS` versions of your document, you should run:
-
-    make thesis.ps
-
-This will use the `latex` and `dvips` commands to build the document
-and will produce `thesis.dvi` and `thesis.ps` documents.
-
-
-### Clean unwanted files
-
-To clean unwanted clutter (all LaTeX auto-generated files), run:
-
-    make clean
 
 -------------------------------------------------------------------------------
-
-
-
-# Usage details
-
-
-## Class options
-
-`cam-thesis` supports all the options of the standard `report` class (on which
-it is based).
-
-It also supports some custom options.
-
-*   `techreport`: formats the document as a technical report (here's
-    [a sample](https://cam-thesis.s3-eu-west-1.amazonaws.com/pdf/techreport.pdf)).
-    Here is a list of
-    formatting points in which the technical report differs from a normal thesis
-    (see [guidelines](http://www.cl.cam.ac.uk/techreports/submission.html) for
-    more information):
-
-    *   different margins (left and right margins are 25mm, top and bottom
-        margins are 20mm),
-    *   normal line spacing (instead of one-half spacing),
-    *   no custom title page,
-    *   no declaration,
-    *   page count starts with 3,
-    *   if the `hyperref` package is used, the option `pdfpagelabels=false` will
-        be passed to it.
-
-*   `firstyr`: formats the document as a first-year report (here's
-    [a sample](https://cam-thesis.s3-eu-west-1.amazonaws.com/pdf/firstyr.pdf)). This option removes
-    some unneeded elements and modifies the submission note. Here is a list of
-    formatting points in which the first year report differs from a normal thesis:
-
-    *   an appropraite subtitle is added,
-    *   the submission note is changed appropriately,
-    *   no standalone abstract,
-    *   no declaration,
-    *   no acknowledgements.
-
-*   `secondyr`: formats the document as a second-year report (here's
-    [a sample](https://cam-thesis.s3-eu-west-1.amazonaws.com/pdf/secondyr.pdf)). Similarly to
-	`firstyr`, this style modifies the submission note and removes unneeded elements.
-    Specially, an abstract is retained (as for this report, research is often in a
-	more "stable" state). Here is a list of formatting points in which the second year
-	report differs from a normal thesis:
-
-    *   an appropraite subtitle is added,
-    *   the submission note is changed appropriately,
-    *   no declaration,
-    *   no acknowledgements.
-
-*   `times`: tells the class to use the _times_ font.
-
-*   `glossary`: puts the glossary after the TOC. The glossary contains a list of
-    abbreviations, their explanations etc. Describe your abbreviations and add
-    them to the glossary immediately after you introduce them in the body of
-    your thesis. You can use the following command for this:
-
-        \newglossaryentry{computer}
-        {
-          name=computer,
-          description={is a programmable machine that receives input,
-                       stores and manipulates data, and provides
-                       output in a useful format}
-        }
-
-    After that, you can reference particular glossary entries like this:
-
-        \gls{computer}
-
-    You can also change the glossary style. For example, try putting this on the very top of the preamble (even before you define the document class with `\documentclass[glossary]{cam-thesis}`):
-
-        \PassOptionsToPackage{style=altlong4colheader}{glossaries}
-
-    Further instructions can be found [on LaTeX Wikibooks](http://en.wikibooks.org/wiki/LaTeX/Glossary) or the [user manual at CTAN](http://mirrors.ctan.org/macros/latex/contrib/glossaries/glossaries-user.pdf).
-
-    _Note_: `glossaries` is the package used to create the glossary.
-
-*   `withindex`: build the index, which you can put at the and of the thesis with
-     the following command (it will create a new unnumbered chapter):
-
-        \printthesisindex
-
-    Instructions on how to use the index can be found [here](http://en.wikibooks.org/wiki/LaTeX/Indexing#Using_makeidx).
-
-    _Note_: the package `makeidx` is used to create the index.
-
-*   `backrefs`: Add back references in the References section (here's
-    [a sample](https://cam-thesis.s3-eu-west-1.amazonaws.com/pdf/backrefs.pdf)). In other words, for each reference, it adds the page(s) where it is cited.
-
-    _Note_: the package `backref` is used to create the back references.
-
--------------------------------------------------------------------------------
-
-
 
 # Troubleshooting
+---
+# Personal Information
 
-
-## _Q1_: I found a bug in the template. Where do I report bugs?
-
-You can report issues through
-[our GitHub repository](https://github.com/cambridge/thesis/issues).
-
-You can also mail
-[the maintainers](https://github.com/cambridge/thesis/contributors) directly.
-
-
-## _Q2_: Where can I find the thesis formatting guidelines this class is based on?
-
-The University of Cambridge submission guidelines:
-
-> [https://www.cambridgestudents.cam.ac.uk/your-course/examinations/graduate-exam-information/submitting-and-examination/phd-msc-mlitt/submit](https://www.cambridgestudents.cam.ac.uk/your-course/examinations/graduate-exam-information/submitting-and-examination/phd-msc-mlitt/submit)
-
-The University of Cambridge final submission guidelines:
-
-> [https://www.cambridgestudents.cam.ac.uk/your-course/examinations/graduate-exam-information/after-examination/degree-approval-and-1](https://www.cambridgestudents.cam.ac.uk/your-course/examinations/graduate-exam-information/after-examination/degree-approval-and-1)
-
-The Computer Laboratory guidelines:
-
-> [https://www.cl.cam.ac.uk/local/typography/phd/](https://www.cl.cam.ac.uk/local/typography/phd/)
-
-The Computer Laboratory guidelines for technical reports:
-
-> [https://www.cl.cam.ac.uk/techreports/submission.html](https://www.cl.cam.ac.uk/techreports/submission.html)
-
-
-## _Q3_: Can I use my own Makefile?
-
-By all means. Previously we used the horrendously complex `Makefile` at
-
-> [http://code.google.com/p/latex-makefile/](http://code.google.com/p/latex-makefile/)
-
-
-## _Q4_: But what if I don't want the template files in my thesis directory?
-
-Put the files and folders listed below into a directory where LaTeX can find them (for more
-info see __[1]__):
-
-    cam-thesis.cls
-    CollegeShields/
-
-> __[1]__ You can put these files either into the standard LaTeX directory for
-> classes __[2]__, or a directory listed in your `TEXINPUTS` environment variable.
->
-> __[2]__ The location of the standard LaTeX class directory depends on which LaTeX
-> installation and operating system you use. For example, for TeX Live on Fedora
-> 14 it is `/usr/share/texmf/tex/latex/base`.
->
-> In any case, after this, LaTeX will still not be able find your class. You
-> will have to rebuild the package index. This procedure also depends on your
-> installation specifics, but for TeX Live you have to run the `texhash` command.
->
-> For more comprehensive information refer to
-> [LaTeX Wikibooks](http://en.wikibooks.org/wiki/LaTeX/Packages/Installing_Extra_Packages).
-
-
-## _Q5_: Where can I find newer versions of the University of Cambridge logo?
-
-The university updates its logo every now and then. You can find up-to-date
-logos on [this page](https://www.cam.ac.uk/brand-resources/about-the-logo/logo-downloads)
-(subject to change without notice).
-
-Download and exchange the new logos with `CUni.eps` and/or `CUni.pdf`.
-
-
-## _Q6_: My college's shield/coat of arms/crest is not a vector-based image. Why u no include it?
-
-If you find a distributable vector-based image of your college's shield you can report it as an issue or mail it to contributors directly (refer to question __Q1__ above).
-
-
-## _Q7_: Where can I find extra fonts (like Adobe Sabon, Adobe Utopia etc.)?
-
-The Computer Laboratory provides [some](https://web.archive.org/web/20150908001116/http://www.cl.cam.ac.uk/local/sys/unix/applications/tex/#clfonts).
-
-After you've installed the fonts, add somewhere in the preamble (before `\begin{document}`) the following command:
-
-    \renewcommand\rmdefault{psb}
-
-
-## _Q8_: How should I count the number of words in my thesis?
-
-There is [a page](http://www.cl.cam.ac.uk/local/phd/writingup.html) on the Computer Lab's web site. They recommend using this command:
-
-    ps2ascii thesis.pdf | wc -w
-
-
-## _Q9_: How can I change the College Shield?
-
-In `thesis.tex` use `\collegeshield{CollegeShields/<college>}` with `<college>` as your your desired college name, as found in `CollegeShields`.
-
-Alternatively, `\collegeshield{CollegeShields/CUniNoText}` can be used to display the University of Cambridge shield design.
+- **Full Name:** PHAM VAN THAI
+- **Email:** phamthai.ats@gmail.com
+- **Phone:** 0907469308
+- **Country:** Vietnam
