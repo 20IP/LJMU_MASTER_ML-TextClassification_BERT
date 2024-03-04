@@ -181,13 +181,11 @@ __This study uses ID = [0, 2, 4] to train the models.__
 ## Intermediate storage of data, models.
 
 * Store pre-trained models:
-> link 1
+> [link 1](https://1drv.ms/f/s!AkHm_vRE_7ChiOxTsI4fzyZTnYyqXw?e=8bw2Iv)
 * Store data.
-> link 2
+> [link 2](https://1drv.ms/f/s!AkHm_vRE_7ChiO0GNqLcMSHQoTCBZw?e=hKQHbA)
 * Store the best model.
-> link 3
-* Store the repository.
-> link 4
+> [link 3](https://1drv.ms/f/s!AkHm_vRE_7ChiO01EP0n7adHcOZdAw?e=66VYNH)
 
 ## Re-run the model evaluation with the previous model
 Assuming you have a previously fine-tuned model such as `alBERT_base_v2-fcl-False-False-False.pth`, to perform model evaluation and obtain statistical metrics, please run the following command:

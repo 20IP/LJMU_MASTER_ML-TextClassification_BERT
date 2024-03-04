@@ -56,7 +56,7 @@ class MedicalTextDataLoader:
 
 
 class MedicalTextDataEvalLoader(MedicalTextDataLoader):
-    def __init__(self, data_path, data_preprocess):
+    def __init__(self, data_preprocess):
         """
         Initialize the MedicalTextDataEvalLoader.
 
@@ -64,7 +64,7 @@ class MedicalTextDataEvalLoader(MedicalTextDataLoader):
         - data_path: Path to the data directory.
         - data_preprocess: Flag indicating whether data has been preprocessed.
         """
-        super().__init__(data_path, data_preprocess)
+        super().__init__(data_preprocess)
 
     def load_data(self):
         """
@@ -73,5 +73,5 @@ class MedicalTextDataEvalLoader(MedicalTextDataLoader):
         Returns:
         - eval_data: A list of tuples containing preprocessed medical abstracts and condition labels for evaluation.
         """
-        eval_data, _ = super().load_data(data_type='test')
-        return eval_data
+        eval_data, num_labels = super().load_data(data_type='test')
+        return eval_data, num_labels
