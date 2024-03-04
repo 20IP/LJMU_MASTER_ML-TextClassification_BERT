@@ -129,25 +129,24 @@ for loss_function in "${loss_function_list[@]}"; do
 done
 ```
 **How to configure the parameters (args) in the command: `python training.py --args`**
-```
-|---|---|---|---|---|
-|ID|based_process|data_lemma|scheduler|Training type|
-|0|$false|$false|$false|Using column `medical_abstract` data, Reduce LR: false|
-|1|$false|$false|true|Using column `medical_abstract` data, Reduce LR: true|
-|2|true|$false|$false|Using column `normalize_medical_abstract` data, Reduce LR: False|
-|3|true|$false|true|Using column `normalize_medical_abstract` data, Reduce LR: False|
-|4|$fasle|true|$false|Using column `lemma_normalize_medical_abstract` data, Reduce LR: False|
-|5|$fasle|true|true|Using column `lemma_normalize_medical_abstract` data, Reduce LR: False|
-```
 
+|ID|based_process|data_lemma|scheduler|Training type|
+|---|---|---|---|---|
+|0|$false|$false|$false|Using column `medical_abstract` data, `Reduce LR`: false|
+|1|$false|$false|true|Using column `medical_abstract` data, `Reduce LR`: true|
+|2|true|$false|$false|Using column `normalize_medical_abstract` data, `Reduce LR`: false|
+|3|true|$false|true|Using column `normalize_medical_abstract` data, `Reduce LR`: true|
+|4|$fasle|true|$false|Using column `lemma_normalize_medical_abstract` data, `Reduce LR `: false|
+|5|$fasle|true|true|Using column `lemma_normalize_medical_abstract` data, `Reduce LR`: true|
+
+> * Note:
+__This study uses ID = [0, 2, 4] to train the models.__
+
+**The default hyperparameters in model training.`--args`**
 7. 
 ```
 >> chmod +x run_scripts.sh
 ```
-
-Pro tip: you can use one of the samples in the [`Samples`](./Samples) directory.
-
-
 
 ## How will the thesis look like?
 
