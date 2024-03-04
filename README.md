@@ -129,7 +129,7 @@ for loss_function in "${loss_function_list[@]}"; do
 done
 ```
 **How to configure the parameters (args) in the command: `python training.py --args`**
-
+```
 |---|---|---|---|---|
 |ID|based_process|data_lemma|scheduler|Training type|
 |0|$false|$false|$false|Using column `medical_abstract` data, Reduce LR: false|
@@ -138,7 +138,7 @@ done
 |3|true|$false|true|Using column `normalize_medical_abstract` data, Reduce LR: False|
 |4|$fasle|true|$false|Using column `lemma_normalize_medical_abstract` data, Reduce LR: False|
 |5|$fasle|true|true|Using column `lemma_normalize_medical_abstract` data, Reduce LR: False|
-
+```
 
 7. 
 ```
