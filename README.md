@@ -70,6 +70,9 @@
 ## Quick start
 * >Ensure file structure as above.
 
+* >This research is written and developed on the Linux Mint 20.3 operating system and Python version 3.8.
+
+
 __I. Build the project step by step.__
 _Creating an environment with the following steps below:_
 1. Clone this repository.
@@ -192,6 +195,7 @@ Assuming you have a previously fine-tuned model such as `alBERT_base_v2-fcl-Fals
 ```
 >> python evaluation.py --model_name alBERT_base_v2-fcl-False-False-False.pth
 ```
+Similarly, an example pattern could be: `alBERT_base_v2-fcl-False-False-False.pth`.
 
 **Please ensure that the model truly exists and make sure it is stored in the correct location following the structure above.**
 

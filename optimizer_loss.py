@@ -107,7 +107,6 @@ class LabelSmoothingLossMultiLabel(nn.Module):
 
 
         sm_labels = (1 - self.epsilon) * labels + (self.epsilon / 5)
-        print('sm_labels: ', sm_labels)
 
         logits_sigmoid = torch.sigmoid(logits)
         log_probs = torch.log(logits_sigmoid)
