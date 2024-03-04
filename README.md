@@ -191,7 +191,7 @@ __This study uses ID = [0, 2, 4] to train the models.__
 Assuming you have a previously fine-tuned model such as `alBERT_base_v2-fcl-False-False-False.pth`, to perform model evaluation and obtain statistical metrics, please run the following command:
 
 ```
->> python evaluation.py --model_name alBERT_base_v2-fcl-False-False-False.pth
+>> python evaluation.py --model_finetune alBERT_base_v2-fcl-False-False-False.pth
 ```
 Similarly, an example pattern could be: `alBERT_base_v2-fcl-False-False-False.pth`.
 
