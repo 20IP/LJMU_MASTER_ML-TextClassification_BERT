@@ -1,0 +1,822 @@
+2024-03-04 19:30:30,852 - INFO - 	 ########################################################## 
+
+2024-03-04 19:30:30,852 - INFO - 			INFOMATION OF CONFIGURATION:
+2024-03-04 19:30:30,852 - INFO - Namespace(based_process=False, batch_size=8, data_lemma=False, data_path='../Medical-Abstracts-TC-Corpus', epochs=3, learning_rate=5e-05, loss_type='ce', max_length=512, model_dir='../pre-train', model_pretrain='bert-base-uncased', output_dir='../output-fine-tuning', padding=True, reduce_gamma=0.2, reduce_step_size=2, scheduler=False, step_per_epoch=200, threshold=0.5, truncate=True)
+2024-03-04 19:30:30,852 - INFO - 	 Loading and Processing training data. 
+
+2024-03-04 19:30:30,852 - INFO - *** MedicalTextDataLoader: Data path: ../Medical-Abstracts-TC-Corpus
+2024-03-04 19:30:30,853 - INFO - *** MedicalTextDataLoader: Data preprocess: preprocessed-medical_tc_train.csv
+2024-03-04 19:30:31,173 - INFO - *** MedicalTextDataLoader: Loaded and process with 'medical_abstract' column
+2024-03-04 19:30:31,175 - INFO - 	 Loading and Processing testing data. 
+
+2024-03-04 19:30:31,175 - INFO - *** MedicalTextDataLoader: Data path: ../Medical-Abstracts-TC-Corpus
+2024-03-04 19:30:31,175 - INFO - *** MedicalTextDataLoader: Data preprocess: preprocessed-medical_tc_test.csv
+2024-03-04 19:30:31,268 - INFO - *** MedicalTextDataLoader: Loaded and process with 'medical_abstract' column
+2024-03-04 19:30:31,307 - INFO - *** MedicalTextOptimizeLoss: MedicalText Optimization loss creating...
+2024-03-04 19:30:34,746 - INFO - *** MedicalTextOptimizeLoss: MedicalText Optimization loss was loaded.
+2024-03-04 19:30:34,747 - INFO - *** MedicalTextOptimizeLoss: Successfully created initialize_optimizer with scheduler: False
+2024-03-04 19:31:15,101 - INFO - *** MedicalTextClassifier: Successfully created train-test DataLoader
+2024-03-04 19:31:15,102 - INFO - *** MedicalTextClassifier: Training and Evaluating...
+2024-03-04 19:31:15,504 - INFO - 	 Batch 0/1181, 	 loss: 0.7567
+2024-03-04 19:32:11,967 - INFO - 	 Batch 200/1181, 	 loss: 0.5676
+2024-03-04 19:33:08,991 - INFO - 	 Batch 400/1181, 	 loss: 0.3688
+2024-03-04 19:34:06,273 - INFO - 	 Batch 600/1181, 	 loss: 0.4591
+2024-03-04 19:35:03,658 - INFO - 	 Batch 800/1181, 	 loss: 0.3337
+2024-03-04 19:36:01,146 - INFO - 	 Batch 1000/1181, 	 loss: 0.3064
+2024-03-04 19:36:52,825 - INFO - 	 Epoch 1 - Training : Accuracy  = 0.8488, F1-Score Micro = 0.6521, F1-Score Macro = 0.4963
+2024-03-04 19:37:28,448 - INFO - 	 Epoch 1 - Testing : Accuracy Micro  = 0.8479, F1-Score Micro = 0.6431, F1-Score Macro = 0.5075
+2024-03-04 19:37:28,944 - INFO - 	 Save the best model at epoch(s) 1 - saved output: ../output-fine-tuning/bert-base-uncased-ce-False-False-False.pth
+2024-03-04 19:37:29,231 - INFO - 	 Batch 0/1181, 	 loss: 0.2767
+2024-03-04 19:38:26,752 - INFO - 	 Batch 200/1181, 	 loss: 0.2886
+2024-03-04 19:39:24,278 - INFO - 	 Batch 400/1181, 	 loss: 0.2802
+2024-03-04 19:40:21,781 - INFO - 	 Batch 600/1181, 	 loss: 0.3904
+2024-03-04 19:41:19,395 - INFO - 	 Batch 800/1181, 	 loss: 0.2253
+2024-03-04 19:42:17,137 - INFO - 	 Batch 1000/1181, 	 loss: 0.2595
+2024-03-04 19:43:09,025 - INFO - 	 Epoch 2 - Training : Accuracy  = 0.8858, F1-Score Micro = 0.7597, F1-Score Macro = 0.6187
+2024-03-04 19:43:44,650 - INFO - 	 Epoch 2 - Testing : Accuracy Micro  = 0.8335, F1-Score Micro = 0.6625, F1-Score Macro = 0.5406
+2024-03-04 19:43:45,563 - INFO - 	 Save the best model at epoch(s) 2 - saved output: ../output-fine-tuning/bert-base-uncased-ce-False-False-False.pth
+2024-03-04 19:43:45,854 - INFO - 	 Batch 0/1181, 	 loss: 0.1674
+2024-03-04 19:44:43,618 - INFO - 	 Batch 200/1181, 	 loss: 0.1387
+2024-03-04 19:45:41,370 - INFO - 	 Batch 400/1181, 	 loss: 0.2534
+2024-03-04 19:46:39,037 - INFO - 	 Batch 600/1181, 	 loss: 0.2317
+2024-03-04 19:47:36,710 - INFO - 	 Batch 800/1181, 	 loss: 0.2568
+2024-03-04 19:48:34,422 - INFO - 	 Batch 1000/1181, 	 loss: 0.5891
+2024-03-04 19:49:26,196 - INFO - 	 Epoch 3 - Training : Accuracy  = 0.9084, F1-Score Micro = 0.8109, F1-Score Macro = 0.6635
+2024-03-04 19:50:01,820 - INFO - 	 Epoch 3 - Testing : Accuracy Micro  = 0.8455, F1-Score Micro = 0.6506, F1-Score Macro = 0.5232
+2024-03-04 19:50:01,821 - INFO - Best statistic for testing: 0.6624628242074916
+2024-03-04 19:50:10,305 - INFO - 	 ########################################################## 
+
+2024-03-04 19:50:10,306 - INFO - 			INFOMATION OF CONFIGURATION:
+2024-03-04 19:50:10,306 - INFO - Namespace(based_process=False, batch_size=8, data_lemma=False, data_path='../Medical-Abstracts-TC-Corpus', epochs=3, learning_rate=5e-05, loss_type='ce', max_length=512, model_dir='../pre-train', model_pretrain='roberta-base', output_dir='../output-fine-tuning', padding=True, reduce_gamma=0.2, reduce_step_size=2, scheduler=False, step_per_epoch=200, threshold=0.5, truncate=True)
+2024-03-04 19:50:10,306 - INFO - 	 Loading and Processing training data. 
+
+2024-03-04 19:50:10,306 - INFO - *** MedicalTextDataLoader: Data path: ../Medical-Abstracts-TC-Corpus
+2024-03-04 19:50:10,306 - INFO - *** MedicalTextDataLoader: Data preprocess: preprocessed-medical_tc_train.csv
+2024-03-04 19:50:10,625 - INFO - *** MedicalTextDataLoader: Loaded and process with 'medical_abstract' column
+2024-03-04 19:50:10,627 - INFO - 	 Loading and Processing testing data. 
+
+2024-03-04 19:50:10,628 - INFO - *** MedicalTextDataLoader: Data path: ../Medical-Abstracts-TC-Corpus
+2024-03-04 19:50:10,628 - INFO - *** MedicalTextDataLoader: Data preprocess: preprocessed-medical_tc_test.csv
+2024-03-04 19:50:10,721 - INFO - *** MedicalTextDataLoader: Loaded and process with 'medical_abstract' column
+2024-03-04 19:50:10,759 - INFO - *** MedicalTextOptimizeLoss: MedicalText Optimization loss creating...
+2024-03-04 19:50:14,382 - INFO - *** MedicalTextOptimizeLoss: MedicalText Optimization loss was loaded.
+2024-03-04 19:50:14,383 - INFO - *** MedicalTextOptimizeLoss: Successfully created initialize_optimizer with scheduler: False
+2024-03-04 19:50:28,593 - INFO - *** MedicalTextClassifier: Successfully created train-test DataLoader
+2024-03-04 19:50:28,593 - INFO - *** MedicalTextClassifier: Training and Evaluating...
+2024-03-04 19:50:28,936 - INFO - 	 Batch 0/1181, 	 loss: 0.7217
+2024-03-04 19:51:26,661 - INFO - 	 Batch 200/1181, 	 loss: 0.3552
+2024-03-04 19:52:24,625 - INFO - 	 Batch 400/1181, 	 loss: 0.1790
+2024-03-04 19:53:22,693 - INFO - 	 Batch 600/1181, 	 loss: 0.5253
+2024-03-04 19:54:20,771 - INFO - 	 Batch 800/1181, 	 loss: 0.3619
+2024-03-04 19:55:18,839 - INFO - 	 Batch 1000/1181, 	 loss: 0.2750
+2024-03-04 19:56:11,035 - INFO - 	 Epoch 1 - Training : Accuracy  = 0.8435, F1-Score Micro = 0.6314, F1-Score Macro = 0.4917
+2024-03-04 19:56:46,641 - INFO - 	 Epoch 1 - Testing : Accuracy Micro  = 0.8510, F1-Score Micro = 0.6526, F1-Score Macro = 0.5121
+2024-03-04 19:56:47,262 - INFO - 	 Save the best model at epoch(s) 1 - saved output: ../output-fine-tuning/roberta-base-ce-False-False-False.pth
+2024-03-04 19:56:47,553 - INFO - 	 Batch 0/1181, 	 loss: 0.3864
+2024-03-04 19:57:45,667 - INFO - 	 Batch 200/1181, 	 loss: 0.2060
+2024-03-04 19:58:43,757 - INFO - 	 Batch 400/1181, 	 loss: 0.3477
+2024-03-04 19:59:41,858 - INFO - 	 Batch 600/1181, 	 loss: 0.3729
+2024-03-04 20:00:39,915 - INFO - 	 Batch 800/1181, 	 loss: 0.1645
+2024-03-04 20:01:37,978 - INFO - 	 Batch 1000/1181, 	 loss: 0.2553
+2024-03-04 20:02:30,150 - INFO - 	 Epoch 2 - Training : Accuracy  = 0.8746, F1-Score Micro = 0.7325, F1-Score Macro = 0.5927
+2024-03-04 20:03:05,742 - INFO - 	 Epoch 2 - Testing : Accuracy Micro  = 0.8537, F1-Score Micro = 0.6625, F1-Score Macro = 0.5287
+2024-03-04 20:03:06,829 - INFO - 	 Save the best model at epoch(s) 2 - saved output: ../output-fine-tuning/roberta-base-ce-False-False-False.pth
+2024-03-04 20:03:07,123 - INFO - 	 Batch 0/1181, 	 loss: 0.3403
+2024-03-04 20:04:05,214 - INFO - 	 Batch 200/1181, 	 loss: 0.3366
+2024-03-04 20:05:03,304 - INFO - 	 Batch 400/1181, 	 loss: 0.2934
+2024-03-04 20:06:01,423 - INFO - 	 Batch 600/1181, 	 loss: 0.2970
+2024-03-04 20:06:59,500 - INFO - 	 Batch 800/1181, 	 loss: 0.1749
+2024-03-04 20:07:57,576 - INFO - 	 Batch 1000/1181, 	 loss: 0.1455
+2024-03-04 20:08:49,726 - INFO - 	 Epoch 3 - Training : Accuracy  = 0.8910, F1-Score Micro = 0.7707, F1-Score Macro = 0.6326
+2024-03-04 20:09:25,332 - INFO - 	 Epoch 3 - Testing : Accuracy Micro  = 0.8340, F1-Score Micro = 0.6282, F1-Score Macro = 0.4823
+2024-03-04 20:09:25,333 - INFO - Best statistic for testing: 0.6625489913544674
+2024-03-04 20:09:33,701 - INFO - 	 ########################################################## 
+
+2024-03-04 20:09:33,701 - INFO - 			INFOMATION OF CONFIGURATION:
+2024-03-04 20:09:33,701 - INFO - Namespace(based_process=False, batch_size=8, data_lemma=False, data_path='../Medical-Abstracts-TC-Corpus', epochs=3, learning_rate=5e-05, loss_type='ce', max_length=512, model_dir='../pre-train', model_pretrain='bioBERT_v1.1', output_dir='../output-fine-tuning', padding=True, reduce_gamma=0.2, reduce_step_size=2, scheduler=False, step_per_epoch=200, threshold=0.5, truncate=True)
+2024-03-04 20:09:33,701 - INFO - 	 Loading and Processing training data. 
+
+2024-03-04 20:09:33,701 - INFO - *** MedicalTextDataLoader: Data path: ../Medical-Abstracts-TC-Corpus
+2024-03-04 20:09:33,701 - INFO - *** MedicalTextDataLoader: Data preprocess: preprocessed-medical_tc_train.csv
+2024-03-04 20:09:34,022 - INFO - *** MedicalTextDataLoader: Loaded and process with 'medical_abstract' column
+2024-03-04 20:09:34,024 - INFO - 	 Loading and Processing testing data. 
+
+2024-03-04 20:09:34,025 - INFO - *** MedicalTextDataLoader: Data path: ../Medical-Abstracts-TC-Corpus
+2024-03-04 20:09:34,025 - INFO - *** MedicalTextDataLoader: Data preprocess: preprocessed-medical_tc_test.csv
+2024-03-04 20:09:34,118 - INFO - *** MedicalTextDataLoader: Loaded and process with 'medical_abstract' column
+2024-03-04 20:09:34,156 - INFO - *** MedicalTextOptimizeLoss: MedicalText Optimization loss creating...
+2024-03-04 20:09:37,526 - INFO - *** MedicalTextOptimizeLoss: MedicalText Optimization loss was loaded.
+2024-03-04 20:09:37,527 - INFO - *** MedicalTextOptimizeLoss: Successfully created initialize_optimizer with scheduler: False
+2024-03-04 20:10:10,655 - INFO - *** MedicalTextClassifier: Successfully created train-test DataLoader
+2024-03-04 20:10:10,655 - INFO - *** MedicalTextClassifier: Training and Evaluating...
+2024-03-04 20:10:11,032 - INFO - 	 Batch 0/1181, 	 loss: 0.6595
+2024-03-04 20:11:08,131 - INFO - 	 Batch 200/1181, 	 loss: 0.2731
+2024-03-04 20:12:05,519 - INFO - 	 Batch 400/1181, 	 loss: 0.2097
+2024-03-04 20:13:03,025 - INFO - 	 Batch 600/1181, 	 loss: 0.1215
+2024-03-04 20:14:00,545 - INFO - 	 Batch 800/1181, 	 loss: 0.2198
+2024-03-04 20:14:58,059 - INFO - 	 Batch 1000/1181, 	 loss: 0.4574
+2024-03-04 20:15:49,806 - INFO - 	 Epoch 1 - Training : Accuracy  = 0.8718, F1-Score Micro = 0.7145, F1-Score Macro = 0.5762
+2024-03-04 20:16:25,394 - INFO - 	 Epoch 1 - Testing : Accuracy Micro  = 0.8634, F1-Score Micro = 0.7002, F1-Score Macro = 0.5718
+2024-03-04 20:16:25,895 - INFO - 	 Save the best model at epoch(s) 1 - saved output: ../output-fine-tuning/bioBERT_v1.1-ce-False-False-False.pth
+2024-03-04 20:16:26,183 - INFO - 	 Batch 0/1181, 	 loss: 0.2311
+2024-03-04 20:17:23,800 - INFO - 	 Batch 200/1181, 	 loss: 0.1193
+2024-03-04 20:18:21,448 - INFO - 	 Batch 400/1181, 	 loss: 0.1565
+2024-03-04 20:19:19,103 - INFO - 	 Batch 600/1181, 	 loss: 0.2952
+2024-03-04 20:20:16,779 - INFO - 	 Batch 800/1181, 	 loss: 0.3246
+2024-03-04 20:21:14,445 - INFO - 	 Batch 1000/1181, 	 loss: 0.2222
+2024-03-04 20:22:06,240 - INFO - 	 Epoch 2 - Training : Accuracy  = 0.9073, F1-Score Micro = 0.8096, F1-Score Macro = 0.6658
+2024-03-04 20:22:41,837 - INFO - 	 Epoch 2 - Testing : Accuracy Micro  = 0.8568, F1-Score Micro = 0.6788, F1-Score Macro = 0.5369
+2024-03-04 20:22:42,126 - INFO - 	 Batch 0/1181, 	 loss: 0.0930
+2024-03-04 20:23:39,750 - INFO - 	 Batch 200/1181, 	 loss: 0.2931
+2024-03-04 20:24:37,382 - INFO - 	 Batch 400/1181, 	 loss: 0.2329
+2024-03-04 20:25:35,017 - INFO - 	 Batch 600/1181, 	 loss: 0.0606
+2024-03-04 20:26:32,654 - INFO - 	 Batch 800/1181, 	 loss: 0.2741
+2024-03-04 20:27:30,254 - INFO - 	 Batch 1000/1181, 	 loss: 0.2872
+2024-03-04 20:28:22,018 - INFO - 	 Epoch 3 - Training : Accuracy  = 0.9296, F1-Score Micro = 0.8568, F1-Score Macro = 0.7139
+2024-03-04 20:28:57,605 - INFO - 	 Epoch 3 - Testing : Accuracy Micro  = 0.8370, F1-Score Micro = 0.6468, F1-Score Macro = 0.5253
+2024-03-04 20:28:57,605 - INFO - Best statistic for testing: 0.7002302593659945
+2024-03-04 20:29:06,370 - INFO - 	 ########################################################## 
+
+2024-03-04 20:29:06,370 - INFO - 			INFOMATION OF CONFIGURATION:
+2024-03-04 20:29:06,370 - INFO - Namespace(based_process=False, batch_size=8, data_lemma=False, data_path='../Medical-Abstracts-TC-Corpus', epochs=3, learning_rate=5e-05, loss_type='ce', max_length=512, model_dir='../pre-train', model_pretrain='alBERT_base_v2', output_dir='../output-fine-tuning', padding=True, reduce_gamma=0.2, reduce_step_size=2, scheduler=False, step_per_epoch=200, threshold=0.5, truncate=True)
+2024-03-04 20:29:06,370 - INFO - 	 Loading and Processing training data. 
+
+2024-03-04 20:29:06,370 - INFO - *** MedicalTextDataLoader: Data path: ../Medical-Abstracts-TC-Corpus
+2024-03-04 20:29:06,370 - INFO - *** MedicalTextDataLoader: Data preprocess: preprocessed-medical_tc_train.csv
+2024-03-04 20:29:06,689 - INFO - *** MedicalTextDataLoader: Loaded and process with 'medical_abstract' column
+2024-03-04 20:29:06,692 - INFO - 	 Loading and Processing testing data. 
+
+2024-03-04 20:29:06,692 - INFO - *** MedicalTextDataLoader: Data path: ../Medical-Abstracts-TC-Corpus
+2024-03-04 20:29:06,692 - INFO - *** MedicalTextDataLoader: Data preprocess: preprocessed-medical_tc_test.csv
+2024-03-04 20:29:06,785 - INFO - *** MedicalTextDataLoader: Loaded and process with 'medical_abstract' column
+2024-03-04 20:29:06,823 - INFO - *** MedicalTextOptimizeLoss: MedicalText Optimization loss creating...
+2024-03-04 20:29:09,389 - INFO - *** MedicalTextOptimizeLoss: MedicalText Optimization loss was loaded.
+2024-03-04 20:29:09,389 - INFO - *** MedicalTextOptimizeLoss: Successfully created initialize_optimizer with scheduler: False
+2024-03-04 20:29:27,668 - INFO - *** MedicalTextClassifier: Successfully created train-test DataLoader
+2024-03-04 20:29:27,668 - INFO - *** MedicalTextClassifier: Training and Evaluating...
+2024-03-04 20:29:28,065 - INFO - 	 Batch 0/1181, 	 loss: 0.6762
+2024-03-04 20:30:27,651 - INFO - 	 Batch 200/1181, 	 loss: 0.4957
+2024-03-04 20:31:27,341 - INFO - 	 Batch 400/1181, 	 loss: 0.5250
+2024-03-04 20:32:27,171 - INFO - 	 Batch 600/1181, 	 loss: 0.5023
+2024-03-04 20:33:27,000 - INFO - 	 Batch 800/1181, 	 loss: 0.5403
+2024-03-04 20:34:26,823 - INFO - 	 Batch 1000/1181, 	 loss: 0.4508
+2024-03-04 20:35:20,593 - INFO - 	 Epoch 1 - Training : Accuracy  = 0.7525, F1-Score Micro = 0.0281, F1-Score Macro = 0.0121
+2024-03-04 20:35:58,999 - INFO - 	 Epoch 1 - Testing : Accuracy Micro  = 0.7903, F1-Score Micro = 0.0030, F1-Score Macro = 0.0011
+2024-03-04 20:35:59,073 - INFO - 	 Save the best model at epoch(s) 1 - saved output: ../output-fine-tuning/alBERT_base_v2-ce-False-False-False.pth
+2024-03-04 20:35:59,372 - INFO - 	 Batch 0/1181, 	 loss: 0.5227
+2024-03-04 20:36:59,169 - INFO - 	 Batch 200/1181, 	 loss: 0.4881
+2024-03-04 20:37:58,914 - INFO - 	 Batch 400/1181, 	 loss: 0.5131
+2024-03-04 20:38:58,654 - INFO - 	 Batch 600/1181, 	 loss: 0.5080
+2024-03-04 20:39:58,432 - INFO - 	 Batch 800/1181, 	 loss: 0.5063
+2024-03-04 20:40:58,295 - INFO - 	 Batch 1000/1181, 	 loss: 0.5158
+2024-03-04 20:41:51,935 - INFO - 	 Epoch 2 - Training : Accuracy  = 0.7534, F1-Score Micro = 0.0184, F1-Score Macro = 0.0079
+2024-03-04 20:42:30,315 - INFO - 	 Epoch 2 - Testing : Accuracy Micro  = 0.7822, F1-Score Micro = 0.0838, F1-Score Macro = 0.0353
+2024-03-04 20:42:30,414 - INFO - 	 Save the best model at epoch(s) 2 - saved output: ../output-fine-tuning/alBERT_base_v2-ce-False-False-False.pth
+2024-03-04 20:42:30,715 - INFO - 	 Batch 0/1181, 	 loss: 0.4977
+2024-03-04 20:43:30,520 - INFO - 	 Batch 200/1181, 	 loss: 0.5559
+2024-03-04 20:44:30,361 - INFO - 	 Batch 400/1181, 	 loss: 0.6038
+2024-03-04 20:45:30,161 - INFO - 	 Batch 600/1181, 	 loss: 0.4138
+2024-03-04 20:46:29,923 - INFO - 	 Batch 800/1181, 	 loss: 0.4814
+2024-03-04 20:47:29,739 - INFO - 	 Batch 1000/1181, 	 loss: 0.4521
+2024-03-04 20:48:23,379 - INFO - 	 Epoch 3 - Training : Accuracy  = 0.7540, F1-Score Micro = 0.0229, F1-Score Macro = 0.0105
+2024-03-04 20:49:01,756 - INFO - 	 Epoch 3 - Testing : Accuracy Micro  = 0.7865, F1-Score Micro = 0.0208, F1-Score Macro = 0.0105
+2024-03-04 20:49:01,757 - INFO - Best statistic for testing: 0.08378328530259363
+2024-03-04 20:49:10,259 - INFO - 	 ########################################################## 
+
+2024-03-04 20:49:10,259 - INFO - 			INFOMATION OF CONFIGURATION:
+2024-03-04 20:49:10,259 - INFO - Namespace(based_process=False, batch_size=8, data_lemma=False, data_path='../Medical-Abstracts-TC-Corpus', epochs=3, learning_rate=5e-05, loss_type='ce', max_length=512, model_dir='../pre-train', model_pretrain='bluebert_pubmed_uncased', output_dir='../output-fine-tuning', padding=True, reduce_gamma=0.2, reduce_step_size=2, scheduler=False, step_per_epoch=200, threshold=0.5, truncate=True)
+2024-03-04 20:49:10,259 - INFO - 	 Loading and Processing training data. 
+
+2024-03-04 20:49:10,259 - INFO - *** MedicalTextDataLoader: Data path: ../Medical-Abstracts-TC-Corpus
+2024-03-04 20:49:10,259 - INFO - *** MedicalTextDataLoader: Data preprocess: preprocessed-medical_tc_train.csv
+2024-03-04 20:49:10,579 - INFO - *** MedicalTextDataLoader: Loaded and process with 'medical_abstract' column
+2024-03-04 20:49:10,582 - INFO - 	 Loading and Processing testing data. 
+
+2024-03-04 20:49:10,582 - INFO - *** MedicalTextDataLoader: Data path: ../Medical-Abstracts-TC-Corpus
+2024-03-04 20:49:10,582 - INFO - *** MedicalTextDataLoader: Data preprocess: preprocessed-medical_tc_test.csv
+2024-03-04 20:49:10,675 - INFO - *** MedicalTextDataLoader: Loaded and process with 'medical_abstract' column
+2024-03-04 20:49:10,712 - INFO - *** MedicalTextOptimizeLoss: MedicalText Optimization loss creating...
+2024-03-04 20:49:14,101 - INFO - *** MedicalTextOptimizeLoss: MedicalText Optimization loss was loaded.
+2024-03-04 20:49:14,102 - INFO - *** MedicalTextOptimizeLoss: Successfully created initialize_optimizer with scheduler: False
+2024-03-04 20:49:55,098 - INFO - *** MedicalTextClassifier: Successfully created train-test DataLoader
+2024-03-04 20:49:55,098 - INFO - *** MedicalTextClassifier: Training and Evaluating...
+2024-03-04 20:49:55,467 - INFO - 	 Batch 0/1181, 	 loss: 0.6721
+2024-03-04 20:50:52,491 - INFO - 	 Batch 200/1181, 	 loss: 0.3531
+2024-03-04 20:51:49,873 - INFO - 	 Batch 400/1181, 	 loss: 0.2099
+2024-03-04 20:52:47,376 - INFO - 	 Batch 600/1181, 	 loss: 0.2352
+2024-03-04 20:53:44,923 - INFO - 	 Batch 800/1181, 	 loss: 0.1427
+2024-03-04 20:54:42,484 - INFO - 	 Batch 1000/1181, 	 loss: 0.2269
+2024-03-04 20:55:34,178 - INFO - 	 Epoch 1 - Training : Accuracy  = 0.8706, F1-Score Micro = 0.7096, F1-Score Macro = 0.5690
+2024-03-04 20:56:09,743 - INFO - 	 Epoch 1 - Testing : Accuracy Micro  = 0.8554, F1-Score Micro = 0.6767, F1-Score Macro = 0.5520
+2024-03-04 20:56:10,255 - INFO - 	 Save the best model at epoch(s) 1 - saved output: ../output-fine-tuning/bluebert_pubmed_uncased-ce-False-False-False.pth
+2024-03-04 20:56:10,544 - INFO - 	 Batch 0/1181, 	 loss: 0.2226
+2024-03-04 20:57:08,148 - INFO - 	 Batch 200/1181, 	 loss: 0.1968
+2024-03-04 20:58:05,742 - INFO - 	 Batch 400/1181, 	 loss: 0.2045
+2024-03-04 20:59:03,343 - INFO - 	 Batch 600/1181, 	 loss: 0.3180
+2024-03-04 21:00:00,969 - INFO - 	 Batch 800/1181, 	 loss: 0.1858
+2024-03-04 21:00:58,566 - INFO - 	 Batch 1000/1181, 	 loss: 0.1916
+2024-03-04 21:01:50,297 - INFO - 	 Epoch 2 - Training : Accuracy  = 0.9073, F1-Score Micro = 0.8088, F1-Score Macro = 0.6659
+2024-03-04 21:02:25,884 - INFO - 	 Epoch 2 - Testing : Accuracy Micro  = 0.8527, F1-Score Micro = 0.6766, F1-Score Macro = 0.5468
+2024-03-04 21:02:26,174 - INFO - 	 Batch 0/1181, 	 loss: 0.0991
+2024-03-04 21:03:23,749 - INFO - 	 Batch 200/1181, 	 loss: 0.1852
+2024-03-04 21:04:21,356 - INFO - 	 Batch 400/1181, 	 loss: 0.1679
+2024-03-04 21:05:18,986 - INFO - 	 Batch 600/1181, 	 loss: 0.1045
+2024-03-04 21:06:16,729 - INFO - 	 Batch 800/1181, 	 loss: 0.1420
+2024-03-04 21:07:14,364 - INFO - 	 Batch 1000/1181, 	 loss: 0.0505
+2024-03-04 21:08:06,140 - INFO - 	 Epoch 3 - Training : Accuracy  = 0.9302, F1-Score Micro = 0.8583, F1-Score Macro = 0.7215
+2024-03-04 21:08:41,731 - INFO - 	 Epoch 3 - Testing : Accuracy Micro  = 0.8395, F1-Score Micro = 0.6409, F1-Score Macro = 0.5174
+2024-03-04 21:08:41,731 - INFO - Best statistic for testing: 0.6766579250720463
+2024-03-04 21:08:50,779 - INFO - 	 ########################################################## 
+
+2024-03-04 21:08:50,779 - INFO - 			INFOMATION OF CONFIGURATION:
+2024-03-04 21:08:50,779 - INFO - Namespace(based_process=False, batch_size=8, data_lemma=False, data_path='../Medical-Abstracts-TC-Corpus', epochs=3, learning_rate=5e-05, loss_type='ce', max_length=512, model_dir='../pre-train', model_pretrain='clinicalBERT', output_dir='../output-fine-tuning', padding=True, reduce_gamma=0.2, reduce_step_size=2, scheduler=False, step_per_epoch=200, threshold=0.5, truncate=True)
+2024-03-04 21:08:50,779 - INFO - 	 Loading and Processing training data. 
+
+2024-03-04 21:08:50,779 - INFO - *** MedicalTextDataLoader: Data path: ../Medical-Abstracts-TC-Corpus
+2024-03-04 21:08:50,779 - INFO - *** MedicalTextDataLoader: Data preprocess: preprocessed-medical_tc_train.csv
+2024-03-04 21:08:51,102 - INFO - *** MedicalTextDataLoader: Loaded and process with 'medical_abstract' column
+2024-03-04 21:08:51,104 - INFO - 	 Loading and Processing testing data. 
+
+2024-03-04 21:08:51,104 - INFO - *** MedicalTextDataLoader: Data path: ../Medical-Abstracts-TC-Corpus
+2024-03-04 21:08:51,104 - INFO - *** MedicalTextDataLoader: Data preprocess: preprocessed-medical_tc_test.csv
+2024-03-04 21:08:51,198 - INFO - *** MedicalTextDataLoader: Loaded and process with 'medical_abstract' column
+2024-03-04 21:08:51,236 - INFO - *** MedicalTextOptimizeLoss: MedicalText Optimization loss creating...
+2024-03-04 21:08:54,980 - INFO - *** MedicalTextOptimizeLoss: MedicalText Optimization loss was loaded.
+2024-03-04 21:08:54,981 - INFO - *** MedicalTextOptimizeLoss: Successfully created initialize_optimizer with scheduler: False
+2024-03-04 21:09:36,049 - INFO - *** MedicalTextClassifier: Successfully created train-test DataLoader
+2024-03-04 21:09:36,049 - INFO - *** MedicalTextClassifier: Training and Evaluating...
+2024-03-04 21:09:36,302 - INFO - 	 Batch 0/1181, 	 loss: 0.6954
+2024-03-04 21:10:08,331 - INFO - 	 Batch 200/1181, 	 loss: 0.3117
+2024-03-04 21:10:40,497 - INFO - 	 Batch 400/1181, 	 loss: 0.3526
+2024-03-04 21:11:12,729 - INFO - 	 Batch 600/1181, 	 loss: 0.3062
+2024-03-04 21:11:45,031 - INFO - 	 Batch 800/1181, 	 loss: 0.2687
+2024-03-04 21:12:17,351 - INFO - 	 Batch 1000/1181, 	 loss: 0.4196
+2024-03-04 21:12:46,395 - INFO - 	 Epoch 1 - Training : Accuracy  = 0.8574, F1-Score Micro = 0.6687, F1-Score Macro = 0.5334
+2024-03-04 21:13:04,449 - INFO - 	 Epoch 1 - Testing : Accuracy Micro  = 0.8587, F1-Score Micro = 0.6717, F1-Score Macro = 0.5338
+2024-03-04 21:13:05,155 - INFO - 	 Save the best model at epoch(s) 1 - saved output: ../output-fine-tuning/clinicalBERT-ce-False-False-False.pth
+2024-03-04 21:13:05,318 - INFO - 	 Batch 0/1181, 	 loss: 0.1148
+2024-03-04 21:13:37,664 - INFO - 	 Batch 200/1181, 	 loss: 0.1767
+2024-03-04 21:14:10,010 - INFO - 	 Batch 400/1181, 	 loss: 0.1660
+2024-03-04 21:14:42,367 - INFO - 	 Batch 600/1181, 	 loss: 0.1984
+2024-03-04 21:15:14,728 - INFO - 	 Batch 800/1181, 	 loss: 0.1872
+2024-03-04 21:15:47,075 - INFO - 	 Batch 1000/1181, 	 loss: 0.3768
+2024-03-04 21:16:16,127 - INFO - 	 Epoch 2 - Training : Accuracy  = 0.8951, F1-Score Micro = 0.7798, F1-Score Macro = 0.6331
+2024-03-04 21:16:34,176 - INFO - 	 Epoch 2 - Testing : Accuracy Micro  = 0.8533, F1-Score Micro = 0.6637, F1-Score Macro = 0.5276
+2024-03-04 21:16:34,340 - INFO - 	 Batch 0/1181, 	 loss: 0.5352
+2024-03-04 21:17:06,676 - INFO - 	 Batch 200/1181, 	 loss: 0.1476
+2024-03-04 21:17:38,996 - INFO - 	 Batch 400/1181, 	 loss: 0.2945
+2024-03-04 21:18:11,327 - INFO - 	 Batch 600/1181, 	 loss: 0.1314
+2024-03-04 21:18:43,670 - INFO - 	 Batch 800/1181, 	 loss: 0.4274
+2024-03-04 21:19:15,998 - INFO - 	 Batch 1000/1181, 	 loss: 0.1185
+2024-03-04 21:19:45,052 - INFO - 	 Epoch 3 - Training : Accuracy  = 0.9152, F1-Score Micro = 0.8263, F1-Score Macro = 0.6819
+2024-03-04 21:20:03,101 - INFO - 	 Epoch 3 - Testing : Accuracy Micro  = 0.8447, F1-Score Micro = 0.6502, F1-Score Macro = 0.5229
+2024-03-04 21:20:03,102 - INFO - Best statistic for testing: 0.671678386167147
+2024-03-04 21:20:11,947 - INFO - 	 ########################################################## 
+
+2024-03-04 21:20:11,947 - INFO - 			INFOMATION OF CONFIGURATION:
+2024-03-04 21:20:11,947 - INFO - Namespace(based_process=False, batch_size=8, data_lemma=False, data_path='../Medical-Abstracts-TC-Corpus', epochs=3, learning_rate=5e-05, loss_type='fcl', max_length=512, model_dir='../pre-train', model_pretrain='bert-base-uncased', output_dir='../output-fine-tuning', padding=True, reduce_gamma=0.2, reduce_step_size=2, scheduler=False, step_per_epoch=200, threshold=0.5, truncate=True)
+2024-03-04 21:20:11,947 - INFO - 	 Loading and Processing training data. 
+
+2024-03-04 21:20:11,947 - INFO - *** MedicalTextDataLoader: Data path: ../Medical-Abstracts-TC-Corpus
+2024-03-04 21:20:11,947 - INFO - *** MedicalTextDataLoader: Data preprocess: preprocessed-medical_tc_train.csv
+2024-03-04 21:20:12,269 - INFO - *** MedicalTextDataLoader: Loaded and process with 'medical_abstract' column
+2024-03-04 21:20:12,272 - INFO - 	 Loading and Processing testing data. 
+
+2024-03-04 21:20:12,272 - INFO - *** MedicalTextDataLoader: Data path: ../Medical-Abstracts-TC-Corpus
+2024-03-04 21:20:12,272 - INFO - *** MedicalTextDataLoader: Data preprocess: preprocessed-medical_tc_test.csv
+2024-03-04 21:20:12,365 - INFO - *** MedicalTextDataLoader: Loaded and process with 'medical_abstract' column
+2024-03-04 21:20:12,403 - INFO - *** MedicalTextOptimizeLoss: MedicalText Optimization loss creating...
+2024-03-04 21:20:15,810 - INFO - *** MedicalTextOptimizeLoss: MedicalText Optimization loss was loaded.
+2024-03-04 21:20:15,811 - INFO - *** MedicalTextOptimizeLoss: Successfully created initialize_optimizer with scheduler: False
+2024-03-04 21:20:56,622 - INFO - *** MedicalTextClassifier: Successfully created train-test DataLoader
+2024-03-04 21:20:56,622 - INFO - *** MedicalTextClassifier: Training and Evaluating...
+2024-03-04 21:20:56,985 - INFO - 	 Batch 0/1181, 	 loss: 0.1997
+2024-03-04 21:21:54,007 - INFO - 	 Batch 200/1181, 	 loss: 0.0998
+2024-03-04 21:22:51,386 - INFO - 	 Batch 400/1181, 	 loss: 0.0854
+2024-03-04 21:23:48,872 - INFO - 	 Batch 600/1181, 	 loss: 0.1187
+2024-03-04 21:24:46,475 - INFO - 	 Batch 800/1181, 	 loss: 0.0446
+2024-03-04 21:25:44,185 - INFO - 	 Batch 1000/1181, 	 loss: 0.0852
+2024-03-04 21:26:35,915 - INFO - 	 Epoch 1 - Training : Accuracy  = 0.8542, F1-Score Micro = 0.6703, F1-Score Macro = 0.5276
+2024-03-04 21:27:11,507 - INFO - 	 Epoch 1 - Testing : Accuracy Micro  = 0.8527, F1-Score Micro = 0.6567, F1-Score Macro = 0.5104
+2024-03-04 21:27:12,010 - INFO - 	 Save the best model at epoch(s) 1 - saved output: ../output-fine-tuning/bert-base-uncased-fcl-False-False-False.pth
+2024-03-04 21:27:12,299 - INFO - 	 Batch 0/1181, 	 loss: 0.0453
+2024-03-04 21:28:09,864 - INFO - 	 Batch 200/1181, 	 loss: 0.0513
+2024-03-04 21:29:07,435 - INFO - 	 Batch 400/1181, 	 loss: 0.0575
+2024-03-04 21:30:05,023 - INFO - 	 Batch 600/1181, 	 loss: 0.0409
+2024-03-04 21:31:02,594 - INFO - 	 Batch 800/1181, 	 loss: 0.0945
+2024-03-04 21:32:00,184 - INFO - 	 Batch 1000/1181, 	 loss: 0.0809
+2024-03-04 21:32:51,918 - INFO - 	 Epoch 2 - Training : Accuracy  = 0.8904, F1-Score Micro = 0.7711, F1-Score Macro = 0.6314
+2024-03-04 21:33:27,507 - INFO - 	 Epoch 2 - Testing : Accuracy Micro  = 0.8439, F1-Score Micro = 0.6610, F1-Score Macro = 0.5289
+2024-03-04 21:33:28,244 - INFO - 	 Save the best model at epoch(s) 2 - saved output: ../output-fine-tuning/bert-base-uncased-fcl-False-False-False.pth
+2024-03-04 21:33:28,533 - INFO - 	 Batch 0/1181, 	 loss: 0.0860
+2024-03-04 21:34:26,068 - INFO - 	 Batch 200/1181, 	 loss: 0.0975
+2024-03-04 21:35:23,612 - INFO - 	 Batch 400/1181, 	 loss: 0.0507
+2024-03-04 21:36:21,153 - INFO - 	 Batch 600/1181, 	 loss: 0.0500
+2024-03-04 21:37:18,730 - INFO - 	 Batch 800/1181, 	 loss: 0.0359
+2024-03-04 21:38:16,295 - INFO - 	 Batch 1000/1181, 	 loss: 0.0514
+2024-03-04 21:39:08,018 - INFO - 	 Epoch 3 - Training : Accuracy  = 0.9144, F1-Score Micro = 0.8245, F1-Score Macro = 0.6731
+2024-03-04 21:39:43,611 - INFO - 	 Epoch 3 - Testing : Accuracy Micro  = 0.8287, F1-Score Micro = 0.6381, F1-Score Macro = 0.5272
+2024-03-04 21:39:43,611 - INFO - Best statistic for testing: 0.6609682997118153
+2024-03-04 21:39:52,281 - INFO - 	 ########################################################## 
+
+2024-03-04 21:39:52,282 - INFO - 			INFOMATION OF CONFIGURATION:
+2024-03-04 21:39:52,282 - INFO - Namespace(based_process=False, batch_size=8, data_lemma=False, data_path='../Medical-Abstracts-TC-Corpus', epochs=3, learning_rate=5e-05, loss_type='fcl', max_length=512, model_dir='../pre-train', model_pretrain='roberta-base', output_dir='../output-fine-tuning', padding=True, reduce_gamma=0.2, reduce_step_size=2, scheduler=False, step_per_epoch=200, threshold=0.5, truncate=True)
+2024-03-04 21:39:52,282 - INFO - 	 Loading and Processing training data. 
+
+2024-03-04 21:39:52,282 - INFO - *** MedicalTextDataLoader: Data path: ../Medical-Abstracts-TC-Corpus
+2024-03-04 21:39:52,282 - INFO - *** MedicalTextDataLoader: Data preprocess: preprocessed-medical_tc_train.csv
+2024-03-04 21:39:52,602 - INFO - *** MedicalTextDataLoader: Loaded and process with 'medical_abstract' column
+2024-03-04 21:39:52,604 - INFO - 	 Loading and Processing testing data. 
+
+2024-03-04 21:39:52,605 - INFO - *** MedicalTextDataLoader: Data path: ../Medical-Abstracts-TC-Corpus
+2024-03-04 21:39:52,605 - INFO - *** MedicalTextDataLoader: Data preprocess: preprocessed-medical_tc_test.csv
+2024-03-04 21:39:52,698 - INFO - *** MedicalTextDataLoader: Loaded and process with 'medical_abstract' column
+2024-03-04 21:39:52,736 - INFO - *** MedicalTextOptimizeLoss: MedicalText Optimization loss creating...
+2024-03-04 21:39:56,376 - INFO - *** MedicalTextOptimizeLoss: MedicalText Optimization loss was loaded.
+2024-03-04 21:39:56,377 - INFO - *** MedicalTextOptimizeLoss: Successfully created initialize_optimizer with scheduler: False
+2024-03-04 21:40:10,586 - INFO - *** MedicalTextClassifier: Successfully created train-test DataLoader
+2024-03-04 21:40:10,586 - INFO - *** MedicalTextClassifier: Training and Evaluating...
+2024-03-04 21:40:10,932 - INFO - 	 Batch 0/1181, 	 loss: 0.1706
+2024-03-04 21:41:08,648 - INFO - 	 Batch 200/1181, 	 loss: 0.1187
+2024-03-04 21:42:06,664 - INFO - 	 Batch 400/1181, 	 loss: 0.1059
+2024-03-04 21:43:04,737 - INFO - 	 Batch 600/1181, 	 loss: 0.0749
+2024-03-04 21:44:02,829 - INFO - 	 Batch 800/1181, 	 loss: 0.0819
+2024-03-04 21:45:00,926 - INFO - 	 Batch 1000/1181, 	 loss: 0.0605
+2024-03-04 21:45:53,129 - INFO - 	 Epoch 1 - Training : Accuracy  = 0.8390, F1-Score Micro = 0.6048, F1-Score Macro = 0.4679
+2024-03-04 21:46:28,715 - INFO - 	 Epoch 1 - Testing : Accuracy Micro  = 0.8455, F1-Score Micro = 0.6313, F1-Score Macro = 0.4883
+2024-03-04 21:46:29,345 - INFO - 	 Save the best model at epoch(s) 1 - saved output: ../output-fine-tuning/roberta-base-fcl-False-False-False.pth
+2024-03-04 21:46:29,636 - INFO - 	 Batch 0/1181, 	 loss: 0.0634
+2024-03-04 21:47:27,720 - INFO - 	 Batch 200/1181, 	 loss: 0.0394
+2024-03-04 21:48:25,766 - INFO - 	 Batch 400/1181, 	 loss: 0.1102
+2024-03-04 21:49:23,798 - INFO - 	 Batch 600/1181, 	 loss: 0.0802
+2024-03-04 21:50:21,834 - INFO - 	 Batch 800/1181, 	 loss: 0.0703
+2024-03-04 21:51:19,884 - INFO - 	 Batch 1000/1181, 	 loss: 0.0777
+2024-03-04 21:52:12,041 - INFO - 	 Epoch 2 - Training : Accuracy  = 0.8594, F1-Score Micro = 0.6838, F1-Score Macro = 0.5380
+2024-03-04 21:52:47,613 - INFO - 	 Epoch 2 - Testing : Accuracy Micro  = 0.8422, F1-Score Micro = 0.6392, F1-Score Macro = 0.5065
+2024-03-04 21:52:48,487 - INFO - 	 Save the best model at epoch(s) 2 - saved output: ../output-fine-tuning/roberta-base-fcl-False-False-False.pth
+2024-03-04 21:52:48,780 - INFO - 	 Batch 0/1181, 	 loss: 0.1276
+2024-03-04 21:53:46,868 - INFO - 	 Batch 200/1181, 	 loss: 0.0593
+2024-03-04 21:54:44,949 - INFO - 	 Batch 400/1181, 	 loss: 0.0836
+2024-03-04 21:55:43,024 - INFO - 	 Batch 600/1181, 	 loss: 0.1347
+2024-03-04 21:56:41,055 - INFO - 	 Batch 800/1181, 	 loss: 0.1317
+2024-03-04 21:57:39,071 - INFO - 	 Batch 1000/1181, 	 loss: 0.1290
+2024-03-04 21:58:31,203 - INFO - 	 Epoch 3 - Training : Accuracy  = 0.8069, F1-Score Micro = 0.3283, F1-Score Macro = 0.2596
+2024-03-04 21:59:06,750 - INFO - 	 Epoch 3 - Testing : Accuracy Micro  = 0.7842, F1-Score Micro = 0.0823, F1-Score Macro = 0.0330
+2024-03-04 21:59:06,751 - INFO - Best statistic for testing: 0.6391878962536024
+2024-03-04 21:59:15,339 - INFO - 	 ########################################################## 
+
+2024-03-04 21:59:15,339 - INFO - 			INFOMATION OF CONFIGURATION:
+2024-03-04 21:59:15,339 - INFO - Namespace(based_process=False, batch_size=8, data_lemma=False, data_path='../Medical-Abstracts-TC-Corpus', epochs=3, learning_rate=5e-05, loss_type='fcl', max_length=512, model_dir='../pre-train', model_pretrain='bioBERT_v1.1', output_dir='../output-fine-tuning', padding=True, reduce_gamma=0.2, reduce_step_size=2, scheduler=False, step_per_epoch=200, threshold=0.5, truncate=True)
+2024-03-04 21:59:15,339 - INFO - 	 Loading and Processing training data. 
+
+2024-03-04 21:59:15,339 - INFO - *** MedicalTextDataLoader: Data path: ../Medical-Abstracts-TC-Corpus
+2024-03-04 21:59:15,339 - INFO - *** MedicalTextDataLoader: Data preprocess: preprocessed-medical_tc_train.csv
+2024-03-04 21:59:15,662 - INFO - *** MedicalTextDataLoader: Loaded and process with 'medical_abstract' column
+2024-03-04 21:59:15,664 - INFO - 	 Loading and Processing testing data. 
+
+2024-03-04 21:59:15,664 - INFO - *** MedicalTextDataLoader: Data path: ../Medical-Abstracts-TC-Corpus
+2024-03-04 21:59:15,664 - INFO - *** MedicalTextDataLoader: Data preprocess: preprocessed-medical_tc_test.csv
+2024-03-04 21:59:15,758 - INFO - *** MedicalTextDataLoader: Loaded and process with 'medical_abstract' column
+2024-03-04 21:59:15,795 - INFO - *** MedicalTextOptimizeLoss: MedicalText Optimization loss creating...
+2024-03-04 21:59:19,274 - INFO - *** MedicalTextOptimizeLoss: MedicalText Optimization loss was loaded.
+2024-03-04 21:59:19,275 - INFO - *** MedicalTextOptimizeLoss: Successfully created initialize_optimizer with scheduler: False
+2024-03-04 21:59:51,883 - INFO - *** MedicalTextClassifier: Successfully created train-test DataLoader
+2024-03-04 21:59:51,883 - INFO - *** MedicalTextClassifier: Training and Evaluating...
+2024-03-04 21:59:52,282 - INFO - 	 Batch 0/1181, 	 loss: 0.2318
+2024-03-04 22:00:49,386 - INFO - 	 Batch 200/1181, 	 loss: 0.0844
+2024-03-04 22:01:46,805 - INFO - 	 Batch 400/1181, 	 loss: 0.1010
+2024-03-04 22:02:44,328 - INFO - 	 Batch 600/1181, 	 loss: 0.0299
+2024-03-04 22:03:41,862 - INFO - 	 Batch 800/1181, 	 loss: 0.0724
+2024-03-04 22:04:39,399 - INFO - 	 Batch 1000/1181, 	 loss: 0.0958
+2024-03-04 22:05:31,100 - INFO - 	 Epoch 1 - Training : Accuracy  = 0.8724, F1-Score Micro = 0.7231, F1-Score Macro = 0.5821
+2024-03-04 22:06:06,657 - INFO - 	 Epoch 1 - Testing : Accuracy Micro  = 0.8617, F1-Score Micro = 0.6810, F1-Score Macro = 0.5566
+2024-03-04 22:06:07,170 - INFO - 	 Save the best model at epoch(s) 1 - saved output: ../output-fine-tuning/bioBERT_v1.1-fcl-False-False-False.pth
+2024-03-04 22:06:07,458 - INFO - 	 Batch 0/1181, 	 loss: 0.0757
+2024-03-04 22:07:04,993 - INFO - 	 Batch 200/1181, 	 loss: 0.1145
+2024-03-04 22:08:02,541 - INFO - 	 Batch 400/1181, 	 loss: 0.0316
+2024-03-04 22:09:00,085 - INFO - 	 Batch 600/1181, 	 loss: 0.0615
+2024-03-04 22:09:57,610 - INFO - 	 Batch 800/1181, 	 loss: 0.0635
+2024-03-04 22:10:55,166 - INFO - 	 Batch 1000/1181, 	 loss: 0.0346
+2024-03-04 22:11:46,836 - INFO - 	 Epoch 2 - Training : Accuracy  = 0.9080, F1-Score Micro = 0.8105, F1-Score Macro = 0.6745
+2024-03-04 22:12:22,391 - INFO - 	 Epoch 2 - Testing : Accuracy Micro  = 0.8524, F1-Score Micro = 0.6674, F1-Score Macro = 0.5339
+2024-03-04 22:12:22,681 - INFO - 	 Batch 0/1181, 	 loss: 0.0272
+2024-03-04 22:13:20,212 - INFO - 	 Batch 200/1181, 	 loss: 0.0642
+2024-03-04 22:14:17,766 - INFO - 	 Batch 400/1181, 	 loss: 0.0546
+2024-03-04 22:15:15,452 - INFO - 	 Batch 600/1181, 	 loss: 0.0377
+2024-03-04 22:16:13,130 - INFO - 	 Batch 800/1181, 	 loss: 0.0644
+2024-03-04 22:17:10,785 - INFO - 	 Batch 1000/1181, 	 loss: 0.0256
+2024-03-04 22:18:02,510 - INFO - 	 Epoch 3 - Training : Accuracy  = 0.9294, F1-Score Micro = 0.8566, F1-Score Macro = 0.7142
+2024-03-04 22:18:38,074 - INFO - 	 Epoch 3 - Testing : Accuracy Micro  = 0.8362, F1-Score Micro = 0.6504, F1-Score Macro = 0.5251
+2024-03-04 22:18:38,074 - INFO - Best statistic for testing: 0.681040634005764
+2024-03-04 22:18:46,837 - INFO - 	 ########################################################## 
+
+2024-03-04 22:18:46,838 - INFO - 			INFOMATION OF CONFIGURATION:
+2024-03-04 22:18:46,838 - INFO - Namespace(based_process=False, batch_size=8, data_lemma=False, data_path='../Medical-Abstracts-TC-Corpus', epochs=3, learning_rate=5e-05, loss_type='fcl', max_length=512, model_dir='../pre-train', model_pretrain='alBERT_base_v2', output_dir='../output-fine-tuning', padding=True, reduce_gamma=0.2, reduce_step_size=2, scheduler=False, step_per_epoch=200, threshold=0.5, truncate=True)
+2024-03-04 22:18:46,838 - INFO - 	 Loading and Processing training data. 
+
+2024-03-04 22:18:46,838 - INFO - *** MedicalTextDataLoader: Data path: ../Medical-Abstracts-TC-Corpus
+2024-03-04 22:18:46,838 - INFO - *** MedicalTextDataLoader: Data preprocess: preprocessed-medical_tc_train.csv
+2024-03-04 22:18:47,158 - INFO - *** MedicalTextDataLoader: Loaded and process with 'medical_abstract' column
+2024-03-04 22:18:47,161 - INFO - 	 Loading and Processing testing data. 
+
+2024-03-04 22:18:47,161 - INFO - *** MedicalTextDataLoader: Data path: ../Medical-Abstracts-TC-Corpus
+2024-03-04 22:18:47,161 - INFO - *** MedicalTextDataLoader: Data preprocess: preprocessed-medical_tc_test.csv
+2024-03-04 22:18:47,254 - INFO - *** MedicalTextDataLoader: Loaded and process with 'medical_abstract' column
+2024-03-04 22:18:47,291 - INFO - *** MedicalTextOptimizeLoss: MedicalText Optimization loss creating...
+2024-03-04 22:18:49,949 - INFO - *** MedicalTextOptimizeLoss: MedicalText Optimization loss was loaded.
+2024-03-04 22:18:49,949 - INFO - *** MedicalTextOptimizeLoss: Successfully created initialize_optimizer with scheduler: False
+2024-03-04 22:19:08,038 - INFO - *** MedicalTextClassifier: Successfully created train-test DataLoader
+2024-03-04 22:19:08,038 - INFO - *** MedicalTextClassifier: Training and Evaluating...
+2024-03-04 22:19:08,442 - INFO - 	 Batch 0/1181, 	 loss: 0.2732
+2024-03-04 22:20:08,283 - INFO - 	 Batch 200/1181, 	 loss: 0.0990
+2024-03-04 22:21:08,351 - INFO - 	 Batch 400/1181, 	 loss: 0.1036
+2024-03-04 22:22:08,509 - INFO - 	 Batch 600/1181, 	 loss: 0.1070
+2024-03-04 22:23:08,628 - INFO - 	 Batch 800/1181, 	 loss: 0.1425
+2024-03-04 22:24:08,595 - INFO - 	 Batch 1000/1181, 	 loss: 0.1390
+2024-03-04 22:25:02,427 - INFO - 	 Epoch 1 - Training : Accuracy  = 0.7967, F1-Score Micro = 0.4517, F1-Score Macro = 0.3115
+2024-03-04 22:25:41,013 - INFO - 	 Epoch 1 - Testing : Accuracy Micro  = 0.7880, F1-Score Micro = 0.4695, F1-Score Macro = 0.2706
+2024-03-04 22:25:41,086 - INFO - 	 Save the best model at epoch(s) 1 - saved output: ../output-fine-tuning/alBERT_base_v2-fcl-False-False-False.pth
+2024-03-04 22:25:41,385 - INFO - 	 Batch 0/1181, 	 loss: 0.1150
+2024-03-04 22:26:41,432 - INFO - 	 Batch 200/1181, 	 loss: 0.1229
+2024-03-04 22:27:41,343 - INFO - 	 Batch 400/1181, 	 loss: 0.1344
+2024-03-04 22:28:41,341 - INFO - 	 Batch 600/1181, 	 loss: 0.1344
+2024-03-04 22:29:41,271 - INFO - 	 Batch 800/1181, 	 loss: 0.1204
+2024-03-04 22:30:41,206 - INFO - 	 Batch 1000/1181, 	 loss: 0.1407
+2024-03-04 22:31:35,040 - INFO - 	 Epoch 2 - Training : Accuracy  = 0.7731, F1-Score Micro = 0.3244, F1-Score Macro = 0.1887
+2024-03-04 22:32:13,488 - INFO - 	 Epoch 2 - Testing : Accuracy Micro  = 0.8194, F1-Score Micro = 0.5397, F1-Score Macro = 0.3405
+2024-03-04 22:32:13,586 - INFO - 	 Save the best model at epoch(s) 2 - saved output: ../output-fine-tuning/alBERT_base_v2-fcl-False-False-False.pth
+2024-03-04 22:32:13,886 - INFO - 	 Batch 0/1181, 	 loss: 0.1199
+2024-03-04 22:33:13,627 - INFO - 	 Batch 200/1181, 	 loss: 0.0946
+2024-03-04 22:34:13,328 - INFO - 	 Batch 400/1181, 	 loss: 0.1384
+2024-03-04 22:35:13,093 - INFO - 	 Batch 600/1181, 	 loss: 0.1267
+2024-03-04 22:36:12,993 - INFO - 	 Batch 800/1181, 	 loss: 0.1262
+2024-03-04 22:37:12,997 - INFO - 	 Batch 1000/1181, 	 loss: 0.0845
+2024-03-04 22:38:06,833 - INFO - 	 Epoch 3 - Training : Accuracy  = 0.8285, F1-Score Micro = 0.5943, F1-Score Macro = 0.3965
+2024-03-04 22:38:45,290 - INFO - 	 Epoch 3 - Testing : Accuracy Micro  = 0.8264, F1-Score Micro = 0.6148, F1-Score Macro = 0.4821
+2024-03-04 22:38:45,371 - INFO - 	 Save the best model at epoch(s) 3 - saved output: ../output-fine-tuning/alBERT_base_v2-fcl-False-False-False.pth
+2024-03-04 22:38:45,371 - INFO - Best statistic for testing: 0.6148342939481266
+2024-03-04 22:38:53,765 - INFO - 	 ########################################################## 
+
+2024-03-04 22:38:53,766 - INFO - 			INFOMATION OF CONFIGURATION:
+2024-03-04 22:38:53,766 - INFO - Namespace(based_process=False, batch_size=8, data_lemma=False, data_path='../Medical-Abstracts-TC-Corpus', epochs=3, learning_rate=5e-05, loss_type='fcl', max_length=512, model_dir='../pre-train', model_pretrain='bluebert_pubmed_uncased', output_dir='../output-fine-tuning', padding=True, reduce_gamma=0.2, reduce_step_size=2, scheduler=False, step_per_epoch=200, threshold=0.5, truncate=True)
+2024-03-04 22:38:53,766 - INFO - 	 Loading and Processing training data. 
+
+2024-03-04 22:38:53,766 - INFO - *** MedicalTextDataLoader: Data path: ../Medical-Abstracts-TC-Corpus
+2024-03-04 22:38:53,766 - INFO - *** MedicalTextDataLoader: Data preprocess: preprocessed-medical_tc_train.csv
+2024-03-04 22:38:54,089 - INFO - *** MedicalTextDataLoader: Loaded and process with 'medical_abstract' column
+2024-03-04 22:38:54,091 - INFO - 	 Loading and Processing testing data. 
+
+2024-03-04 22:38:54,091 - INFO - *** MedicalTextDataLoader: Data path: ../Medical-Abstracts-TC-Corpus
+2024-03-04 22:38:54,091 - INFO - *** MedicalTextDataLoader: Data preprocess: preprocessed-medical_tc_test.csv
+2024-03-04 22:38:54,185 - INFO - *** MedicalTextDataLoader: Loaded and process with 'medical_abstract' column
+2024-03-04 22:38:54,223 - INFO - *** MedicalTextOptimizeLoss: MedicalText Optimization loss creating...
+2024-03-04 22:38:57,636 - INFO - *** MedicalTextOptimizeLoss: MedicalText Optimization loss was loaded.
+2024-03-04 22:38:57,637 - INFO - *** MedicalTextOptimizeLoss: Successfully created initialize_optimizer with scheduler: False
+2024-03-04 22:39:38,238 - INFO - *** MedicalTextClassifier: Successfully created train-test DataLoader
+2024-03-04 22:39:38,238 - INFO - *** MedicalTextClassifier: Training and Evaluating...
+2024-03-04 22:39:38,629 - INFO - 	 Batch 0/1181, 	 loss: 0.1695
+2024-03-04 22:40:35,604 - INFO - 	 Batch 200/1181, 	 loss: 0.0714
+2024-03-04 22:41:32,916 - INFO - 	 Batch 400/1181, 	 loss: 0.0924
+2024-03-04 22:42:30,370 - INFO - 	 Batch 600/1181, 	 loss: 0.0660
+2024-03-04 22:43:27,841 - INFO - 	 Batch 800/1181, 	 loss: 0.0605
+2024-03-04 22:44:25,353 - INFO - 	 Batch 1000/1181, 	 loss: 0.0563
+2024-03-04 22:45:17,022 - INFO - 	 Epoch 1 - Training : Accuracy  = 0.8716, F1-Score Micro = 0.7161, F1-Score Macro = 0.5799
+2024-03-04 22:45:52,613 - INFO - 	 Epoch 1 - Testing : Accuracy Micro  = 0.8583, F1-Score Micro = 0.6895, F1-Score Macro = 0.5651
+2024-03-04 22:45:53,121 - INFO - 	 Save the best model at epoch(s) 1 - saved output: ../output-fine-tuning/bluebert_pubmed_uncased-fcl-False-False-False.pth
+2024-03-04 22:45:53,411 - INFO - 	 Batch 0/1181, 	 loss: 0.0617
+2024-03-04 22:46:50,934 - INFO - 	 Batch 200/1181, 	 loss: 0.0696
+2024-03-04 22:47:48,459 - INFO - 	 Batch 400/1181, 	 loss: 0.0443
+2024-03-04 22:48:45,973 - INFO - 	 Batch 600/1181, 	 loss: 0.0651
+2024-03-04 22:49:43,497 - INFO - 	 Batch 800/1181, 	 loss: 0.0294
+2024-03-04 22:50:41,004 - INFO - 	 Batch 1000/1181, 	 loss: 0.0480
+2024-03-04 22:51:32,698 - INFO - 	 Epoch 2 - Training : Accuracy  = 0.9073, F1-Score Micro = 0.8094, F1-Score Macro = 0.6672
+2024-03-04 22:52:08,305 - INFO - 	 Epoch 2 - Testing : Accuracy Micro  = 0.8442, F1-Score Micro = 0.6628, F1-Score Macro = 0.5277
+2024-03-04 22:52:08,594 - INFO - 	 Batch 0/1181, 	 loss: 0.0312
+2024-03-04 22:53:06,144 - INFO - 	 Batch 200/1181, 	 loss: 0.0674
+2024-03-04 22:54:03,697 - INFO - 	 Batch 400/1181, 	 loss: 0.0616
+2024-03-04 22:55:01,251 - INFO - 	 Batch 600/1181, 	 loss: 0.0768
+2024-03-04 22:55:58,757 - INFO - 	 Batch 800/1181, 	 loss: 0.0346
+2024-03-04 22:56:56,297 - INFO - 	 Batch 1000/1181, 	 loss: 0.0493
+2024-03-04 22:57:47,974 - INFO - 	 Epoch 3 - Training : Accuracy  = 0.9313, F1-Score Micro = 0.8607, F1-Score Macro = 0.7156
+2024-03-04 22:58:23,573 - INFO - 	 Epoch 3 - Testing : Accuracy Micro  = 0.8356, F1-Score Micro = 0.6389, F1-Score Macro = 0.5111
+2024-03-04 22:58:23,574 - INFO - Best statistic for testing: 0.6895132564841495
+2024-03-04 22:58:32,325 - INFO - 	 ########################################################## 
+
+2024-03-04 22:58:32,325 - INFO - 			INFOMATION OF CONFIGURATION:
+2024-03-04 22:58:32,325 - INFO - Namespace(based_process=False, batch_size=8, data_lemma=False, data_path='../Medical-Abstracts-TC-Corpus', epochs=3, learning_rate=5e-05, loss_type='fcl', max_length=512, model_dir='../pre-train', model_pretrain='clinicalBERT', output_dir='../output-fine-tuning', padding=True, reduce_gamma=0.2, reduce_step_size=2, scheduler=False, step_per_epoch=200, threshold=0.5, truncate=True)
+2024-03-04 22:58:32,325 - INFO - 	 Loading and Processing training data. 
+
+2024-03-04 22:58:32,325 - INFO - *** MedicalTextDataLoader: Data path: ../Medical-Abstracts-TC-Corpus
+2024-03-04 22:58:32,325 - INFO - *** MedicalTextDataLoader: Data preprocess: preprocessed-medical_tc_train.csv
+2024-03-04 22:58:32,646 - INFO - *** MedicalTextDataLoader: Loaded and process with 'medical_abstract' column
+2024-03-04 22:58:32,648 - INFO - 	 Loading and Processing testing data. 
+
+2024-03-04 22:58:32,649 - INFO - *** MedicalTextDataLoader: Data path: ../Medical-Abstracts-TC-Corpus
+2024-03-04 22:58:32,649 - INFO - *** MedicalTextDataLoader: Data preprocess: preprocessed-medical_tc_test.csv
+2024-03-04 22:58:32,742 - INFO - *** MedicalTextDataLoader: Loaded and process with 'medical_abstract' column
+2024-03-04 22:58:32,779 - INFO - *** MedicalTextOptimizeLoss: MedicalText Optimization loss creating...
+2024-03-04 22:58:36,486 - INFO - *** MedicalTextOptimizeLoss: MedicalText Optimization loss was loaded.
+2024-03-04 22:58:36,486 - INFO - *** MedicalTextOptimizeLoss: Successfully created initialize_optimizer with scheduler: False
+2024-03-04 22:59:16,888 - INFO - *** MedicalTextClassifier: Successfully created train-test DataLoader
+2024-03-04 22:59:16,888 - INFO - *** MedicalTextClassifier: Training and Evaluating...
+2024-03-04 22:59:17,134 - INFO - 	 Batch 0/1181, 	 loss: 0.1688
+2024-03-04 22:59:49,191 - INFO - 	 Batch 200/1181, 	 loss: 0.0577
+2024-03-04 23:00:21,371 - INFO - 	 Batch 400/1181, 	 loss: 0.0977
+2024-03-04 23:00:53,626 - INFO - 	 Batch 600/1181, 	 loss: 0.0462
+2024-03-04 23:01:25,937 - INFO - 	 Batch 800/1181, 	 loss: 0.0784
+2024-03-04 23:01:58,261 - INFO - 	 Batch 1000/1181, 	 loss: 0.0547
+2024-03-04 23:02:27,306 - INFO - 	 Epoch 1 - Training : Accuracy  = 0.8591, F1-Score Micro = 0.6836, F1-Score Macro = 0.5441
+2024-03-04 23:02:45,338 - INFO - 	 Epoch 1 - Testing : Accuracy Micro  = 0.8540, F1-Score Micro = 0.6630, F1-Score Macro = 0.5119
+2024-03-04 23:02:46,077 - INFO - 	 Save the best model at epoch(s) 1 - saved output: ../output-fine-tuning/clinicalBERT-fcl-False-False-False.pth
+2024-03-04 23:02:46,239 - INFO - 	 Batch 0/1181, 	 loss: 0.0704
+2024-03-04 23:03:18,579 - INFO - 	 Batch 200/1181, 	 loss: 0.0931
+2024-03-04 23:03:50,919 - INFO - 	 Batch 400/1181, 	 loss: 0.0358
+2024-03-04 23:04:23,255 - INFO - 	 Batch 600/1181, 	 loss: 0.0434
+2024-03-04 23:04:55,598 - INFO - 	 Batch 800/1181, 	 loss: 0.0504
+2024-03-04 23:05:27,929 - INFO - 	 Batch 1000/1181, 	 loss: 0.1131
+2024-03-04 23:05:56,988 - INFO - 	 Epoch 2 - Training : Accuracy  = 0.8940, F1-Score Micro = 0.7787, F1-Score Macro = 0.6339
+2024-03-04 23:06:15,035 - INFO - 	 Epoch 2 - Testing : Accuracy Micro  = 0.8504, F1-Score Micro = 0.6742, F1-Score Macro = 0.5477
+2024-03-04 23:06:16,330 - INFO - 	 Save the best model at epoch(s) 2 - saved output: ../output-fine-tuning/clinicalBERT-fcl-False-False-False.pth
+2024-03-04 23:06:16,494 - INFO - 	 Batch 0/1181, 	 loss: 0.0431
+2024-03-04 23:06:48,839 - INFO - 	 Batch 200/1181, 	 loss: 0.0464
+2024-03-04 23:07:21,187 - INFO - 	 Batch 400/1181, 	 loss: 0.0900
+2024-03-04 23:07:53,542 - INFO - 	 Batch 600/1181, 	 loss: 0.0456
+2024-03-04 23:08:25,907 - INFO - 	 Batch 800/1181, 	 loss: 0.0487
+2024-03-04 23:08:58,258 - INFO - 	 Batch 1000/1181, 	 loss: 0.0542
+2024-03-04 23:09:27,336 - INFO - 	 Epoch 3 - Training : Accuracy  = 0.9148, F1-Score Micro = 0.8251, F1-Score Macro = 0.6806
+2024-03-04 23:09:45,384 - INFO - 	 Epoch 3 - Testing : Accuracy Micro  = 0.8392, F1-Score Micro = 0.6418, F1-Score Macro = 0.5221
+2024-03-04 23:09:45,385 - INFO - Best statistic for testing: 0.6742233429394815
+2024-03-04 23:09:53,870 - INFO - 	 ########################################################## 
+
+2024-03-04 23:09:53,870 - INFO - 			INFOMATION OF CONFIGURATION:
+2024-03-04 23:09:53,870 - INFO - Namespace(based_process=False, batch_size=8, data_lemma=False, data_path='../Medical-Abstracts-TC-Corpus', epochs=3, learning_rate=5e-05, loss_type='lbsmoothingloss', max_length=512, model_dir='../pre-train', model_pretrain='bert-base-uncased', output_dir='../output-fine-tuning', padding=True, reduce_gamma=0.2, reduce_step_size=2, scheduler=False, step_per_epoch=200, threshold=0.5, truncate=True)
+2024-03-04 23:09:53,870 - INFO - 	 Loading and Processing training data. 
+
+2024-03-04 23:09:53,870 - INFO - *** MedicalTextDataLoader: Data path: ../Medical-Abstracts-TC-Corpus
+2024-03-04 23:09:53,870 - INFO - *** MedicalTextDataLoader: Data preprocess: preprocessed-medical_tc_train.csv
+2024-03-04 23:09:54,194 - INFO - *** MedicalTextDataLoader: Loaded and process with 'medical_abstract' column
+2024-03-04 23:09:54,196 - INFO - 	 Loading and Processing testing data. 
+
+2024-03-04 23:09:54,197 - INFO - *** MedicalTextDataLoader: Data path: ../Medical-Abstracts-TC-Corpus
+2024-03-04 23:09:54,197 - INFO - *** MedicalTextDataLoader: Data preprocess: preprocessed-medical_tc_test.csv
+2024-03-04 23:09:54,290 - INFO - *** MedicalTextDataLoader: Loaded and process with 'medical_abstract' column
+2024-03-04 23:09:54,327 - INFO - *** MedicalTextOptimizeLoss: MedicalText Optimization loss creating...
+2024-03-04 23:09:57,724 - INFO - *** MedicalTextOptimizeLoss: MedicalText Optimization loss was loaded.
+2024-03-04 23:09:57,725 - INFO - *** MedicalTextOptimizeLoss: Successfully created initialize_optimizer with scheduler: False
+2024-03-04 23:10:37,727 - INFO - *** MedicalTextClassifier: Successfully created train-test DataLoader
+2024-03-04 23:10:37,727 - INFO - *** MedicalTextClassifier: Training and Evaluating...
+2024-03-04 23:10:38,104 - INFO - 	 Batch 0/1181, 	 loss: 0.2237
+2024-03-04 23:11:35,098 - INFO - 	 Batch 200/1181, 	 loss: 0.1275
+2024-03-04 23:12:32,465 - INFO - 	 Batch 400/1181, 	 loss: 0.1088
+2024-03-04 23:13:29,974 - INFO - 	 Batch 600/1181, 	 loss: 0.1324
+2024-03-04 23:14:27,536 - INFO - 	 Batch 800/1181, 	 loss: 0.1227
+2024-03-04 23:15:25,109 - INFO - 	 Batch 1000/1181, 	 loss: 0.1057
+2024-03-04 23:16:16,824 - INFO - 	 Epoch 1 - Training : Accuracy  = 0.8346, F1-Score Micro = 0.5463, F1-Score Macro = 0.4006
+2024-03-04 23:16:52,435 - INFO - 	 Epoch 1 - Testing : Accuracy Micro  = 0.8501, F1-Score Micro = 0.6090, F1-Score Macro = 0.4531
+2024-03-04 23:16:52,938 - INFO - 	 Save the best model at epoch(s) 1 - saved output: ../output-fine-tuning/bert-base-uncased-lbsmoothingloss-False-False-False.pth
+2024-03-04 23:16:53,227 - INFO - 	 Batch 0/1181, 	 loss: 0.1011
+2024-03-04 23:17:50,803 - INFO - 	 Batch 200/1181, 	 loss: 0.1037
+2024-03-04 23:18:48,354 - INFO - 	 Batch 400/1181, 	 loss: 0.1010
+2024-03-04 23:19:45,961 - INFO - 	 Batch 600/1181, 	 loss: 0.1051
+2024-03-04 23:20:43,600 - INFO - 	 Batch 800/1181, 	 loss: 0.0963
+2024-03-04 23:21:41,245 - INFO - 	 Batch 1000/1181, 	 loss: 0.0907
+2024-03-04 23:22:33,039 - INFO - 	 Epoch 2 - Training : Accuracy  = 0.8778, F1-Score Micro = 0.7095, F1-Score Macro = 0.5494
+2024-03-04 23:23:08,650 - INFO - 	 Epoch 2 - Testing : Accuracy Micro  = 0.8612, F1-Score Micro = 0.6424, F1-Score Macro = 0.4956
+2024-03-04 23:23:09,702 - INFO - 	 Save the best model at epoch(s) 2 - saved output: ../output-fine-tuning/bert-base-uncased-lbsmoothingloss-False-False-False.pth
+2024-03-04 23:23:09,995 - INFO - 	 Batch 0/1181, 	 loss: 0.1078
+2024-03-04 23:24:07,648 - INFO - 	 Batch 200/1181, 	 loss: 0.1181
+2024-03-04 23:25:05,242 - INFO - 	 Batch 400/1181, 	 loss: 0.0930
+2024-03-04 23:26:02,861 - INFO - 	 Batch 600/1181, 	 loss: 0.1019
+2024-03-04 23:27:00,440 - INFO - 	 Batch 800/1181, 	 loss: 0.1062
+2024-03-04 23:27:58,005 - INFO - 	 Batch 1000/1181, 	 loss: 0.0973
+2024-03-04 23:28:49,744 - INFO - 	 Epoch 3 - Training : Accuracy  = 0.9045, F1-Score Micro = 0.7855, F1-Score Macro = 0.6232
+2024-03-04 23:29:25,357 - INFO - 	 Epoch 3 - Testing : Accuracy Micro  = 0.8508, F1-Score Micro = 0.6081, F1-Score Macro = 0.4696
+2024-03-04 23:29:25,358 - INFO - Best statistic for testing: 0.6423959654178676
+2024-03-04 23:29:34,113 - INFO - 	 ########################################################## 
+
+2024-03-04 23:29:34,113 - INFO - 			INFOMATION OF CONFIGURATION:
+2024-03-04 23:29:34,113 - INFO - Namespace(based_process=False, batch_size=8, data_lemma=False, data_path='../Medical-Abstracts-TC-Corpus', epochs=3, learning_rate=5e-05, loss_type='lbsmoothingloss', max_length=512, model_dir='../pre-train', model_pretrain='roberta-base', output_dir='../output-fine-tuning', padding=True, reduce_gamma=0.2, reduce_step_size=2, scheduler=False, step_per_epoch=200, threshold=0.5, truncate=True)
+2024-03-04 23:29:34,114 - INFO - 	 Loading and Processing training data. 
+
+2024-03-04 23:29:34,114 - INFO - *** MedicalTextDataLoader: Data path: ../Medical-Abstracts-TC-Corpus
+2024-03-04 23:29:34,114 - INFO - *** MedicalTextDataLoader: Data preprocess: preprocessed-medical_tc_train.csv
+2024-03-04 23:29:34,429 - INFO - *** MedicalTextDataLoader: Loaded and process with 'medical_abstract' column
+2024-03-04 23:29:34,432 - INFO - 	 Loading and Processing testing data. 
+
+2024-03-04 23:29:34,432 - INFO - *** MedicalTextDataLoader: Data path: ../Medical-Abstracts-TC-Corpus
+2024-03-04 23:29:34,432 - INFO - *** MedicalTextDataLoader: Data preprocess: preprocessed-medical_tc_test.csv
+2024-03-04 23:29:34,525 - INFO - *** MedicalTextDataLoader: Loaded and process with 'medical_abstract' column
+2024-03-04 23:29:34,563 - INFO - *** MedicalTextOptimizeLoss: MedicalText Optimization loss creating...
+2024-03-04 23:29:38,263 - INFO - *** MedicalTextOptimizeLoss: MedicalText Optimization loss was loaded.
+2024-03-04 23:29:38,264 - INFO - *** MedicalTextOptimizeLoss: Successfully created initialize_optimizer with scheduler: False
+2024-03-04 23:29:52,342 - INFO - *** MedicalTextClassifier: Successfully created train-test DataLoader
+2024-03-04 23:29:52,342 - INFO - *** MedicalTextClassifier: Training and Evaluating...
+2024-03-04 23:29:52,687 - INFO - 	 Batch 0/1181, 	 loss: 0.1747
+2024-03-04 23:30:50,437 - INFO - 	 Batch 200/1181, 	 loss: 0.1174
+2024-03-04 23:31:48,470 - INFO - 	 Batch 400/1181, 	 loss: 0.1125
+2024-03-04 23:32:46,566 - INFO - 	 Batch 600/1181, 	 loss: 0.1000
+2024-03-04 23:33:44,636 - INFO - 	 Batch 800/1181, 	 loss: 0.1126
+2024-03-04 23:34:42,688 - INFO - 	 Batch 1000/1181, 	 loss: 0.1018
+2024-03-04 23:35:34,832 - INFO - 	 Epoch 1 - Training : Accuracy  = 0.8310, F1-Score Micro = 0.5285, F1-Score Macro = 0.3817
+2024-03-04 23:36:10,426 - INFO - 	 Epoch 1 - Testing : Accuracy Micro  = 0.8498, F1-Score Micro = 0.5591, F1-Score Macro = 0.3906
+2024-03-04 23:36:11,016 - INFO - 	 Save the best model at epoch(s) 1 - saved output: ../output-fine-tuning/roberta-base-lbsmoothingloss-False-False-False.pth
+2024-03-04 23:36:11,309 - INFO - 	 Batch 0/1181, 	 loss: 0.1067
+2024-03-04 23:37:09,386 - INFO - 	 Batch 200/1181, 	 loss: 0.0938
+2024-03-04 23:38:07,454 - INFO - 	 Batch 400/1181, 	 loss: 0.1117
+2024-03-04 23:39:05,532 - INFO - 	 Batch 600/1181, 	 loss: 0.0934
+2024-03-04 23:40:03,601 - INFO - 	 Batch 800/1181, 	 loss: 0.1098
+2024-03-04 23:41:01,646 - INFO - 	 Batch 1000/1181, 	 loss: 0.1087
+2024-03-04 23:41:53,776 - INFO - 	 Epoch 2 - Training : Accuracy  = 0.8676, F1-Score Micro = 0.6774, F1-Score Macro = 0.5157
+2024-03-04 23:42:29,353 - INFO - 	 Epoch 2 - Testing : Accuracy Micro  = 0.8582, F1-Score Micro = 0.6141, F1-Score Macro = 0.4605
+2024-03-04 23:42:30,171 - INFO - 	 Save the best model at epoch(s) 2 - saved output: ../output-fine-tuning/roberta-base-lbsmoothingloss-False-False-False.pth
+2024-03-04 23:42:30,464 - INFO - 	 Batch 0/1181, 	 loss: 0.0976
+2024-03-04 23:43:28,570 - INFO - 	 Batch 200/1181, 	 loss: 0.1187
+2024-03-04 23:44:26,682 - INFO - 	 Batch 400/1181, 	 loss: 0.1112
+2024-03-04 23:45:24,779 - INFO - 	 Batch 600/1181, 	 loss: 0.1208
+2024-03-04 23:46:22,884 - INFO - 	 Batch 800/1181, 	 loss: 0.1073
+2024-03-04 23:47:20,953 - INFO - 	 Batch 1000/1181, 	 loss: 0.1072
+2024-03-04 23:48:13,150 - INFO - 	 Epoch 3 - Training : Accuracy  = 0.8780, F1-Score Micro = 0.7115, F1-Score Macro = 0.5522
+2024-03-04 23:48:48,747 - INFO - 	 Epoch 3 - Testing : Accuracy Micro  = 0.8565, F1-Score Micro = 0.5951, F1-Score Macro = 0.4120
+2024-03-04 23:48:48,748 - INFO - Best statistic for testing: 0.6140755043227669
+2024-03-04 23:48:57,497 - INFO - 	 ########################################################## 
+
+2024-03-04 23:49:14,388 - INFO - 			INFOMATION OF CONFIGURATION:
+2024-03-04 23:49:14,388 - INFO - Namespace(based_process=False, batch_size=8, data_lemma=False, data_path='../Medical-Abstracts-TC-Corpus', epochs=3, learning_rate=5e-05, loss_type='lbsmoothingloss', max_length=512, model_dir='../pre-train', model_pretrain='alBERT_base_v2', output_dir='../output-fine-tuning', padding=True, reduce_gamma=0.2, reduce_step_size=2, scheduler=False, step_per_epoch=200, threshold=0.5, truncate=True)
+2024-03-04 23:49:14,388 - INFO - 	 Loading and Processing training data. 
+
+2024-03-04 23:49:14,388 - INFO - *** MedicalTextDataLoader: Data path: ../Medical-Abstracts-TC-Corpus
+2024-03-04 23:49:14,388 - INFO - *** MedicalTextDataLoader: Data preprocess: preprocessed-medical_tc_train.csv
+2024-03-04 23:49:14,711 - INFO - *** MedicalTextDataLoader: Loaded and process with 'medical_abstract' column
+2024-03-04 23:49:14,714 - INFO - 	 Loading and Processing testing data. 
+
+2024-03-04 23:49:14,714 - INFO - *** MedicalTextDataLoader: Data path: ../Medical-Abstracts-TC-Corpus
+2024-03-04 23:49:14,714 - INFO - *** MedicalTextDataLoader: Data preprocess: preprocessed-medical_tc_test.csv
+2024-03-04 23:49:14,808 - INFO - *** MedicalTextDataLoader: Loaded and process with 'medical_abstract' column
+2024-03-04 23:49:14,844 - INFO - *** MedicalTextOptimizeLoss: MedicalText Optimization loss creating...
+2024-03-04 23:49:17,453 - INFO - *** MedicalTextOptimizeLoss: MedicalText Optimization loss was loaded.
+2024-03-04 23:49:17,454 - INFO - *** MedicalTextOptimizeLoss: Successfully created initialize_optimizer with scheduler: False
+2024-03-04 23:49:36,226 - INFO - *** MedicalTextClassifier: Successfully created train-test DataLoader
+2024-03-04 23:49:36,226 - INFO - *** MedicalTextClassifier: Training and Evaluating...
+2024-03-04 23:49:36,611 - INFO - 	 Batch 0/1181, 	 loss: 0.2282
+2024-03-04 23:50:36,254 - INFO - 	 Batch 200/1181, 	 loss: 0.1497
+2024-03-04 23:51:36,067 - INFO - 	 Batch 400/1181, 	 loss: 0.1366
+2024-03-04 23:52:36,015 - INFO - 	 Batch 600/1181, 	 loss: 0.1386
+2024-03-04 23:53:35,974 - INFO - 	 Batch 800/1181, 	 loss: 0.1307
+2024-03-04 23:54:35,846 - INFO - 	 Batch 1000/1181, 	 loss: 0.1529
+2024-03-04 23:55:29,571 - INFO - 	 Epoch 1 - Training : Accuracy  = 0.7527, F1-Score Micro = 0.0271, F1-Score Macro = 0.0126
+2024-03-04 23:56:08,090 - INFO - 	 Epoch 1 - Testing : Accuracy Micro  = 0.7914, F1-Score Micro = 0.0013, F1-Score Macro = 0.0005
+2024-03-04 23:56:08,163 - INFO - 	 Save the best model at epoch(s) 1 - saved output: ../output-fine-tuning/alBERT_base_v2-lbsmoothingloss-False-False-False.pth
+2024-03-04 23:56:08,462 - INFO - 	 Batch 0/1181, 	 loss: 0.1313
+2024-03-04 23:57:08,504 - INFO - 	 Batch 200/1181, 	 loss: 0.1347
+2024-03-04 23:58:08,550 - INFO - 	 Batch 400/1181, 	 loss: 0.1308
+2024-03-04 23:59:08,550 - INFO - 	 Batch 600/1181, 	 loss: 0.1405
+2024-03-05 00:00:08,504 - INFO - 	 Batch 800/1181, 	 loss: 0.1363
+2024-03-05 00:01:08,475 - INFO - 	 Batch 1000/1181, 	 loss: 0.1318
+2024-03-05 00:02:02,234 - INFO - 	 Epoch 2 - Training : Accuracy  = 0.7555, F1-Score Micro = 0.0053, F1-Score Macro = 0.0024
+2024-03-05 00:02:40,705 - INFO - 	 Epoch 2 - Testing : Accuracy Micro  = 0.7915, F1-Score Micro = 0.0000, F1-Score Macro = 0.0000
+2024-03-05 00:02:41,005 - INFO - 	 Batch 0/1181, 	 loss: 0.1438
+2024-03-05 00:03:40,715 - INFO - 	 Batch 200/1181, 	 loss: 0.1414
+2024-03-05 00:04:40,497 - INFO - 	 Batch 400/1181, 	 loss: 0.1377
+2024-03-05 00:05:40,463 - INFO - 	 Batch 600/1181, 	 loss: 0.1451
+2024-03-05 00:06:40,479 - INFO - 	 Batch 800/1181, 	 loss: 0.1420
+2024-03-05 00:07:40,473 - INFO - 	 Batch 1000/1181, 	 loss: 0.1322
+2024-03-05 00:08:34,409 - INFO - 	 Epoch 3 - Training : Accuracy  = 0.7551, F1-Score Micro = 0.0009, F1-Score Macro = 0.0004
+2024-03-05 00:09:12,881 - INFO - 	 Epoch 3 - Testing : Accuracy Micro  = 0.7915, F1-Score Micro = 0.0000, F1-Score Macro = 0.0000
+2024-03-05 00:09:12,882 - INFO - Best statistic for testing: 0.0012806916426512968
+2024-03-05 00:09:21,421 - INFO - 	 ########################################################## 
+
+2024-03-05 00:09:21,421 - INFO - 			INFOMATION OF CONFIGURATION:
+2024-03-05 00:09:21,421 - INFO - Namespace(based_process=False, batch_size=8, data_lemma=False, data_path='../Medical-Abstracts-TC-Corpus', epochs=3, learning_rate=5e-05, loss_type='lbsmoothingloss', max_length=512, model_dir='../pre-train', model_pretrain='bluebert_pubmed_uncased', output_dir='../output-fine-tuning', padding=True, reduce_gamma=0.2, reduce_step_size=2, scheduler=False, step_per_epoch=200, threshold=0.5, truncate=True)
+2024-03-05 00:09:21,421 - INFO - 	 Loading and Processing training data. 
+
+2024-03-05 00:09:21,421 - INFO - *** MedicalTextDataLoader: Data path: ../Medical-Abstracts-TC-Corpus
+2024-03-05 00:09:21,422 - INFO - *** MedicalTextDataLoader: Data preprocess: preprocessed-medical_tc_train.csv
+2024-03-05 00:09:21,743 - INFO - *** MedicalTextDataLoader: Loaded and process with 'medical_abstract' column
+2024-03-05 00:09:21,745 - INFO - 	 Loading and Processing testing data. 
+
+2024-03-05 00:09:21,745 - INFO - *** MedicalTextDataLoader: Data path: ../Medical-Abstracts-TC-Corpus
+2024-03-05 00:09:21,746 - INFO - *** MedicalTextDataLoader: Data preprocess: preprocessed-medical_tc_test.csv
+2024-03-05 00:09:21,840 - INFO - *** MedicalTextDataLoader: Loaded and process with 'medical_abstract' column
+2024-03-05 00:09:21,875 - INFO - *** MedicalTextOptimizeLoss: MedicalText Optimization loss creating...
+2024-03-05 00:09:25,340 - INFO - *** MedicalTextOptimizeLoss: MedicalText Optimization loss was loaded.
+2024-03-05 00:09:25,340 - INFO - *** MedicalTextOptimizeLoss: Successfully created initialize_optimizer with scheduler: False
+2024-03-05 00:10:06,029 - INFO - *** MedicalTextClassifier: Successfully created train-test DataLoader
+2024-03-05 00:10:06,030 - INFO - *** MedicalTextClassifier: Training and Evaluating...
+2024-03-05 00:10:06,408 - INFO - 	 Batch 0/1181, 	 loss: 0.1843
+2024-03-05 00:11:03,402 - INFO - 	 Batch 200/1181, 	 loss: 0.1279
+2024-03-05 00:12:00,771 - INFO - 	 Batch 400/1181, 	 loss: 0.1047
+2024-03-05 00:12:58,222 - INFO - 	 Batch 600/1181, 	 loss: 0.1132
+2024-03-05 00:13:55,722 - INFO - 	 Batch 800/1181, 	 loss: 0.1279
+2024-03-05 00:14:53,252 - INFO - 	 Batch 1000/1181, 	 loss: 0.1050
+2024-03-05 00:15:44,988 - INFO - 	 Epoch 1 - Training : Accuracy  = 0.8626, F1-Score Micro = 0.6543, F1-Score Macro = 0.5050
+2024-03-05 00:16:20,611 - INFO - 	 Epoch 1 - Testing : Accuracy Micro  = 0.8607, F1-Score Micro = 0.6592, F1-Score Macro = 0.5102
+2024-03-05 00:16:21,116 - INFO - 	 Save the best model at epoch(s) 1 - saved output: ../output-fine-tuning/bluebert_pubmed_uncased-lbsmoothingloss-False-False-False.pth
+2024-03-05 00:16:21,405 - INFO - 	 Batch 0/1181, 	 loss: 0.0959
+2024-03-05 00:17:18,965 - INFO - 	 Batch 200/1181, 	 loss: 0.1062
+2024-03-05 00:18:16,523 - INFO - 	 Batch 400/1181, 	 loss: 0.0961
+2024-03-05 00:19:14,061 - INFO - 	 Batch 600/1181, 	 loss: 0.1308
+2024-03-05 00:20:11,665 - INFO - 	 Batch 800/1181, 	 loss: 0.1076
+2024-03-05 00:21:09,206 - INFO - 	 Batch 1000/1181, 	 loss: 0.1141
+2024-03-05 00:22:00,857 - INFO - 	 Epoch 2 - Training : Accuracy  = 0.8554, F1-Score Micro = 0.6106, F1-Score Macro = 0.4555
+2024-03-05 00:22:36,436 - INFO - 	 Epoch 2 - Testing : Accuracy Micro  = 0.8532, F1-Score Micro = 0.6237, F1-Score Macro = 0.4650
+2024-03-05 00:22:36,727 - INFO - 	 Batch 0/1181, 	 loss: 0.1193
+2024-03-05 00:23:34,279 - INFO - 	 Batch 200/1181, 	 loss: 0.0911
+2024-03-05 00:24:31,918 - INFO - 	 Batch 400/1181, 	 loss: 0.0950
+2024-03-05 00:25:29,544 - INFO - 	 Batch 600/1181, 	 loss: 0.1002
+2024-03-05 00:26:27,177 - INFO - 	 Batch 800/1181, 	 loss: 0.1033
+2024-03-05 00:27:24,831 - INFO - 	 Batch 1000/1181, 	 loss: 0.0991
+2024-03-05 00:28:16,548 - INFO - 	 Epoch 3 - Training : Accuracy  = 0.9097, F1-Score Micro = 0.7998, F1-Score Macro = 0.6388
+2024-03-05 00:28:52,142 - INFO - 	 Epoch 3 - Testing : Accuracy Micro  = 0.8534, F1-Score Micro = 0.6480, F1-Score Macro = 0.4947
+2024-03-05 00:28:52,143 - INFO - Best statistic for testing: 0.6592129682997122
+2024-03-05 00:29:00,596 - INFO - 	 ########################################################## 
+
+2024-03-05 00:29:00,596 - INFO - 			INFOMATION OF CONFIGURATION:
+2024-03-05 00:29:00,596 - INFO - Namespace(based_process=False, batch_size=8, data_lemma=False, data_path='../Medical-Abstracts-TC-Corpus', epochs=3, learning_rate=5e-05, loss_type='lbsmoothingloss', max_length=512, model_dir='../pre-train', model_pretrain='clinicalBERT', output_dir='../output-fine-tuning', padding=True, reduce_gamma=0.2, reduce_step_size=2, scheduler=False, step_per_epoch=200, threshold=0.5, truncate=True)
+2024-03-05 00:29:00,596 - INFO - 	 Loading and Processing training data. 
+
+2024-03-05 00:29:00,597 - INFO - *** MedicalTextDataLoader: Data path: ../Medical-Abstracts-TC-Corpus
+2024-03-05 00:29:00,597 - INFO - *** MedicalTextDataLoader: Data preprocess: preprocessed-medical_tc_train.csv
+2024-03-05 00:29:00,917 - INFO - *** MedicalTextDataLoader: Loaded and process with 'medical_abstract' column
+2024-03-05 00:29:00,920 - INFO - 	 Loading and Processing testing data. 
+
+2024-03-05 00:29:00,920 - INFO - *** MedicalTextDataLoader: Data path: ../Medical-Abstracts-TC-Corpus
+2024-03-05 00:29:00,920 - INFO - *** MedicalTextDataLoader: Data preprocess: preprocessed-medical_tc_test.csv
+2024-03-05 00:29:01,013 - INFO - *** MedicalTextDataLoader: Loaded and process with 'medical_abstract' column
+2024-03-05 00:29:01,051 - INFO - *** MedicalTextOptimizeLoss: MedicalText Optimization loss creating...
+2024-03-05 00:29:04,801 - INFO - *** MedicalTextOptimizeLoss: MedicalText Optimization loss was loaded.
+2024-03-05 00:29:04,802 - INFO - *** MedicalTextOptimizeLoss: Successfully created initialize_optimizer with scheduler: False
+2024-03-05 00:29:45,982 - INFO - *** MedicalTextClassifier: Successfully created train-test DataLoader
+2024-03-05 00:29:45,982 - INFO - *** MedicalTextClassifier: Training and Evaluating...
+2024-03-05 00:29:46,231 - INFO - 	 Batch 0/1181, 	 loss: 0.1701
+2024-03-05 00:30:18,276 - INFO - 	 Batch 200/1181, 	 loss: 0.1185
+2024-03-05 00:30:50,475 - INFO - 	 Batch 400/1181, 	 loss: 0.1165
+2024-03-05 00:31:22,735 - INFO - 	 Batch 600/1181, 	 loss: 0.0975
+2024-03-05 00:31:55,055 - INFO - 	 Batch 800/1181, 	 loss: 0.1174
+2024-03-05 00:32:27,395 - INFO - 	 Batch 1000/1181, 	 loss: 0.1119
+2024-03-05 00:32:56,454 - INFO - 	 Epoch 1 - Training : Accuracy  = 0.8537, F1-Score Micro = 0.6201, F1-Score Macro = 0.4615
+2024-03-05 00:33:14,509 - INFO - 	 Epoch 1 - Testing : Accuracy Micro  = 0.8622, F1-Score Micro = 0.6261, F1-Score Macro = 0.4684
+2024-03-05 00:33:15,227 - INFO - 	 Save the best model at epoch(s) 1 - saved output: ../output-fine-tuning/clinicalBERT-lbsmoothingloss-False-False-False.pth
+2024-03-05 00:33:15,389 - INFO - 	 Batch 0/1181, 	 loss: 0.1057
+2024-03-05 00:33:47,740 - INFO - 	 Batch 200/1181, 	 loss: 0.1024
+2024-03-05 00:34:20,104 - INFO - 	 Batch 400/1181, 	 loss: 0.0963
+2024-03-05 00:34:52,455 - INFO - 	 Batch 600/1181, 	 loss: 0.1046
+2024-03-05 00:35:24,804 - INFO - 	 Batch 800/1181, 	 loss: 0.1094
+2024-03-05 00:35:57,159 - INFO - 	 Batch 1000/1181, 	 loss: 0.1028
+2024-03-05 00:36:26,232 - INFO - 	 Epoch 2 - Training : Accuracy  = 0.8893, F1-Score Micro = 0.7447, F1-Score Macro = 0.5874
+2024-03-05 00:36:44,288 - INFO - 	 Epoch 2 - Testing : Accuracy Micro  = 0.8589, F1-Score Micro = 0.6403, F1-Score Macro = 0.4924
+2024-03-05 00:36:45,388 - INFO - 	 Save the best model at epoch(s) 2 - saved output: ../output-fine-tuning/clinicalBERT-lbsmoothingloss-False-False-False.pth
+2024-03-05 00:36:45,551 - INFO - 	 Batch 0/1181, 	 loss: 0.0974
+2024-03-05 00:37:17,909 - INFO - 	 Batch 200/1181, 	 loss: 0.1035
+2024-03-05 00:37:50,275 - INFO - 	 Batch 400/1181, 	 loss: 0.1021
+2024-03-05 00:38:22,637 - INFO - 	 Batch 600/1181, 	 loss: 0.0957
+2024-03-05 00:38:54,992 - INFO - 	 Batch 800/1181, 	 loss: 0.0998
+2024-03-05 00:39:27,346 - INFO - 	 Batch 1000/1181, 	 loss: 0.1057
+2024-03-05 00:39:56,421 - INFO - 	 Epoch 3 - Training : Accuracy  = 0.9131, F1-Score Micro = 0.8079, F1-Score Macro = 0.6539
+2024-03-05 00:40:14,473 - INFO - 	 Epoch 3 - Testing : Accuracy Micro  = 0.8468, F1-Score Micro = 0.6171, F1-Score Macro = 0.4816
+2024-03-05 00:40:14,473 - INFO - Best statistic for testing: 0.6402899135446686
+2024-03-06 10:26:05,320 - INFO - 	 ########################################################## 
+
+2024-03-06 10:26:05,320 - INFO - 			INFOMATION OF CONFIGURATION:
+2024-03-06 10:26:05,320 - INFO - Namespace(based_process=False, batch_size=8, data_lemma=False, data_path='../Medical-Abstracts-TC-Corpus', epochs=3, learning_rate=5e-05, loss_type='lbsmoothingloss', max_length=512, model_dir='../pre-train', model_pretrain='bioBERT_v1.1', output_dir='../output-fine-tuning', padding=True, reduce_gamma=0.2, reduce_step_size=2, scheduler=False, step_per_epoch=200, threshold=0.5, truncate=True)
+2024-03-06 10:26:05,320 - INFO - 	 Loading and Processing training data. 
+
+2024-03-06 10:26:05,320 - INFO - *** MedicalTextDataLoader: Data path: ../Medical-Abstracts-TC-Corpus
+2024-03-06 10:26:05,320 - INFO - *** MedicalTextDataLoader: Data preprocess: preprocessed-medical_tc_train.csv
+2024-03-06 10:26:05,635 - INFO - *** MedicalTextDataLoader: Loaded and process with 'medical_abstract' column
+2024-03-06 10:26:05,637 - INFO - 	 Loading and Processing testing data. 
+
+2024-03-06 10:26:05,637 - INFO - *** MedicalTextDataLoader: Data path: ../Medical-Abstracts-TC-Corpus
+2024-03-06 10:26:05,637 - INFO - *** MedicalTextDataLoader: Data preprocess: preprocessed-medical_tc_test.csv
+2024-03-06 10:26:05,729 - INFO - *** MedicalTextDataLoader: Loaded and process with 'medical_abstract' column
+2024-03-06 10:26:05,767 - INFO - *** MedicalTextOptimizeLoss: MedicalText Optimization loss creating...
+2024-03-06 10:26:09,145 - INFO - *** MedicalTextOptimizeLoss: MedicalText Optimization loss was loaded.
+2024-03-06 10:26:09,146 - INFO - *** MedicalTextOptimizeLoss: Successfully created initialize_optimizer with scheduler: False
+2024-03-06 10:26:41,005 - INFO - *** MedicalTextClassifier: Successfully created train-test DataLoader
+2024-03-06 10:26:41,005 - INFO - *** MedicalTextClassifier: Training and Evaluating...
+2024-03-06 10:26:41,382 - INFO - 	 Batch 0/1181, 	 loss: 0.1542
+2024-03-06 10:27:37,616 - INFO - 	 Batch 200/1181, 	 loss: 0.1291
+2024-03-06 10:28:34,430 - INFO - 	 Batch 400/1181, 	 loss: 0.1037
+2024-03-06 10:29:31,674 - INFO - 	 Batch 600/1181, 	 loss: 0.1090
+2024-03-06 10:30:28,985 - INFO - 	 Batch 800/1181, 	 loss: 0.1231
+2024-03-06 10:31:26,467 - INFO - 	 Batch 1000/1181, 	 loss: 0.0971
+2024-03-06 10:32:18,052 - INFO - 	 Epoch 1 - Training : Accuracy  = 0.8638, F1-Score Micro = 0.6607, F1-Score Macro = 0.5117
+2024-03-06 10:32:53,491 - INFO - 	 Epoch 1 - Testing : Accuracy Micro  = 0.8612, F1-Score Micro = 0.6511, F1-Score Macro = 0.4963
+2024-03-06 10:32:53,985 - INFO - 	 Save the best model at epoch(s) 1 - saved output: ../output-fine-tuning/bioBERT_v1.1-lbsmoothingloss-False-False-False.pth
+2024-03-06 10:32:54,272 - INFO - 	 Batch 0/1181, 	 loss: 0.0963
+2024-03-06 10:33:51,500 - INFO - 	 Batch 200/1181, 	 loss: 0.1181
+2024-03-06 10:34:49,032 - INFO - 	 Batch 400/1181, 	 loss: 0.0890
+2024-03-06 10:35:46,637 - INFO - 	 Batch 600/1181, 	 loss: 0.1069
+2024-03-06 10:36:44,261 - INFO - 	 Batch 800/1181, 	 loss: 0.0921
+2024-03-06 10:37:41,891 - INFO - 	 Batch 1000/1181, 	 loss: 0.0940
+2024-03-06 10:38:33,687 - INFO - 	 Epoch 2 - Training : Accuracy  = 0.9043, F1-Score Micro = 0.7848, F1-Score Macro = 0.6241
+2024-03-06 10:39:09,267 - INFO - 	 Epoch 2 - Testing : Accuracy Micro  = 0.8540, F1-Score Micro = 0.6552, F1-Score Macro = 0.5218
+2024-03-06 10:39:10,108 - INFO - 	 Save the best model at epoch(s) 2 - saved output: ../output-fine-tuning/bioBERT_v1.1-lbsmoothingloss-False-False-False.pth
+2024-03-06 10:39:10,400 - INFO - 	 Batch 0/1181, 	 loss: 0.1150
+2024-03-06 10:40:08,030 - INFO - 	 Batch 200/1181, 	 loss: 0.0836
+2024-03-06 10:41:05,592 - INFO - 	 Batch 400/1181, 	 loss: 0.1010
+2024-03-06 10:42:03,360 - INFO - 	 Batch 600/1181, 	 loss: 0.1071
+2024-03-06 10:43:01,097 - INFO - 	 Batch 800/1181, 	 loss: 0.0946
+2024-03-06 10:43:58,754 - INFO - 	 Batch 1000/1181, 	 loss: 0.1025
+2024-03-06 10:44:50,574 - INFO - 	 Epoch 3 - Training : Accuracy  = 0.9291, F1-Score Micro = 0.8478, F1-Score Macro = 0.6882
+2024-03-06 10:45:26,150 - INFO - 	 Epoch 3 - Testing : Accuracy Micro  = 0.8454, F1-Score Micro = 0.6351, F1-Score Macro = 0.4999
+2024-03-06 10:45:26,151 - INFO - Best statistic for testing: 0.65521613832853
