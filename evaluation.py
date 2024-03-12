@@ -120,10 +120,10 @@ def evaluate():
 
             outputs = model(input_ids=input_ids, attention_mask=attention_mask)
 
-            predicted_labels = (torch.sigmoid(outputs.logits) >= 0.5).float().cpu().numpy()
+            predicted_labels = (torch.sigmoid(outputs.logits)).float().cpu().numpy()
             true_lbl = labels.cpu().numpy()
 
-            metric = calculate_metrics(predicted_labels, true_lbl)
+            metric = calculate_metrics(true_lbl, predicted_labels)
             accuracy += metric['accuracy']
             f1_score_micro += metric['f1_score_micro']
             f1_score_macro += metric['f1_score_macro']
