@@ -272,9 +272,9 @@ class MedicalTextClassifier(MedicalTextOptimizeLoss):
                 loss.backward()
                 self.optimizer.step()
 
-                predicted_labels = (torch.sigmoid(outputs.logits) >= self.threshold).float().cpu().numpy()
+                predicted_labels = (torch.sigmoid(outputs.logits)).float().cpu().numpy()
                 true_lbl = labels.cpu().numpy()
-                metric = calculate_metrics(predicted_labels, true_lbl)
+                metric = calculate_metrics(true_lbl, predicted_labels)
                 
                 accuracy_train += metric['accuracy']
                 f1_score_train_micro += metric['f1_score_micro']
@@ -306,9 +306,9 @@ class MedicalTextClassifier(MedicalTextOptimizeLoss):
                     self.optimizer.zero_grad()
                     outputs = self.model(input_ids=input_ids, attention_mask=attention_mask)
 
-                    predicted_labels = (torch.sigmoid(outputs.logits) >= self.threshold).float().cpu().numpy()
+                    predicted_labels = (torch.sigmoid(outputs.logits)).float().cpu().numpy()
                     true_lbl = labels.cpu().numpy()
-                    metric = calculate_metrics(predicted_labels, true_lbl)
+                    metric = calculate_metrics(true_lbl, predicted_labels)
                     accuracy_test += metric['accuracy']
                     f1_score_test_micro += metric['f1_score_micro']
                     f1_score_test_macro += metric['f1_score_macro']
