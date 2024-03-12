@@ -109,7 +109,7 @@ def evaluate():
     
     test_labels = torch.tensor(test_data[1], dtype=torch.float)
     test_dataset = CustomDataset(test_inputs, test_labels)
-    test_dataloader = DataLoader(test_dataset, batch_size=1, shuffle=False)
+    test_dataloader = DataLoader(test_dataset, batch_size=8, shuffle=False)
 
     accuracy = f1_score_micro = f1_score_macro = 0
     with torch.no_grad():
