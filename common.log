@@ -1,7 +1,1 @@
-2024-03-04 23:52:31,041 - INFO - *** MedicalTextDataLoader: Data path: ../Medical-Abstracts-TC-Corpus
-2024-03-04 23:52:31,041 - INFO - *** MedicalTextDataLoader: Data preprocess: preprocessed-medical_tc_test.csv
-2024-03-04 23:52:31,094 - INFO - *** MedicalTextDataLoader: Loaded and process with 'medical_abstract' column
-2024-03-04 23:52:32,772 - INFO - *** MedicalTextOptimizeLoss: MedicalText Optimization loss was loaded.
-2024-03-04 23:53:31,160 - INFO - *** Accuracy for Evaluation : 0.7947
-2024-03-04 23:53:31,161 - INFO - *** Micro F1-scores for Evaluation : 0.6659
-2024-03-04 23:53:31,161 - INFO - *** Macro F1-scores for Evaluation : 0.1900
+
